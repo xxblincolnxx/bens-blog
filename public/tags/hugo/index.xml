@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/myfirstpost/</link>
       <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
       <guid>http://localhost:1313/posts/myfirstpost/</guid>
-      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Creating this site was my first experience creating a static website since I first learned to code. There&amp;rsquo;s not a lot to it (intentionally &amp;#x1f601;) but I thought I explain here why I made the decision to use Hugo for my personal site and why I landed on a bare-bones blog format, rather than a portfolio.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/keyboard-561124_1920.jpg&#34; alt=&#34;test picture&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;greetings&#34;&gt;Greetings!&lt;/h3&gt;&#xA;&lt;p&gt;Hey folks! Creating this site was my first experience creating a static website since I first learned to code. I thought I would use my first post to explain some of the surrounding context that led to this site. Like, why am I using a blog for a personal site instead of iterating over my old portfolio?&lt;/p&gt;&#xA;&lt;p&gt;{{ &amp;lt; rawhtml &amp;gt;}}&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
     </item>
   </channel>
 </rss>

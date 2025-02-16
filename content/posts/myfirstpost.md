@@ -6,6 +6,11 @@ description = 'Why did I create this site the way that I did?'
 tags = ['Hugo', 'CMS']
 +++
 
+{{< rawhtml >}}
+
+<div class='gradient-keyboard'></div>
+{{< /rawhtml >}}
+
 ### Greetings!
 
 Hey folks! Creating this site was my first experience creating a static website since I first learned to code. I thought I would use my first post to explain some of the surrounding context that led to this site. Like, why am I using a blog for a personal site instead of iterating over my old portfolio?
