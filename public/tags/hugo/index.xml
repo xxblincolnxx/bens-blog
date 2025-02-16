@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on My New Hugo Site</title>
+    <link>http://localhost:1313/tags/hugo/</link>
+    <description>Recent content in Hugo on My New Hugo Site</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Feb 2025 00:18:44 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>So, I made this site...</title>
+      <link>http://localhost:1313/posts/myfirstpost/</link>
+      <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
+      <guid>http://localhost:1313/posts/myfirstpost/</guid>
+      <description>&lt;p&gt;Creating this site was my first experience creating a static website since the introductory days of my coding bootcamp. There&amp;rsquo;s not a lot to it (intentionally) but I thought I would reflect here on some of my observations using Hugo in conjunction with a blog template to create the bones of this site.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
