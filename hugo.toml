@@ -2,7 +2,7 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = 'My New Hugo Site'
 theme = "poison"
-
+enableEmoji = true
 pluralizelisttitles = false
 front_page_content = ["posts"]
 [params]
@@ -13,6 +13,7 @@ front_page_content = ["posts"]
         {Name = "About", URL = "/about/", HasChildren = false},
         {Name = "Posts", URL = "/posts/", HasChildren = true, Limit = 5},
     ]
+    hideToc = false
 
     email_url = "mailto://beprothe@gmail"
     github_url = "https://github.com/xxblincolnxx"
@@ -73,3 +74,7 @@ front_page_content = ["posts"]
 
 [security]
   enableInlineShortcodes = true
+
+[markup]
+    [markup.tableOfContents]
+        startLevel =2

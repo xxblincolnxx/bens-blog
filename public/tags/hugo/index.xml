@@ -13,7 +13,7 @@
       <link>http://localhost:1313/posts/myfirstpost/</link>
       <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
       <guid>http://localhost:1313/posts/myfirstpost/</guid>
-      <description>&lt;p&gt;Creating this site was my first experience creating a static website since the introductory days of my coding bootcamp. There&amp;rsquo;s not a lot to it (intentionally) but I thought I would reflect here on some of my observations using Hugo in conjunction with a blog template to create the bones of this site.&lt;/p&gt;</description>
+      <description>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;&#xA;&lt;p&gt;Creating this site was my first experience creating a static website since I first learned to code. There&amp;rsquo;s not a lot to it (intentionally &amp;#x1f601;) but I thought I explain here why I made the decision to use Hugo for my personal site and why I landed on a bare-bones blog format, rather than a portfolio.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
