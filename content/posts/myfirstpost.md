@@ -21,6 +21,10 @@ One of the things I find facinating about life is how every iteration of my "sel
 
 My old portfolio brings me into that "Cringe" state. Portfolios are pretty common projects for junior and mid-level frontend engineers-- and I built one some time before I landed my first engineering job. [Here](https://benprothe-portfolio.netlify.app/) it is in all its unforunate glory. This is all I had until I made this site (we'll get there). I actually did start to update it but I kept coming face to face with the issues I'll outline.
 
+{{< rawhtml >}}
+<img align="right" src="/img/old_portfolio.png"  style="width: 400px; border-radius: .5em; margin: 10px;"/>
+{{< /rawhtml >}}
+
 Before I conduct the autopsy, I wanted to explain what I hope to accomplish in doing so. I'm here to show what I've learned for both self-promotion and educational purposes. I think this is actually a pitfall other junior and mid-level devs could fall into and I want to fast track them towards a better path. As for self-promotion, a key skill for devs is the ability to evaluate one's self, without letting your ego get in the way. Its how we get better and learn from others. Its part of being teachable and likeable in a workplace. That's not a narrative you get to see on a portfolio site... but a blog? Well, I'm getting ahead of myself...
 
 So, objectivity in hand, ego aside, here's what painfully sticks out to me today, 5 years later:
@@ -49,7 +53,7 @@ Now consider this... I just worked as a full stack developer for 2 fruitful year
 
 {{< rawhtml >}}
 <span style = "color:#969191; font-weight: bold;">
-Takeaways: This iteration of my site needs to highlight smaller learnings and incremental progress on large projects. Everything on display should be quality and demonstrative; no filler. I also need to make sure projects don't Heroku'd.
+Takeaways: This iteration of my site needs to highlight smaller learnings and incremental progress on large projects. Everything on display should be quality and demonstrative; no filler. I also need to make sure projects don't get Heroku'd.
 </span>
 {{< /rawhtml >}}
 

@@ -1,19 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on My New Hugo Site</title>
+    <title>Series on A Blog for Ben</title>
     <link>http://localhost:1313/series/</link>
-    <description>Recent content in Series on My New Hugo Site</description>
+    <description>Recent content in Series on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 15 Feb 2025 21:36:52 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A Test of My Setup Skills</title>
-      <link>http://localhost:1313/series/a-test-of-my-setup-skills/</link>
-      <pubDate>Sat, 15 Feb 2025 21:36:52 -0500</pubDate>
-      <guid>http://localhost:1313/series/a-test-of-my-setup-skills/</guid>
-      <description></description>
-    </item>
   </channel>
 </rss>
