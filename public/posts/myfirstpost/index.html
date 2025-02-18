@@ -64,10 +64,10 @@
 <meta property="og:site_name" content="A Blog for Ben" />
 
 
-<meta name="description" content="Why did I create this site the way that I did?" />
-<meta itemprop="description" content="Why did I create this site the way that I did?" />
-<meta property="og:description" content="Why did I create this site the way that I did?" />
-<meta name="twitter:description" content="Why did I create this site the way that I did?" />
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
 
 
 <base href="http://localhost:1313/posts/myfirstpost/" />
@@ -350,7 +350,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <div>
       
         
-          <span>Ben P - </span>
+          <span>Ben Prothe - </span>
         
       
       
@@ -375,8 +375,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <a href="http://localhost:1313/tags/hugo">Hugo</a>
       </li>
       
-      <li class="tag-Self-Critique">
-        <a href="http://localhost:1313/tags/self-critique">Self-Critique</a>
+      <li class="tag-Personal Growth">
+        <a href="http://localhost:1313/tags/personal-growth">Personal Growth</a>
       </li>
       
     </ul>
@@ -408,8 +408,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <p>Before I conduct the autopsy, I wanted to explain what I hope to accomplish in doing so. I&rsquo;m here to show what I&rsquo;ve learned for both self-promotion and educational purposes. I think this is actually a pitfall other junior and mid-level devs could fall into and I want to fast track them towards a better path. As for self-promotion, a key skill for devs is the ability to evaluate one&rsquo;s self, without letting your ego get in the way. Its how we get better and learn from others. Its part of being teachable and likeable in a workplace. That&rsquo;s not a narrative you get to see on a portfolio site&hellip; but a blog? Well, I&rsquo;m getting ahead of myself&hellip;</p>
 <p>So, objectivity in hand, ego aside, here&rsquo;s what painfully sticks out to me today, 5 years later:</p>
 <h3 id="over-engineering">Over-engineering</h3>
-<p>Importantly, in saying that this site is &ldquo;over-engineered&rdquo;, I do not mean that the code quality is high. I mean that I&rsquo;m using a sledge hammer to tap in finishing nails. This isn&rsquo;t obvious without a little digging, but the portfolio is a full React app. At the time my goal in using React for this was to demonstrate that I could&hellip; use React (I even put the portfolio, <em>in</em> the portfolio &#x1f602;).</p>
-<p>But a portfolio just isn&rsquo;t a good medium with which to demonstrate skill in React. Don&rsquo;t get me wrong, it took plenty of time to create and I&rsquo;d even say it was hard. But the difficulty had more to do with making design decisions that felt extra &ldquo;heavy&rdquo; because it was for self-promotion. It wasn&rsquo;t hard because the React was hard to write. This isn&rsquo;t a web-app; It&rsquo;s a one page view. I didn&rsquo;t need state management. I didn&rsquo;t need to handle asychronous code. I didn&rsquo;t even really need a router.</p>
+<p>Importantly, in saying that this site is &ldquo;over-engineered&rdquo;, I do not mean that the code quality is high or complex. I mean that I&rsquo;m using a sledge hammer to tap in finishing nails. This isn&rsquo;t obvious without a little digging, but the portfolio is a full React app. At the time my goal in using React for this was to demonstrate that I could&hellip; use React (I even put the portfolio, <em>in</em> the portfolio &#x1f602;).</p>
+<p>But a portfolio just isn&rsquo;t a good medium with which to demonstrate skill in React. Don&rsquo;t get me wrong, it took plenty of time to create and I&rsquo;d even say it was hard. But the difficulty had more to do with making design decisions that felt extra &ldquo;heavy&rdquo; because of the professional implications of each decision. It wasn&rsquo;t hard because the React was hard to write. This isn&rsquo;t a web-app&ndash; it&rsquo;s a one page view. I didn&rsquo;t need state management. I didn&rsquo;t need to handle asychronous code. I didn&rsquo;t even really need a router.</p>
 <p>The &ldquo;portfolio problem&rdquo; is very, very, very solved. Content management systems have existed for a long time and you just don&rsquo;t need React to create these kinds of personal sites.</p>
 
 
@@ -439,7 +439,7 @@ Takeaways: This iteration of my site should demonstrate my softer skills that he
 
 
 <hr>
-<p>My new opinion is that a portfolio is only an appropriate solution for freelance devs who have a bunch of tangible projects they can actually display. They actually need to be able to show their work and their projects are more finite. They make for a nice, full grid of things to show off. I am not a freelance developer at this time. I like working on teams and I have great collaboration skills. I&rsquo;m not 100% convinced I even need a personal site, but I <em>would</em> still like one. I want to get away from the need to fill a grid of projects. So let&rsquo;s turn my takaways into a spec sheet for my next iteration on a personal site:</p>
+<p>My new opinion is that a portfolio is only an appropriate solution for freelance devs who have a bunch of tangible projects they can display. A freelancer needs to be able to show their work and their projects are more finite. They make for a nice, full grid of things to show off. I am not a freelance developer at this time. I like working on teams and have great collaboration skills. I&rsquo;m not 100% convinced I even need a personal site. I <em>would</em> still like one but I want to get away from the need to fill a grid of projects. So let&rsquo;s turn my takaways into a spec sheet for my next iteration on a personal site:</p>
 <ul>
 <li>I should use existing tools optimized for content management, not React.</li>
 <li>I need the ability to highlight smaller learnings and incremental progress on large projects.</li>
@@ -447,10 +447,10 @@ Takeaways: This iteration of my site should demonstrate my softer skills that he
 <li>The other things that make me a good developer and employee should have some kind of medium by which they can be displayed.</li>
 </ul>
 <h2 id="the-path-forward">The Path Forward</h2>
-<p>First and foremost, let me talk for a moment about open-source. I can hear you shouting from the rooftops that <em>this</em> is the answer. I totally agree with you for the most part. But open-source takes time to ramp. You can start small with comments and issues but anything more is probably going to take some time and energy. That&rsquo;s actually a big commitment for an unpaid effort from a developer who has a family and real-life obligations. Thankfully, a blog and open-source are not mutually exclusive.</p>
-<p>A blog is where I landed for my <em>first</em> next step, and here you are reading it. Here are the benefits:</p>
+<p>First and foremost, let me talk for a moment about open-source. I can hear you shouting from the rooftops that <em>this</em> is the answer. I agree with you for the most part. But open-source takes time to ramp. You can start small with comments and issues but anything more is probably going to take some time and energy. That&rsquo;s actually a big commitment up front for an unpaid effort from a developer who has a family and real-life obligations. Thankfully, open-source and other options are not mutually exclusive.</p>
+<p>A blog is where I landed for the <em>first</em> of my next steps. Here you are reading it. These are the benefits I gain:</p>
 <ul>
-<li>I can showcase complete projects but also showcase incremental progress and accrued learnings; I can talk about things that don&rsquo;t even make it into my projects.</li>
+<li>I can showcase complete projects but also incremental progress and accrued learnings; I can talk about things that don&rsquo;t even make it into my projects.</li>
 <li>I used <a href="https://gohugo.io/" target="_blank">Hugo</a> to generate the whole site. Its not over-engineered and is optimized as a static site for SEO and performance.</li>
 <li>I will be able to share cheatsheets and guides I already create for myself.</li>
 <li>If I take on open-source contribution, I can document what I learn as I learn it. Funny enough, I actually found a potential place where I can contribute in learning Hugo and utilizing pre-built themes.</li>

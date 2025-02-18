@@ -1,9 +1,8 @@
 +++
 date = '2025-02-16T00:18:44-05:00'
-author = 'Ben P'
+author = 'Ben Prothe'
 title = 'Why I Made a Blog, Not a Portfolio'
-description = 'Why did I create this site the way that I did?'
-tags = ['Hugo', 'Self-Critique']
+tags = ['Hugo', 'Personal Growth']
 +++
 
 {{< rawhtml >}}
@@ -31,9 +30,9 @@ So, objectivity in hand, ego aside, here's what painfully sticks out to me today
 
 ### Over-engineering
 
-Importantly, in saying that this site is "over-engineered", I do not mean that the code quality is high. I mean that I'm using a sledge hammer to tap in finishing nails. This isn't obvious without a little digging, but the portfolio is a full React app. At the time my goal in using React for this was to demonstrate that I could... use React (I even put the portfolio, _in_ the portfolio :joy:).
+Importantly, in saying that this site is "over-engineered", I do not mean that the code quality is high or complex. I mean that I'm using a sledge hammer to tap in finishing nails. This isn't obvious without a little digging, but the portfolio is a full React app. At the time my goal in using React for this was to demonstrate that I could... use React (I even put the portfolio, _in_ the portfolio :joy:).
 
-But a portfolio just isn't a good medium with which to demonstrate skill in React. Don't get me wrong, it took plenty of time to create and I'd even say it was hard. But the difficulty had more to do with making design decisions that felt extra "heavy" because it was for self-promotion. It wasn't hard because the React was hard to write. This isn't a web-app; It's a one page view. I didn't need state management. I didn't need to handle asychronous code. I didn't even really need a router.
+But a portfolio just isn't a good medium with which to demonstrate skill in React. Don't get me wrong, it took plenty of time to create and I'd even say it was hard. But the difficulty had more to do with making design decisions that felt extra "heavy" because of the professional implications of each decision. It wasn't hard because the React was hard to write. This isn't a web-app-- it's a one page view. I didn't need state management. I didn't need to handle asychronous code. I didn't even really need a router.
 
 The "portfolio problem" is very, very, very solved. Content management systems have existed for a long time and you just don't need React to create these kinds of personal sites.
 
@@ -69,7 +68,7 @@ Takeaways: This iteration of my site should demonstrate my softer skills that he
 
 ---
 
-My new opinion is that a portfolio is only an appropriate solution for freelance devs who have a bunch of tangible projects they can actually display. They actually need to be able to show their work and their projects are more finite. They make for a nice, full grid of things to show off. I am not a freelance developer at this time. I like working on teams and I have great collaboration skills. I'm not 100% convinced I even need a personal site, but I _would_ still like one. I want to get away from the need to fill a grid of projects. So let's turn my takaways into a spec sheet for my next iteration on a personal site:
+My new opinion is that a portfolio is only an appropriate solution for freelance devs who have a bunch of tangible projects they can display. A freelancer needs to be able to show their work and their projects are more finite. They make for a nice, full grid of things to show off. I am not a freelance developer at this time. I like working on teams and have great collaboration skills. I'm not 100% convinced I even need a personal site. I _would_ still like one but I want to get away from the need to fill a grid of projects. So let's turn my takaways into a spec sheet for my next iteration on a personal site:
 
 - I should use existing tools optimized for content management, not React.
 - I need the ability to highlight smaller learnings and incremental progress on large projects.
@@ -78,11 +77,11 @@ My new opinion is that a portfolio is only an appropriate solution for freelance
 
 ## The Path Forward
 
-First and foremost, let me talk for a moment about open-source. I can hear you shouting from the rooftops that _this_ is the answer. I totally agree with you for the most part. But open-source takes time to ramp. You can start small with comments and issues but anything more is probably going to take some time and energy. That's actually a big commitment for an unpaid effort from a developer who has a family and real-life obligations. Thankfully, a blog and open-source are not mutually exclusive.
+First and foremost, let me talk for a moment about open-source. I can hear you shouting from the rooftops that _this_ is the answer. I agree with you for the most part. But open-source takes time to ramp. You can start small with comments and issues but anything more is probably going to take some time and energy. That's actually a big commitment up front for an unpaid effort from a developer who has a family and real-life obligations. Thankfully, open-source and other options are not mutually exclusive.
 
-A blog is where I landed for my _first_ next step, and here you are reading it. Here are the benefits:
+A blog is where I landed for the _first_ of my next steps. Here you are reading it. These are the benefits I gain:
 
-- I can showcase complete projects but also showcase incremental progress and accrued learnings; I can talk about things that don't even make it into my projects.
+- I can showcase complete projects but also incremental progress and accrued learnings; I can talk about things that don't even make it into my projects.
 - I used [Hugo](https://gohugo.io/) to generate the whole site. Its not over-engineered and is optimized as a static site for SEO and performance.
 - I will be able to share cheatsheets and guides I already create for myself.
 - If I take on open-source contribution, I can document what I learn as I learn it. Funny enough, I actually found a potential place where I can contribute in learning Hugo and utilizing pre-built themes.
