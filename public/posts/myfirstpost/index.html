@@ -207,6 +207,56 @@
                 
                 
             
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/myfirstpost/">Why I Made a Blog, Not a Portfolio</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/a_test/">A_test</a>
+                            </li>
+                        
+                    
+                
+            
             
                 
                 
@@ -233,7 +283,7 @@
                 
                 
                     <li class="heading">
-                        <a href="/posts/">Posts</a>
+                        <a href="/myotherside/">My Other Side</a>
                     </li>
                     
                         <li class="sub-heading">
@@ -241,14 +291,13 @@
                         </li>
                         
                             <li class="bullet">
-                                <a href="http://localhost:1313/posts/myfirstpost/">Why I Made a Blog, Not a Portfolio</a>
-                            </li>
-                        
-                            <li class="bullet">
-                                <a href="http://localhost:1313/posts/a_test/">A_test</a>
+                                <a href="http://localhost:1313/myotherside/myotherside/">Myotherside</a>
                             </li>
                         
                     
+                
+            
+                
                 
             
             
@@ -354,7 +403,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>2 mins read</span>
+        <span>5 mins read</span>
       </span>
     </div>
 
@@ -365,8 +414,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <a href="http://localhost:1313/tags/hugo">Hugo</a>
       </li>
       
-      <li class="tag-CMS">
-        <a href="http://localhost:1313/tags/cms">CMS</a>
+      <li class="tag-Self-Critique">
+        <a href="http://localhost:1313/tags/self-critique">Self-Critique</a>
       </li>
       
     </ul>
@@ -385,13 +434,38 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <div class='gradient-keyboard'></div>
 
 
-<p>Portfolios are pretty common projects for junior and mid-level frontend engineers. I had one before I got my first engineering job, which you can see in all of its glory, <a href="https://benprothe-portfolio.netlify.app/" target="_blank">here</a>. Let&rsquo;s be co-critical for a moment. Here are the easy things that stick out to the &ldquo;me&rdquo; of today:</p>
-<ol>
-<li>I have 2 projects listed as &ldquo;coming soon&rdquo;. Spoiler alert - Those projects weren&rsquo;t ever completed &#x1f602;. My first instinct is to say that I got hired, but if I&rsquo;m being honest with myself I actually abandoned them as concepts before that.</li>
-<li>There aren&rsquo;t very many quality projects, and the most valuable projects (flashcards and bevdev) were hosted on Heroku Free Tier (RIP), back in the day, so the links don&rsquo;t go anywhere.</li>
-<li>The portfolio itself is overengineered. It&rsquo;s a one-view React app that solves a very, very, very solved problem. Content management systems have existed for a long time. Back then, my goal in using React was to demonstrate that I could&hellip; use React. So I wasn&rsquo;t thinking like a professional problem solver, I was thinking like a student. I even put the portfolio itself in the list of projects &#x1f602;.</li>
-</ol>
-<p>One of the things I want to accomplish with this blog is to add narrative to my growth and discovery as a developer. Looking critically at my old work is part of that goal.</p>
+<h2 id="tldr">TL;DR</h2>
+<p>For a dev like me, a portfolio doesn&rsquo;t do the job of illuminating my value and could be a waste of time. Using a blog made with Hugo allows me to save time in development and provides a medium through which I can share what I know and what I&rsquo;m doing in smaller, bite sized chunks.</p>
+<h2 id="my-portfolio-disaster">My portfolio disaster</h2>
+<p>One of the things I find facinating about life is how every iteration of my &ldquo;self&rdquo; views myself of 5 years ago as complete and utter &ldquo;Cringe&rdquo;. I have to assume at least some of you know this feeling. If you haven&rsquo;t experienced it, go dig up your oldest social media posts or read an old journal&hellip;</p>
+<p>My old portfolio brings me into that &ldquo;Cringe&rdquo; state. Portfolios are pretty common projects for junior and mid-level frontend engineers&ndash; and I built one some time before I landed my first engineering job. <a href="https://benprothe-portfolio.netlify.app/" target="_blank">Here</a> it is in all its unforunate glory. But this is all I had until I made this site (we&rsquo;ll get there). I did not feel comfortable using this portfolio in my job applications or even linking it in my other socials. I actually did start to update it so I&rsquo;d have something I could link but I kept coming face to face with the issues I&rsquo;ll outline.</p>
+<p>Before I conduct the autopsy, I wanted to explain what I hope to accomplish in doing so. I&rsquo;m here to show what I&rsquo;ve learned for both self-promotion and educational purposes. I think this is actually a pitfall other junior and mid-level devs could fall into and I want to fast track them towards a better path. As for self-promotion, a key skill for devs is the ability to evaluate one&rsquo;s self, without letting your ego get in the way. Its how we get better and learn from others. Its part of being teachable and likeable in a workplace. That&rsquo;s not a narrative you get to see on a portfolio site&hellip; but a blog? Well, I&rsquo;m getting ahead of myself&hellip;</p>
+<p>So, objectivity in hand, ego aside, here&rsquo;s what painfully sticks out to me today, 5 years later:</p>
+<h3 id="over-engineered">Over-engineered</h3>
+<p>Importantly, in saying that this site is &ldquo;over-engineered&rdquo;, I do not mean that the code quality is high. I mean that I&rsquo;m using a sledge hammer to tap in finishing nails. This isn&rsquo;t obvious without a little digging, but the portfolio is a full React app. At the time my goal in using React for this was to demonstrate that I could&hellip; use React (I even put the portfolio, <em>in</em> the portfolio &#x1f602;).</p>
+<p>But a portfolio just isn&rsquo;t a good medium with which to demonstrate skill in React. Don&rsquo;t get me wrong, it took plenty of time to create and I&rsquo;d even say it was hard. But the difficulty had more to do with making design decisions that felt extra &ldquo;heavy&rdquo; because it was for self-promotion. It wasn&rsquo;t hard because the React was hard to write. It&rsquo;s a one page view. I didn&rsquo;t need state management. I didn&rsquo;t need to handle asychronous code. I didn&rsquo;t even really need a router.</p>
+<p>The &ldquo;portfolio problem&rdquo; is very, very, very solved. Content management systems have existed for a long time and you just don&rsquo;t need React to create these kinds of personal sites.</p>
+
+
+<span style = "color:#969191; font-weight: bold;">
+Takeaways: This iteration of my site should use existing tools optimized for content management, freeing up some time to work on other things. Speaking of which...
+</span>
+
+
+<h3 id="project-quality">Project Quality</h3>
+<p>This line item is probably the most egregious. The most valuable projects (Flashcards and BevDev) were hosted on Heroku Free Tier (RIP) back in the day, so the links don&rsquo;t go anywhere. Even still, those were projects I completed during my bootcamp. They don&rsquo;t stand up next to what I can do today. All of the other projects listed could have easily come from a tutorial. Then there’s the “coming soon” category (I CAN PHYSICALLY FEEL THE PAIN OF THE CRINGE 😑)&hellip; I included projects that I hadn’t even started. I even provided filters for the technologies I would hypothetically use. It was bad.</p>
+<p>What that tells me is that I had an empty grid and had to dig deep to fill it. Like, that&rsquo;s kind of the problem with being a Junior Dev&hellip; you don&rsquo;t have a wealth of things to show off. The projects you <em>do</em> have to show off aren&rsquo;t impressive. Building something impressive is time intensive&hellip; if you omit filler content, your portfolio will be empty until you finish the good project. There&rsquo;s nothing in a portfolio to illuminate the things you learn in the process of building the &ldquo;new thing&rdquo;. There&rsquo;s nothing to illuminate anything you might have learned along the way, but don&rsquo;t use in the final product. So it kind of doesn&rsquo;t make sense for a junior to have a portfolio at all. Why highlight an empty or unimpressive list of projects?</p>
+<p>Now consider this&hellip; I just worked for 2 years on a very complex project and I don&rsquo;t even have a git-repo I can link to show off my work. I wasn&rsquo;t creating end-to-end projects. I was working on features and enhancements for an existing project. I learned so much, but I still don&rsquo;t have any new items for my portfolio grid. So a portfolio doesn&rsquo;t provide any way to document what I&rsquo;ve been doing during employment. I have nothing to show.</p>
+<p>In making these observations, my new opinion is that a portfolio is only an appropriate solution for freelance devs who have a bunch of tangible projects they can actually display. They actually need to be able to show their work, like a catalogue. Their projects are more finite and make for a nice, full grid.</p>
+
+
+<span style = "color:#969191; font-weight: bold;">
+Takeaways: This iteration of my site needs to highlight smaller learnings and incremental progress on large projects. Everything on display should be quality and demonstrative; no filler. I also need to make sure projects don't Heroku'd.
+</span>
+
+
+<h3 id="sterility">Sterility</h3>
+<p>This point has more to do with my personal strengths. I am a good communicator. I love to share information with people as I learn, which helps everyone in a team setting. I can write documentation - I have training in technical writing and lots of experience writing things like SOPs and compliance audits. I could <em>tell</em> you about this in an &ldquo;about&rdquo; section in my portfolio&hellip; but in a blog I can <em>show</em> these qualities.</p>
 
   
   <hr>
@@ -412,7 +486,18 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <div class="article-toc ">
     <div class="toc-wrapper">
       <h4 id="contents"></h4>
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#tldr">TL;DR</a></li>
+    <li><a href="#my-portfolio-disaster">My portfolio disaster</a>
+      <ul>
+        <li><a href="#over-engineered">Over-engineered</a></li>
+        <li><a href="#project-quality">Project Quality</a></li>
+        <li><a href="#sterility">Sterility</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 

@@ -9,11 +9,11 @@
     <lastBuildDate>Sun, 16 Feb 2025 00:18:44 -0500</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>So, I made this site...</title>
+      <title>Why I Made a Blog, Not a Portfolio</title>
       <link>http://localhost:1313/posts/myfirstpost/</link>
       <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
       <guid>http://localhost:1313/posts/myfirstpost/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/keyboard-561124_1920.jpg&#34; alt=&#34;test picture&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;greetings&#34;&gt;Greetings!&lt;/h3&gt;&#xA;&lt;p&gt;Hey folks! Creating this site was my first experience creating a static website since I first learned to code. I thought I would use my first post to explain some of the surrounding context that led to this site. Like, why am I using a blog for a personal site instead of iterating over my old portfolio?&lt;/p&gt;&#xA;&lt;p&gt;{{ &amp;lt; rawhtml &amp;gt;}}&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;</description>
+      <description>&lt;div class=&#39;gradient-keyboard&#39;&gt;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;p&gt;Portfolios are pretty common projects for junior and mid-level frontend engineers. I had one before I got my first engineering job, which you can see in all of its glory, &lt;a href=&#34;https://benprothe-portfolio.netlify.app/&#34; target=&#34;_blank&#34;&gt;here&lt;/a&gt;. Let&amp;rsquo;s be co-critical for a moment. Here are the easy things that stick out to the &amp;ldquo;me&amp;rdquo; of today&amp;hellip;&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-was-i-doing-wrong&#34;&gt;What was I doing wrong?&lt;/h2&gt;&#xA;&lt;h4 id=&#34;1-i-have-2-projects-listed-as-coming-soon&#34;&gt;1. I have 2 projects listed as &amp;ldquo;coming soon&amp;rdquo;.&lt;/h4&gt;&#xA;&lt;p&gt;Spoiler alert - Those projects weren&amp;rsquo;t ever completed &amp;#x1f602;. My first instinct is to say that I got hired, but if I&amp;rsquo;m being honest with myself I actually abandoned them as concepts before that.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
