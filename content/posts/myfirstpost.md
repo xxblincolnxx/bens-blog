@@ -26,7 +26,7 @@ My old portfolio brings me into that "Cringe" state. Portfolios are pretty commo
 
 Before I conduct the autopsy, I wanted to explain what I hope to accomplish in doing so. I'm here to show what I've learned for both self-promotion and educational purposes. I think this is actually a pitfall other junior and mid-level devs could fall into and I want to fast track them towards a better path. As for self-promotion, a key skill for devs is the ability to evaluate one's self, without letting your ego get in the way. Its how we get better and learn from others. Its part of being teachable and likeable in a workplace. That's not a narrative you get to see on a portfolio site... but a blog? Well, I'm getting ahead of myself...
 
-So, objectivity in hand, ego aside, here's what painfully sticks out to me today, 5 years later:
+So, objectivity in hand and ego aside, here's what painfully sticks out to me today, 5 years later:
 
 ### Over-engineering
 
