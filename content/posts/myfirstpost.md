@@ -24,7 +24,7 @@ My old portfolio brings me into that "Cringe" state. Portfolios are pretty commo
 <img align="right" src="/img/old_portfolio.png"  style="width: 400px; border-radius: .5em; margin: 10px;"/>
 {{< /rawhtml >}}
 
-Before I conduct the autopsy, I wanted to explain what I hope to accomplish in doing so. I'm here to show what I've learned for both self-promotion and educational purposes. I think this is actually a pitfall other junior and mid-level devs could fall into and I want to fast track them towards a better path. As for self-promotion, a key skill for devs is the ability to evaluate one's self, without letting your ego get in the way. Its how we get better and learn from others. Its part of being teachable and likeable in a workplace. That's not a narrative you get to see on a portfolio site... but a blog? Well, I'm getting ahead of myself...
+Before I conduct the autopsy, I wanted to explain what I hope to accomplish in doing so. I'm here to show what I've learned for both self-promotion and educational purposes. I think this is actually a pitfall other junior and mid-level devs could fall into and I want to fast track them towards a better path. As for self-promotion, a key skill for devs is the ability to evaluate one's self, without letting your ego get in the way. It's how we get better and learn from others. It's part of being teachable and likeable in a workplace. That's not a narrative you get to see on a portfolio site... but a blog? Well, I'm getting ahead of myself...
 
 So, objectivity in hand and ego aside, here's what painfully sticks out to me today, 5 years later:
 
@@ -85,8 +85,8 @@ A blog is where I landed for the _first_ of my next steps. Here you are reading 
 - I used [Hugo](https://gohugo.io/) to generate the whole site. Its not over-engineered and is optimized as a static site for SEO and performance.
 - I will be able to share cheatsheets and guides I already create for myself.
 - If I take on open-source contribution, I can document what I learn as I learn it. Funny enough, I actually found a potential place where I can contribute in learning Hugo and utilizing pre-built themes.
-- If i take a break to grind some leetcode, I can link it here.
-- When I do get a job, I can still post things here without syphoning too much bandwidth or context switching.
+- If i take a break to grind some leetcode, I can show what I learn here.
+- When I do get my next job, I can still post things here without syphoning too much bandwidth or context switching.
 - My entries can be as brief or exhaustive as I want them to be. Nothing actually has to be "Finished" to do so.
 - My documentation and communication will be on full display. Obviously, I have no shortage of things to say :smile:.
 
