@@ -7,7 +7,7 @@ pluralizelisttitles = false
 front_page_content = ["posts"]
 [params]
     brand = "Ben's Blog"
-    brand_image = "/img/benmags.png"
+    brand_image = "/img/headshot.png"
     dark_mode = true
     menu = [
         {Name = "About", URL = "/about/", HasChildren = false},
