@@ -37,7 +37,7 @@ But a portfolio just isn't a good medium with which to demonstrate skill in Reac
 The "portfolio problem" is very, very, very solved. Content management systems have existed for a long time and you just don't need React to create these kinds of personal sites.
 
 {{< rawhtml >}}
-<span style = "color:#969191; font-weight: bold;">
+<span class="bold">
 Takeaways: This iteration of my site should use existing tools optimized for content management, freeing up some time to work on other things. Speaking of which...
 </span>
 {{< /rawhtml >}}
@@ -51,7 +51,7 @@ Let's think in terms of "root cause". What realy happened is that I had an empty
 Now consider this... I just worked as a full stack developer for 2 fruitful years on a very complex private project. Today, I don't even have a git-repo I can link to show off my work. I wasn't creating end-to-end projects. I was working on features and enhancements for an existing project. That's what actual development looks like unless you're a founder. I learned so much, but I still don't have any new line-items for my portfolio grid. Now the projects I do have pale in comparisson to what I am capable of now.
 
 {{< rawhtml >}}
-<span style = "color:#969191; font-weight: bold;">
+<span class="bold">
 Takeaways: This iteration of my site needs to highlight smaller learnings and incremental progress on large projects. Everything on display should be quality and demonstrative; no filler. I also need to make sure projects don't get Heroku'd.
 </span>
 {{< /rawhtml >}}
@@ -61,7 +61,7 @@ Takeaways: This iteration of my site needs to highlight smaller learnings and in
 This point has more to do with my personal strengths. I am a good communicator. I love to share information with people as I learn, which helps everyone in a team setting. I can write documentation - I have training in technical writing and lots of experience writing things like SOPs and compliance audits. I could _tell_ you about this in an "about" section in my portfolio... but in a blog I can _show_ these qualities.
 
 {{< rawhtml >}}
-<span style = "color:#969191; font-weight: bold;">
+<span class="bold">
 Takeaways: This iteration of my site should demonstrate my softer skills that help differentiate me as a developer.
 </span>
 {{< /rawhtml >}}
@@ -90,6 +90,6 @@ A blog is where I landed for the _first_ of my next steps. Here you are reading 
 - My entries can be as brief or exhaustive as I want them to be. Nothing actually has to be "Finished" to do so.
 - My documentation and communication will be on full display. Obviously, I have no shortage of things to say :smile:.
 
-I'm optimistic that this blog will be a good solution for me. I am skeptical it ever reach a broad audience, but thats totally okay! I'll have something tangible for my job applications and my LinkedIn. At the very least I'll have a fun little creative outlet. So that's it for this "hello world". On to the meat and potatoes.
+I'm optimistic that this blog will be a good solution for me. I am not sure it ever reach a broad audience, and thats totally okay! I'll have something tangible for my job applications and my LinkedIn. At the very least I'll have a fun little creative outlet. So that's it for this "hello world". On to the meat and potatoes.
 
 -Ben

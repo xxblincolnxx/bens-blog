@@ -8,6 +8,9 @@
 .bold {
   font-weight: bold;
 }
+.emphasize {
+  color: #99e0ce;
+}
 
 @media (min-width: 58em) {
   html {
