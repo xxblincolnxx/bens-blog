@@ -2,7 +2,9 @@
   overflow-x: hidden;
   scrollbar-width: none;
 }
-
+.sidebar-about img {
+  border: 5px double #14ae92;
+}
 .bold {
   font-weight: bold;
 }

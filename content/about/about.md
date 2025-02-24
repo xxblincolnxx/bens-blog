@@ -51,7 +51,9 @@ Dedicated time off attend a learn-to-code program and care for newborn during th
 
 {{< tab tabName="About" >}}
 
-  <p>I'm a developer who has done a lot of other things in life. I love to fish, draw, play music, write, read, and throw darts. Most of all, I love my family! My wife and I have a little daughter (who shall remain unidentified) in gradeschool. The two ladies in my life are the apple of my eye!</p>
+  <p>I love to code! I love the options, agency, and creativity made accessible through writing code. My favorite technologies are all related to JavaScript and its diverse ecosystems but I love to learn new technologies! I've also heavily used both Python + Django and Java + Spring and SQL, galore. But I don't view those technologies as constraints, by any means. I want to find the best tools to solve the problems I am working on. So, it serves to not wed one's self to what they already know.</p>
+  <p>
+   In my private life I love fishing, drawing, music, writing, reading, and playing darts. Most of all, I love my family! My wife and I have a little daughter (who shall remain unidentified) in gradeschool. The two ladies in my life are the apple of my eye!</p>
 
   <p>I'll probably choose to expand this section a bit once I get this thing rolling.</p>
 
