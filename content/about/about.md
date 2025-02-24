@@ -53,7 +53,7 @@ Dedicated time off attend a learn-to-code program and care for newborn during th
 
   <p>I'm a developer who has done a lot of other things in life. I love to fish, draw, play music, write, read, and throw darts. Most of all, I love my family! My wife and I have a little daughter (who shall remain unidentified) in gradeschool. The two ladies in my life are the apple of my eye!</p>
 
-  <p>I've got more coming for this section in the future.</p>
+  <p>I'll probably choose to expand this section a bit once I get this thing rolling.</p>
 
 {{< /tab >}}
 {{< /tabs >}}
