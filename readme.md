@@ -11,6 +11,9 @@ hugo server
 hugo server -D
 # run without caching
 hugo server --noHTTPCache
+
+# create new content
+hugo new
 ```
 
 Github Branches:
