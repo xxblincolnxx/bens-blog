@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Nextjs on A Blog for Ben</title>
-    <link>http://localhost:1313/tags/nextjs/</link>
-    <description>Recent content in Nextjs on A Blog for Ben</description>
+    <title>Short on A Blog for Ben</title>
+    <link>http://localhost:1313/tags/short/</link>
+    <description>Recent content in Short on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Feb 2025 13:48:45 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/nextjs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/short/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shower Thought</title>
       <link>http://localhost:1313/posts/25feb23/</link>

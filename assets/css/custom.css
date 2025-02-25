@@ -12,12 +12,6 @@
   color: #99e0ce;
 }
 
-@media (min-width: 58em) {
-  html {
-    font-size: 16px;
-  }
-}
-
 @media screen and (min-width: 75em) {
   .article-toc {
     display: block;
