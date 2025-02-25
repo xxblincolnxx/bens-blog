@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal Growth on A Blog for Ben</title>
-    <link>http://localhost:1313/tags/personal-growth/</link>
+    <link>https://example.org/tags/personal-growth/</link>
     <description>Recent content in Personal Growth on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 16 Feb 2025 00:18:44 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/personal-growth/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/tags/personal-growth/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Why I Made a Blog, Not a Portfolio</title>
-      <link>http://localhost:1313/posts/myfirstpost/</link>
+      <link>https://example.org/posts/myfirstpost/</link>
       <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
-      <guid>http://localhost:1313/posts/myfirstpost/</guid>
+      <guid>https://example.org/posts/myfirstpost/</guid>
       <description>&lt;div class=&#39;gradient-keyboard&#39;&gt;&lt;/div&gt;&#xA;&#xA;&#xA;&lt;h2 id=&#34;tldr&#34;&gt;TL;DR&lt;/h2&gt;&#xA;&lt;p&gt;For a dev like me, a portfolio doesn&amp;rsquo;t do the job of illuminating my value and could be a waste of time. Using a blog made with Hugo allows me to save time in development and provides a medium through which I can share what I know and what I&amp;rsquo;m doing in smaller, bite sized chunks.&lt;/p&gt;&#xA;&lt;h2 id=&#34;my-portfolio-disaster&#34;&gt;My portfolio disaster&lt;/h2&gt;&#xA;&lt;p&gt;One of the things I find facinating about life is how every iteration of my &amp;ldquo;self&amp;rdquo; views myself of 5 years ago as complete and utter &amp;ldquo;Cringe&amp;rdquo;. I have to assume at least some of you know this feeling. If you haven&amp;rsquo;t experienced it, go dig up your oldest social media posts or read an old journal&amp;hellip;&lt;/p&gt;</description>
     </item>
   </channel>

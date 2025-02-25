@@ -2,38 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on A Blog for Ben</title>
-    <link>http://localhost:1313/tags/</link>
+    <link>https://example.org/tags/</link>
     <description>Recent content in Tags on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 24 Feb 2025 13:48:45 -0500</lastBuildDate>
-    <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Nextjs</title>
-      <link>http://localhost:1313/tags/nextjs/</link>
+      <link>https://example.org/tags/nextjs/</link>
       <pubDate>Mon, 24 Feb 2025 13:48:45 -0500</pubDate>
-      <guid>http://localhost:1313/tags/nextjs/</guid>
+      <guid>https://example.org/tags/nextjs/</guid>
       <description></description>
     </item>
     <item>
       <title>Shorts</title>
-      <link>http://localhost:1313/tags/shorts/</link>
+      <link>https://example.org/tags/shorts/</link>
       <pubDate>Mon, 24 Feb 2025 13:48:45 -0500</pubDate>
-      <guid>http://localhost:1313/tags/shorts/</guid>
+      <guid>https://example.org/tags/shorts/</guid>
       <description></description>
     </item>
     <item>
       <title>Hugo</title>
-      <link>http://localhost:1313/tags/hugo/</link>
+      <link>https://example.org/tags/hugo/</link>
       <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
-      <guid>http://localhost:1313/tags/hugo/</guid>
+      <guid>https://example.org/tags/hugo/</guid>
       <description></description>
     </item>
     <item>
       <title>Personal Growth</title>
-      <link>http://localhost:1313/tags/personal-growth/</link>
+      <link>https://example.org/tags/personal-growth/</link>
       <pubDate>Sun, 16 Feb 2025 00:18:44 -0500</pubDate>
-      <guid>http://localhost:1313/tags/personal-growth/</guid>
+      <guid>https://example.org/tags/personal-growth/</guid>
       <description></description>
     </item>
   </channel>
