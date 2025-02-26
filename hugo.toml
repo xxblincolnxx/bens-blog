@@ -15,7 +15,7 @@ front_page_content = ["posts"]
         {Name = "My Other Side", URL = "/myotherside/", HasChildren = true, Limit = 5},
     ]
     hideToc = false
-
+    favicon = "/img/favicon.png"
     email_url = "mailto://beprothe@gmail"
     github_url = "https://github.com/xxblincolnxx"
     linkedin_url = "https://www.linkedin.com/in/benprothe"
