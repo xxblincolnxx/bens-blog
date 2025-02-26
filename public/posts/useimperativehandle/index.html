@@ -56,11 +56,11 @@
 
 <!-- Open Graph image and Twitter Card metadata -->
 
-<title itemprop="name">Ben&#39;s Blog - Shower Thought</title>
-<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Shower&#32;Thought />
-<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Shower&#32;Thought />
-<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;Shower&#32;Thought />
-<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;Shower&#32;Thought />
+<title itemprop="name">Ben&#39;s Blog - Ref Shenanigans Kicked my Butt</title>
+<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Ref&#32;Shenanigans&#32;Kicked&#32;my&#32;Butt />
+<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Ref&#32;Shenanigans&#32;Kicked&#32;my&#32;Butt />
+<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;Ref&#32;Shenanigans&#32;Kicked&#32;my&#32;Butt />
+<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;Ref&#32;Shenanigans&#32;Kicked&#32;my&#32;Butt />
 <meta property="og:site_name" content="A Blog for Ben" />
 
 
@@ -70,14 +70,14 @@
 <meta name="twitter:description" content="" />
 
 
-<base href="http://localhost:1313/posts/25feb23/" />
-<link rel="canonical" href="http://localhost:1313/posts/25feb23/" itemprop="url" />
-<meta name="url" content="http://localhost:1313/posts/25feb23/" />
-<meta name="twitter:url" content="http://localhost:1313/posts/25feb23/" />
-<meta property="og:url" content="http://localhost:1313/posts/25feb23/" />
+<base href="http://localhost:1313/posts/useimperativehandle/" />
+<link rel="canonical" href="http://localhost:1313/posts/useimperativehandle/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/useimperativehandle/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/useimperativehandle/" />
+<meta property="og:url" content="http://localhost:1313/posts/useimperativehandle/" />
 
 
-<meta property="og:updated_time" content="2025-02-24T13:48:45-05:00" />
+<meta property="og:updated_time" content="2025-02-25T16:34:37-05:00" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
@@ -369,7 +369,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
                 <div class="post">
   <div class="info">
   <h1 class="post-title">
-    <a href="http://localhost:1313/posts/25feb23/">Shower Thought</a>
+    <a href="http://localhost:1313/posts/useimperativehandle/">Ref Shenanigans Kicked my Butt</a>
   </h1>
 
   <div class="headline">
@@ -380,8 +380,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         
       
       
-      <time datetime=" 2025-02-24T13:48:45-0500" class="post-date">
-        February 24, 2025
+      <time datetime=" 2025-02-25T16:34:37-0500" class="post-date">
+        February 25, 2025
       </time>
       
       <span> - </span>
@@ -390,19 +390,19 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>1 min read</span>
+        <span>2 mins read</span>
       </span>
     </div>
 
     
     <ul class="tags">
       
-      <li class="tag-Nextjs">
-        <a href="http://localhost:1313/tags/nextjs">Nextjs</a>
+      <li class="tag-React">
+        <a href="http://localhost:1313/tags/react">React</a>
       </li>
       
-      <li class="tag-Short">
-        <a href="http://localhost:1313/tags/short">Short</a>
+      <li class="tag-Reflections">
+        <a href="http://localhost:1313/tags/reflections">Reflections</a>
       </li>
       
     </ul>
@@ -415,20 +415,70 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
   
 </div>
 
-  <p>I&rsquo;m working on my new creative project and reminding myself how to use Next.js (I haven&rsquo;t touched it since before my last job). This is a cool framework. I&rsquo;m not sure if they&rsquo;ve just sold me on snake oil but if it works how it should, I&rsquo;m really excited to use it and talk about it here!</p>
+  <p><img src="/img/useImperativeHandleDemo/shenanigans.png" alt="shenanigans"></p>
+<p>We all know you&rsquo;re not actually supposed to try to use refs in a React app. You can freely use the <code>useRef()</code> hook to create a persisting value that doesn&rsquo;t cause re-renders as it changes&hellip; but I&rsquo;m talking about the &ldquo;funny business&rdquo; like attaching a ref to a DOM node or using it to lift up the API of a component. This kind of thing feels weird if you&rsquo;re thinking in the &ldquo;React Way&rdquo;. It almost feels naughty. Hence &ldquo;ref shenanigans&rdquo;.</p>
+<p>When I was learning our codebase at my first developer job I ran into these shenanigans quite a bit and I had a hard time wrapping my head around them. I&rsquo;m going to do my best to illustrate what you gain from using one of these shenanigans, <code>useImperativeHandle()</code>, verses a more traditional React approach.</p>
+<p>To demonstrate, here&rsquo;s what we&rsquo;re building:
+<img src="/img/useImperativeHandleDemo/app-w-selections.png" alt="Selections">
+We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number of elements (there happen to be four in the screenshot). Each element has a &ldquo;select&rdquo; input with four options: &ldquo;none&rdquo;, &ldquo;green&rdquo;, &ldquo;red&rdquo;, and &ldquo;blue&rdquo;.</p>
+<p>Here&rsquo;s what happens when I click toggle:
+<img src="/img/useImperativeHandleDemo/app-selections-toggled.png" alt="Selections"></p>
+<p>Pretty simple behavior. You would can accomplish this much with a couple of state variables, props, and handlers.</p>
+<p>That might look something like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Parent</span>() {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">toggled</span>, <span style="color:#a6e22e">setToggled</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">thingsToRender</span>, <span style="color:#a6e22e">setThingsToRender</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// pretend I filled in the rest...
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleAddThing</span>}&gt;<span style="color:#a6e22e">Add</span> <span style="color:#a6e22e">Thing</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">setToggled</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">toggled</span>)}&gt;<span style="color:#a6e22e">Toggle</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">thingsToRender</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">thing</span>) =&gt; {
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">ColorChangingComponent</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">thing</span>.<span style="color:#a6e22e">id</span>} <span style="color:#a6e22e">toggled</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">toggled</span>}/&gt;
+</span></span><span style="display:flex;"><span>        })
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    &lt;/&gt;
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ColorChangingComponent</span>({<span style="color:#a6e22e">toggled</span>}) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">color</span>, <span style="color:#a6e22e">setColor</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">selection</span>, <span style="color:#a6e22e">setSelection</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">toggled</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">selection</span>)
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">toggled</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">$</span>{<span style="color:#a6e22e">color</span>}}&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">setSelection</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">defaultColor</span>}&gt;<span style="color:#a6e22e">None</span>&lt;/<span style="color:#f92672">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;green&#39;</span>&gt;<span style="color:#a6e22e">Green</span>&lt;/<span style="color:#f92672">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>&gt;<span style="color:#a6e22e">Red</span>&lt;/<span style="color:#f92672">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;blue&#39;</span>&gt;<span style="color:#a6e22e">Blue</span>&lt;/<span style="color:#f92672">option</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">select</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>This solution folows React&rsquo;s &ldquo;declarative&rdquo; intent. The parent says, &ldquo;I just became toggled and since you have a prop inquiring, I&rsquo;m letting you know so you can respond accordingly.&rdquo; The data flows downhill to the leaf nodes that care about the data. If you need the data to live globally, you can access it from a store. So hows that? Easy to read? Easy to debug? I know right!</p>
+<p><strong>I NEED TO ACTUALLY TEST THE ABOVE SOLUTION AND SEE IF IT WORKS. IF IT DOES, I HAVE NO IDEA WHY WE USED USEIMPERATIVEHANDLE</strong></p>
+<p><strong>AFTER THAT, NEXT STEP TO DO IS ADD ANOTHER TYPE OF ELEMENT THAT DOES SOMETHING ELSE WHEN ITS TOGGLED</strong></p>
 
   
   <hr>
 <div class="footer">
     
 	    
-            <a class="previous-post" href="http://localhost:1313/posts/myfirstpost/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Why I Made a Blog, Not a Portfolio</a>
+            <a class="previous-post" href="http://localhost:1313/posts/25feb23/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Shower Thought</a>
         
 	    
-            <div class="next-post">
-                <a href="http://localhost:1313/posts/useimperativehandle/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Ref Shenanigans Kicked my Butt</a>
-            </div>
-        
     
 </div>
 

@@ -5,6 +5,9 @@
 .sidebar-about img {
   border: 5px double #14ae92;
 }
+.sidebar-nav .bullet {
+  padding-bottom: 10px;
+}
 .bold {
   font-weight: bold;
 }

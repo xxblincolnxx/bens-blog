@@ -2,7 +2,7 @@
 date = '2025-02-16T00:18:44-05:00'
 author = 'Ben Prothe'
 title = 'Why I Made a Blog, Not a Portfolio'
-tags = ['Hugo', 'Personal Growth']
+tags = ['Hugo', 'Reflections']
 +++
 
 {{< rawhtml >}}
@@ -82,8 +82,8 @@ First and foremost, let me talk for a moment about open-source. I can hear you s
 A blog is where I landed for the _first_ of my next steps. Here you are reading it. These are the benefits I gain:
 
 - I can showcase complete projects but also incremental progress and accrued learnings; I can talk about things that don't even make it into my projects.
-- I used [Hugo](https://gohugo.io/) to generate the whole site. Its not over-engineered and is optimized as a static site for SEO and performance.
-- I will be able to share cheatsheets and guides I already create for myself.
+- I used [Hugo](https://gohugo.io/) to generate the whole site. Its not over-engineered and is optimized exactly for this usecase.
+- I will be able to quickly share cheatsheets and guides I already create for myself.
 - If I take on open-source contribution, I can document what I learn as I learn it. Funny enough, I actually found a potential place where I can contribute in learning Hugo and utilizing pre-built themes.
 - If i take a break to grind some leetcode, I can show what I learn here.
 - When I do get my next job, I can still post things here without syphoning too much bandwidth or context switching.
