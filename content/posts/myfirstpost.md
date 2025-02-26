@@ -18,7 +18,7 @@ For a dev like me, a portfolio doesn't do the job of illuminating my value and c
 
 I find it fascinating how every iteration of my "self" views the "me" of 5 years ago as complete and utter "Cringe". I have to assume at least some of you know this feeling. If you haven't experienced it, go dig up your oldest social media posts or read an old journal...
 
-My old portfolio brings me into that "Cringe" state. Portfolios are pretty common projects for junior and mid-level frontend engineers. I built one some time before I landed my first engineering job. **[Here](https://benprothe-portfolio.netlify.app/)** it is in all its unfortunate glory. This is all I had until I made this site (we'll get there). I actually did start to update it but I kept coming face to face with the issues I'll outline.
+My old portfolio brings me into that "Cringe" state. Portfolios are pretty common projects for junior and mid-level frontend engineers. I built one some time before I landed my first engineering job. **[Here](https://benprothe-portfolio.netlify.app/)** it is in all its unfortunate glory. This is all I had until I made this site (we'll get there). I actually did start to update it but I kept coming face to face with the issues I'll outline. So I decided to go a different route this time.
 
 {{< rawhtml >}}
 <img align="right" src="/img/old_portfolio.png"  style="width: 400px; border-radius: .5em; margin: 10px;"/>
@@ -74,7 +74,7 @@ A blog is where I landed for the first of my next steps. Here you are reading it
 
 - I can talk about things that don't even make it into my projects.
 
-- I used [Hugo](https://gohugo.io/) to generate the whole site. Its not over-engineered and is optimized exactly for this use case.
+- I used **[Hugo](https://gohugo.io/)** to generate the whole site. Its not over-engineered and is optimized exactly for this use case.
 
 - I will be able to quickly share cheatsheets and guides I already create for myself.
 
