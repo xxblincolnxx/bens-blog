@@ -105,7 +105,7 @@
     
     
 
-<link type="text/css" rel="stylesheet" href="/css/bundle.min.c5eac1a0297ded60c7115d4b4c6da5fa5717cd712c540c9fbe42a43c2b0d91fb.css">
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.86fc79477195c84558640177ddabcfb379d7f73e6f5165c232c0f034208d5a7a.css">
 
 
     
@@ -390,7 +390,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>2 mins read</span>
+        <span>6 mins read</span>
       </span>
     </div>
 
@@ -416,15 +416,15 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </div>
 
   <p><img src="/img/useImperativeHandleDemo/shenanigans.png" alt="shenanigans"></p>
-<p>We all know you&rsquo;re not actually supposed to try to use refs in a React app. You can freely use the <code>useRef()</code> hook to create a persisting value that doesn&rsquo;t cause re-renders as it changes&hellip; but I&rsquo;m talking about the &ldquo;funny business&rdquo; like attaching a ref to a DOM node or using it to lift up the API of a component. This kind of thing feels weird if you&rsquo;re thinking in the &ldquo;React Way&rdquo;. It almost feels naughty. Hence &ldquo;ref shenanigans&rdquo;.</p>
-<p>When I was learning our codebase at my first developer job I ran into these shenanigans quite a bit and I had a hard time wrapping my head around them. I&rsquo;m going to do my best to illustrate what you gain from using one of these shenanigans, <code>useImperativeHandle()</code>, verses a more traditional React approach.</p>
-<p>To demonstrate, here&rsquo;s what we&rsquo;re building:
+<p>We all know you&rsquo;re not actually supposed to try to use refs in a React app. You can freely use the <code>useRef()</code> hook to create a persisting value that doesn&rsquo;t cause re-renders as it changes&hellip; but I&rsquo;m talking about the &ldquo;funny business&rdquo; like attaching a ref to a DOM node or using it to lift up the API of a component. This kind of thing feels weird if you&rsquo;re thinking in the &ldquo;React Way&rdquo;. It almost feels naughty. Hence &ldquo;shenanigans&rdquo;.</p>
+<p>When I was learning our codebase at my first developer job I ran into these shenanigans quite a bit and I had a hard time wrapping my head around them. I&rsquo;m going to do my best to illustrate what you gain from using one of these &ldquo;ref shenanigans&rdquo;, the <code>useImperativeHandle()</code> hook, verses a more traditional React approach.</p>
+<h3 id="demonstration">Demonstration</h3>
+<p>Here&rsquo;s what we&rsquo;re building:
 <img src="/img/useImperativeHandleDemo/app-w-selections.png" alt="Selections">
 We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number of elements (there happen to be four in the screenshot). Each element has a &ldquo;select&rdquo; input with four options: &ldquo;none&rdquo;, &ldquo;green&rdquo;, &ldquo;red&rdquo;, and &ldquo;blue&rdquo;.</p>
-<p>Here&rsquo;s what happens when I click toggle:
-<img src="/img/useImperativeHandleDemo/app-selections-toggled.png" alt="Selections"></p>
-<p>Pretty simple behavior. You would can accomplish this much with a couple of state variables, props, and handlers.</p>
-<p>That might look something like this:</p>
+<p>Here&rsquo;s what happens when I click &ldquo;toggle&rdquo;:
+<img src="/img/useImperativeHandleDemo/app-selections-toggled.png" alt="Selections Toggled"></p>
+<p>Pretty simple behavior. You would can accomplish this much with a couple of state variables, props, and handlers. It might look something like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Parent</span>() {
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">toggled</span>, <span style="color:#a6e22e">setToggled</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
 </span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">thingsToRender</span>, <span style="color:#a6e22e">setThingsToRender</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([])
@@ -453,6 +453,8 @@ We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number o
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">toggled</span>) {
 </span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">selection</span>)
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">defaultColor</span>)
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">toggled</span>])
 </span></span><span style="display:flex;"><span>
@@ -467,9 +469,128 @@ We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number o
 </span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
 </span></span><span style="display:flex;"><span>  )
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><p>This solution folows React&rsquo;s &ldquo;declarative&rdquo; intent. The parent says, &ldquo;I just became toggled and since you have a prop inquiring, I&rsquo;m letting you know so you can respond accordingly.&rdquo; The data flows downhill to the leaf nodes that care about the data. If you need the data to live globally, you can access it from a store. So hows that? Easy to read? Easy to debug? I know right!</p>
-<p><strong>I NEED TO ACTUALLY TEST THE ABOVE SOLUTION AND SEE IF IT WORKS. IF IT DOES, I HAVE NO IDEA WHY WE USED USEIMPERATIVEHANDLE</strong></p>
-<p><strong>AFTER THAT, NEXT STEP TO DO IS ADD ANOTHER TYPE OF ELEMENT THAT DOES SOMETHING ELSE WHEN ITS TOGGLED</strong></p>
+</span></span></code></pre></div><p>This solution folows React&rsquo;s &ldquo;declarative&rdquo; style and it just feels right. There&rsquo;s just one limitation&hellip; the toggled states will always be in sync with the parent. There&rsquo;s no way for us to have the child components to have isolated &ldquo;toggled&rdquo; lifecycles because &ldquo;toggled&rdquo; is owned by the parent and flows downstream to the children. You can imagine this problem ramping up in complexity pretty quickly if you were trying to create a sandbox of dynamically created components that all had their own concerns. It&rsquo;s almost a video-game type of problem.</p>
+<p>With <code>useImperativeHandle</code> I am able to accomplish the following:
+<img src="/img/useImperativeHandleDemo/app-unsync-1.png" alt="Independent Toggle States">
+<img src="/img/useImperativeHandleDemo/app-unsync-2.png" alt="Independent Toggle States"></p>
+<p>I added the &ldquo;red&rdquo; component and configured it while the &ldquo;green&rdquo; component was toggled on. The &ldquo;red&rdquo; component&rsquo;s initial state is toggled off. Next time I click &ldquo;toggle&rdquo; it turned off &ldquo;green&rdquo; and turned on &ldquo;red&rdquo;. So the benefit here is that you get encapsulation of behaviors.</p>
+<h3 id="become-one-with-the-shenanigans">Become one with the shenanigans</h3>
+<p>I hope now that the benefit gained by the <code>useImperativeHandle</code> approach is clear. It&rsquo;s not a solution you reach for unless you need the encapsulation. Here&rsquo;s how we&rsquo;ll handle this in pseudo-code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#75715e">// We&#39;ll start with the child first this time:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ChildComponent</span>({<span style="color:#a6e22e">ref</span>}) {
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Toggle will now be an internal state variable but
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  now we&#39;ll recieve a ref from the parent as a prop.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  With useImperativeHandle() we&#39;ll expose a &#34;toggle&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  function that will manipulate the states.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Compose the UI as we did last time.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ParentComponent</span>(){
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Store the refs of all the children components in a
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  state variable as they&#39;re being added.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Create a toggle handler that will loop over the
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  refs and call the exposed &#34;toggle&#34; API of each component
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Map over the data as usual and render the children components
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  while simultaneously affixing the appropriate refs.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  (this will be the trickiest part)
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Let&rsquo;s start to look at the implementation with the child. The old way of recieving a ref as a prop required the use of <code>forwardRef</code>. So you might still see that in the wild. It&rsquo;s what I was familiar with before doing research for this. It turns out you can now just pass a ref freely as a prop.</p>
+<p>Here&rsquo;s how that looks in the child:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ChildComponent</span>({<span style="color:#a6e22e">ref</span>}) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">toggled</span>, <span style="color:#a6e22e">setToggled</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">selection</span>, <span style="color:#a6e22e">setSelection</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">colorClass</span>, <span style="color:#a6e22e">setColorClass</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">toggled</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColorClass</span>(<span style="color:#a6e22e">selection</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColorClass</span>(<span style="color:#a6e22e">defaultColor</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">toggled</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useImperativeHandle</span>(<span style="color:#a6e22e">ref</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      this object will contain any method or
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      property you want to make public
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      */</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">toggle</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        You could actually do a lot
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        more to create interesting toggle behavior here
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        but we&#39;re keeping this simple.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        */</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setToggled</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">toggled</span>);
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// the markup isn&#39;t important for this demo
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>In the codesandbox I&rsquo;ll share at the end, I actually abstracted those <code>useState</code> and the <code>useEffect</code> into an approach-agnostic custom hook to clean things up a bit. I&rsquo;d recommend doing that kind of thing for your components when possible to keep your code readable and to enable you to reuse logic.</p>
+<p>Here&rsquo;s the parent:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ParentComponent</span>() =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">thingsToRender</span>, <span style="color:#a6e22e">setThingsToRender</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([]);
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Storing refs in a map for efficient lookups
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useRef</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleAddElement</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    I used a uuid library to generate a string ID
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for every new component to add to the UI. These
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    will also serve as key for the refs map.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setThingsToRender</span>((<span style="color:#a6e22e">prev</span>) =&gt; [<span style="color:#a6e22e">uuid</span>(), ...<span style="color:#a6e22e">prev</span>]);
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Here&#39;s where we loop over our refs:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleToggle</span> <span style="color:#f92672">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">child</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">refs</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">values</span>()) {
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Call the exposed &#34;toggle&#34; method of each child
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">child</span>.<span style="color:#a6e22e">toggle</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;&gt;
+</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Markup for toggle and add buttons
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">thingsToRender</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">key</span>) =&gt; {
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">ChildComponent</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">key</span>}
+</span></span><span style="display:flex;"><span>          <span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#a6e22e">here</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">s</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">weird</span> <span style="color:#a6e22e">part</span><span style="color:#960050;background-color:#1e0010">:</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">node</span>) =&gt; {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">refs</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">node</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">refs</span>.<span style="color:#a6e22e">current</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>          }
+</span></span><span style="display:flex;"><span>        /&gt;
+</span></span><span style="display:flex;"><span>      })}
+</span></span><span style="display:flex;"><span>    &lt;/&gt;
+</span></span><span style="display:flex;"><span>  )
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>That last bit is a tad funky looking. It&rsquo;s the &ldquo;ref callback&rdquo; pattern. It&rsquo;s kind of its own entity to wrap your head around so I&rsquo;ll just leave this link <a href="https://react.dev/learn/manipulating-the-dom-with-refs#how-to-manage-a-list-of-refs-using-a-ref-callback" target="_blank">here</a> if you want to dig deeper into how it works.</p>
+<h3 id="conclusions">Conclusions</h3>
+<p>So that&rsquo;s it. I wouldn&rsquo;t call it the most elegant of solutions. Perhapse the React team will come up with something cleaner some day. Here&rsquo;s a <a href="https://codesandbox.io/p/devbox/gcrg2d" target="_blank">link</a> to the codesandbox so you can look at the fleshed out code and test the UI. Like I said earlier, I used a custom hook to manage the toggle states. Additionally, I used TypeScript and Tailwinds for some additional fun and flare.</p>
+<p>Note - There is a TS flag in <code>CanvasRefs.tsx</code> that I&rsquo;m annoyed I haven&rsquo;t been able to figure out so hit me up if you have any ideas. Copilot is way more confused by it than I am and only makes things worse with its suggestions &#x1f602;. Also bear with me on file names and file structure. I kept trying to refactor and the sandbox kept crashing or duplicating files.</p>
+<p>Peace my friends!
+Ben</p>
 
   
   <hr>
@@ -490,7 +611,17 @@ We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number o
     <div class="article-toc ">
     <div class="toc-wrapper">
       <h4 id="contents"></h4>
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#demonstration">Demonstration</a></li>
+        <li><a href="#become-one-with-the-shenanigans">Become one with the shenanigans</a></li>
+        <li><a href="#conclusions">Conclusions</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 

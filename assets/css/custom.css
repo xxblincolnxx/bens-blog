@@ -5,9 +5,11 @@
 .sidebar-about img {
   border: 5px double #14ae92;
 }
-.sidebar-nav .bullet {
+.sidebar-nav li,
+.toc-wrapper li {
   padding-bottom: 10px;
 }
+
 .bold {
   font-weight: bold;
 }
