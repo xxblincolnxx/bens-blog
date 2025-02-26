@@ -18,7 +18,7 @@ For a dev like me, a portfolio doesn't do the job of illuminating my value and c
 
 One of the things I find facinating about life is how every iteration of my "self" views myself of 5 years ago as complete and utter "Cringe". I have to assume at least some of you know this feeling. If you haven't experienced it, go dig up your oldest social media posts or read an old journal...
 
-My old portfolio brings me into that "Cringe" state. Portfolios are pretty common projects for junior and mid-level frontend engineers-- and I built one some time before I landed my first engineering job. [Here](https://benprothe-portfolio.netlify.app/) it is in all its unforunate glory. This is all I had until I made this site (we'll get there). I actually did start to update it but I kept coming face to face with the issues I'll outline.
+My old portfolio brings me into that "Cringe" state. Portfolios are pretty common projects for junior and mid-level frontend engineers-- and I built one some time before I landed my first engineering job. **[Here](https://benprothe-portfolio.netlify.app/)** it is in all its unforunate glory. This is all I had until I made this site (we'll get there). I actually did start to update it but I kept coming face to face with the issues I'll outline.
 
 {{< rawhtml >}}
 <img align="right" src="/img/old_portfolio.png"  style="width: 400px; border-radius: .5em; margin: 10px;"/>
@@ -82,7 +82,7 @@ First and foremost, let me talk for a moment about open-source. I can hear you s
 A blog is where I landed for the _first_ of my next steps. Here you are reading it. These are the benefits I gain:
 
 - I can showcase complete projects but also incremental progress and accrued learnings; I can talk about things that don't even make it into my projects.
-- I used [Hugo](https://gohugo.io/) to generate the whole site. Its not over-engineered and is optimized exactly for this usecase.
+- I used **[Hugo](https://gohugo.io/)** to generate the whole site. Its not over-engineered and is optimized exactly for this usecase.
 - I will be able to quickly share cheatsheets and guides I already create for myself.
 - If I take on open-source contribution, I can document what I learn as I learn it. Funny enough, I actually found a potential place where I can contribute in learning Hugo and utilizing pre-built themes.
 - If i take a break to grind some leetcode, I can show what I learn here.
