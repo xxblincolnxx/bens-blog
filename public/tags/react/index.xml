@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on A Blog for Ben</title>
+    <link>http://localhost:1313/tags/react/</link>
+    <description>Recent content in React on A Blog for Ben</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 25 Feb 2025 16:34:37 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ref Shenanigans Kicked my Butt</title>
+      <link>http://localhost:1313/posts/useimperativehandle/</link>
+      <pubDate>Tue, 25 Feb 2025 16:34:37 -0500</pubDate>
+      <guid>http://localhost:1313/posts/useimperativehandle/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/img/useImperativeHandleDemo/shenanigans.png&#34; alt=&#34;shenanigans&#34;&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;&#xA;&lt;p&gt;We all know you&amp;rsquo;re not actually supposed to try to use refs in a React app. I&amp;rsquo;m not talking about when you need to save a mutable value without causing rerenders&amp;hellip; I&amp;rsquo;m referring to the &amp;ldquo;funny business&amp;rdquo; like attaching a ref to a DOM node or using it to lift up the API of a component. This kind of thing feels weird if you&amp;rsquo;re thinking in the &amp;ldquo;React Way&amp;rdquo;. It almost feels naughty&amp;ndash; hence, &amp;ldquo;shenanigans&amp;rdquo; &amp;#x1f602;.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

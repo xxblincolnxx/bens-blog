@@ -5,17 +5,20 @@
 .sidebar-about img {
   border: 5px double #14ae92;
 }
+.sidebar-nav li,
+.toc-wrapper li {
+  padding-bottom: 10px;
+}
+
+.highlight pre {
+  border-radius: 0.5em;
+}
+
 .bold {
   font-weight: bold;
 }
 .emphasize {
   color: #99e0ce;
-}
-
-@media (min-width: 58em) {
-  html {
-    font-size: 16px;
-  }
 }
 
 @media screen and (min-width: 75em) {
