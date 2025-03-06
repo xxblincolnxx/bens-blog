@@ -9,7 +9,7 @@ tags = ["Reference", "Project Update", "Reflection"]
 
 Today I’ll talk about the first step I’ve taken towards my new pet project: a total rebuild of my bootcamp final project. My team of 3 completed this project in the span of 2 weeks at the very beginning of the 2020 pandemic… as in, we had been going to classes in person, then we entered quarantine just as we got our team assignments and completed everything remotely.
 
-At the time we had only been writing code for 10 months. In our toolkit we had only vanilla JS + HTML + CSS for frontend, and Django and Python (notably no SQL) for backend. Our team bravely took on learning parts of Vue.js to help us build our UI. The backend was also a departure from what we knew. We used the Django REST framework so we could fetch our data instead of using the out of box Model-View-Template structure to pass data to our views.
+At the time we had only been writing code for 10 weeks. In our toolkit we had only vanilla JS + HTML + CSS for frontend, and Django and Python (notably no SQL) for backend. Our team bravely took on learning parts of Vue.js to help us build our UI. The backend was also a departure from what we knew. We used the Django REST framework so we could fetch our data instead of using the out of box Model-View-Template structure to pass data to our views.
 
 I’m so incredibly proud of our team and our accomplishments, especially considering our challenges; both self imposed and the literal force majeure that was the 2020 pandemic. Today I have the luxury of having no 2-week deadline and 5 years of writing code under my belt. I’m looking forward to seeing what I can build now.
 
