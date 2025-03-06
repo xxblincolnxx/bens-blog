@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Final Project Redo on A Blog for Ben</title>
+    <link>http://localhost:1313/series/final-project-redo/</link>
+    <description>Recent content in Final Project Redo on A Blog for Ben</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 06 Mar 2025 14:09:56 -0500</lastBuildDate>
+    <atom:link href="http://localhost:1313/series/final-project-redo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Project: Picking my Backend</title>
+      <link>http://localhost:1313/posts/pickingbackend/</link>
+      <pubDate>Thu, 06 Mar 2025 14:09:56 -0500</pubDate>
+      <guid>http://localhost:1313/posts/pickingbackend/</guid>
+      <description>&lt;p&gt;Today I’ll talk about the first step I’ve taken towards my new pet project: a total rebuild of my bootcamp final project. My team of 3 completed this project in the span of 2 weeks at the very beginning of the 2020 pandemic… as in, we had been going to classes in person, then we entered quarantine just as we got our team assignments and completed everything remotely.&lt;/p&gt;&#xA;&lt;p&gt;At the time we had only been writing code for 10 months. In our toolkit we had only vanilla JS + HTML + CSS for frontend, and Django and Python (notably no SQL) for backend. Our team bravely took on learning parts of Vue.js to help us build our UI. The backend was also a departure from what we knew. We used the Django REST framework so we could fetch our data instead of using the out of box Model-View-Template structure to pass data to our views.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -3,10 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2025-02-25T16:34:37-05:00</lastmod>
+    <lastmod>2025-03-06T14:09:56-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/pickingbackend/</loc>
+    <lastmod>2025-03-06T14:09:56-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
-    <lastmod>2025-02-25T16:34:37-05:00</lastmod>
+    <lastmod>2025-03-06T14:09:56-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/project-update/</loc>
+    <lastmod>2025-03-06T14:09:56-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/reference/</loc>
+    <lastmod>2025-03-06T14:09:56-05:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/</loc>
+    <lastmod>2025-03-06T14:09:56-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/react/</loc>
     <lastmod>2025-02-25T16:34:37-05:00</lastmod>
@@ -15,9 +27,6 @@
     <lastmod>2025-02-25T16:34:37-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/reflections/</loc>
-    <lastmod>2025-02-25T16:34:37-05:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/tags/</loc>
     <lastmod>2025-02-25T16:34:37-05:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/nextjs/</loc>
