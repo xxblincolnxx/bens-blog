@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/img/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Ben&#39;s Blog - New Project: Picking my Backend</title>
+<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;Project:&#32;Picking&#32;my&#32;Backend />
+<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;Project:&#32;Picking&#32;my&#32;Backend />
+<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;Project:&#32;Picking&#32;my&#32;Backend />
+<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;Project:&#32;Picking&#32;my&#32;Backend />
+<meta property="og:site_name" content="A Blog for Ben" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="http://localhost:1313/posts/pickingbackend/" />
+<link rel="canonical" href="http://localhost:1313/posts/pickingbackend/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/pickingbackend/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/pickingbackend/" />
+<meta property="og:url" content="http://localhost:1313/posts/pickingbackend/" />
+
+
+<meta property="og:updated_time" content="2025-03-06T14:09:56-05:00" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="A Blog for Ben" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.143.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.10eaee0ef825c386ce83a75a73404ada7f9875d493f1db7bb1f50b187ca94805.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #14ae92;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #362B2B;
+        --post-title-color: #DBE2E9;
+        --list-color: #EEE;
+        --link-color: #14ae92;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/img/headshot.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Ben&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/pickingbackend/">New Project: Picking my Backend</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/useimperativehandle/">Ref Shenanigans Kicked my Butt</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/25feb23/">Shower Thought</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/myfirstpost/">Why I Made a Blog, Not a Portfolio</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/xxblincolnxx">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/benprothe">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://beprothe@gmail">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 A Blog for Ben. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/pickingbackend/">New Project: Picking my Backend</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+        
+          <span>Ben Prothe - </span>
+        
+      
+      
+      <time datetime=" 2025-03-06T14:09:56-0500" class="post-date">
+        March 6, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>6 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Reference">
+        <a href="http://localhost:1313/tags/reference">Reference</a>
+      </li>
+      
+      <li class="tag-Project Update">
+        <a href="http://localhost:1313/tags/project-update">Project Update</a>
+      </li>
+      
+      <li class="tag-Reflection">
+        <a href="http://localhost:1313/tags/reflection">Reflection</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
+
+  
+</div>
+
+  <p>Today I’ll talk about the first step I’ve taken towards my new pet project: a total rebuild of my bootcamp final project. My team of 3 completed this project in the span of 2 weeks at the very beginning of the 2020 pandemic… as in, we had been going to classes in person, then we entered quarantine just as we got our team assignments and completed everything remotely.</p>
+<p>At the time we had only been writing code for 10 months. In our toolkit we had only vanilla JS + HTML + CSS for frontend, and Django and Python (notably no SQL) for backend. Our team bravely took on learning parts of Vue.js to help us build our UI. The backend was also a departure from what we knew. We used the Django REST framework so we could fetch our data instead of using the out of box Model-View-Template structure to pass data to our views.</p>
+<p>I’m so incredibly proud of our team and our accomplishments, especially considering our challenges; both self imposed and the literal force majeure that was the 2020 pandemic. Today I have the luxury of having no 2-week deadline and 5 years of writing code under my belt. I’m looking forward to seeing what I can build now.</p>
+<h2 id="roadmap">Roadmap</h2>
+<p>This is the part of a project that I really, really love: the <strong>research phase.</strong> I get to pick the technologies that I’m going to use to start. Here’s where I’m at for backend (FrontEnd is still TBD):</p>
+<ol>
+<li>Creating a stand-alone json API instead of using Next.js API features</li>
+<li>Primary Tech: NestJS + Drizzle + Postgresql</li>
+<li>Auth: Passport.js (has a NestJS recipe) with Local/JWT Strategy</li>
+</ol>
+<h3 id="wheres-django">Where’s Django?</h3>
+<p>I can read Python and I can write it pretty well after some refreshers. But at this point I know JavaScript and TypeScript so much better and I am just more comfortable developing in a Node environment. I also grew to enjoy the style and organization of Java:Spring APIs with DTOs, services, controllers, etc. NestJS follows extremely similar patterns so I’m right at home. I like Django’s template system far less.</p>
+<h3 id="why-i-chose-drizzle">Why I chose Drizzle?</h3>
+
+
+
+<iframe style="width:100%; height: 350px;overflow:auto;" src="https://www.youtube.com/embed/bpGvVI7NM_k?si=E-hOyqN59_cVDmR5" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+<p><a href="https://youtu.be/bpGvVI7NM_k?si=r3dvR0ViLxCA6E72" target="_blank">DONT USE AN ORM | Prime Reacts</a></p>
+<p>I’ve spent quite a bit of time ruminating on this decision. This video and corresponding article perfectly explain the kind of guidance I’ve encountered. “Write your own solution using SQL” seems to be the <em>best</em> option, according to people who sound the most competent (great measure, I know). Lots of people say Drizzle is the most flexible/closest to option 1 while still doing quite a bit for you under the hood. Prism seems to be most commonly used and has great startup time compared with the other two. But I’ve heard rumblings of Prism’s package size being huge and using inefficient queries behind the curtains. So here’s how I’ve come to think of my 3 main options:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Tech</th>
+          <th style="text-align: left">Ease of Development?</th>
+          <th style="text-align: left">Scales Nicely?</th>
+          <th style="text-align: left">Confidence in End Result?</th>
+          <th style="text-align: left">Endorsements from Respected Devs</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">BYO w/ SQL</td>
+          <td style="text-align: left">1/10 - Will take significant time and research to do right.</td>
+          <td style="text-align: left">10/10 - Biggest Strength</td>
+          <td style="text-align: left">5/10 - I’m not a backend expert. So it would be a big lift to make sure I’m using scalable patterns.</td>
+          <td style="text-align: left">+5</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Drizzle</td>
+          <td style="text-align: left">8/10 - More setup than Prisma but still gives you quite a bit.</td>
+          <td style="text-align: left">8/10 ???? Big question mark. It’s meant to be lean and provide enough control over queries to avoid those performance problems. I’ll have to check back when I find a hitch.</td>
+          <td style="text-align: left">9/10 - I have gaps in my SQL playbook so I might not be able to take the greatest advantage of Drizzle’s granularity… but that’s about it..</td>
+          <td style="text-align: left">+2</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Prisma</td>
+          <td style="text-align: left">10/10 - Touted for its DX and development speed</td>
+          <td style="text-align: left">5/10 - It seems this is the drawback of this ORM</td>
+          <td style="text-align: left">9/10 - Not counting the inherent issues with Prisma, I think it would be pretty easy to spin something up that covers my bases.</td>
+          <td style="text-align: left">-2</td>
+      </tr>
+  </tbody>
+</table>
+<p>So, I picked Drizzle. This is partially going to be a bit of an experiment to see if I run into some of the issues described in the video while building out my new project with Drizzle. It will be my personal stress test. I’ll be sure to keep this blog up to date as I encounter challenges. So anyways, here’s how you setup Nest with Drizzle and Postgres:</p>
+<h2 id="setup">Setup</h2>
+<h3 id="before-you-start">Before you start</h3>
+<ol>
+<li>
+<p>Nest CLI installed globally then create a new project like so:</p>
+<ul>
+<li><code>nest new &lt;app-name&gt;</code></li>
+</ul>
+</li>
+<li>
+<p>Get Postgres container running w/docker-compose.yaml (see example in code)</p>
+<ul>
+<li>Run with: <code>docker-compose up</code></li>
+<li>PRO TIP: If you have any typos in the database url or compose file, you’ll have to delete the container and run the compose command again to get a new db with the proper creds configured.</li>
+</ul>
+</li>
+<li>
+<p>Install the following to get Drizzle module on board:</p>
+<ul>
+<li><code>npm install drizzle-orm pg</code></li>
+<li><code>npm install -D drizzle-kit @types/pg</code></li>
+<li><code>npm install @nestjs/config</code></li>
+</ul>
+</li>
+</ol>
+<h3 id="development-loop">Development Loop</h3>
+<h4 id="do-the-following-once-at-setup">Do the following once at setup:</h4>
+<ul>
+<li>Create drizzle.config.ts</li>
+<li>Add <code>ConfigModule.forRoot({ isGlobal: true })</code> to the “imports” array in <code>app.module.ts</code> - This allows us to access environment variables.</li>
+<li>Create and configure new module for the database:
+<ul>
+<li>Run: <code>nest g module database</code></li>
+<li>Inside database folder add a constants file and define/export “DATABASE_CONNECTION” = “database_connection” (just a convention)</li>
+<li>The database module file needs to look like the following:</li>
+</ul>
+</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Module</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">drizzle</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;drizzle-orm/node-postgres&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">DATABASE_CONNECTION</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./database-connection&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">ConfigService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/config&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Pool</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;pg&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">usersSchema</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../users/schema&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Module</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">provide</span>: <span style="color:#66d9ef">DATABASE_CONNECTION</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">useFactory</span><span style="color:#f92672">:</span> (<span style="color:#a6e22e">configService</span>: <span style="color:#66d9ef">ConfigService</span>) <span style="color:#f92672">=&gt;</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pool</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Pool</span>({
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">connectionString</span>: <span style="color:#66d9ef">configService.getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#39;DATABASE_URL&#39;</span>),
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">drizzle</span>(<span style="color:#a6e22e">pool</span>, {
+</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">schema</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>            ...<span style="color:#a6e22e">usersSchema</span>,
+</span></span><span style="display:flex;"><span>          },
+</span></span><span style="display:flex;"><span>        });
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">inject</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">ConfigService</span>],
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">exports</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">DATABASE_CONNECTION</span>],
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DatabaseModule</span> {}
+</span></span></code></pre></div><h4 id="for-each-database-model">For each database model:</h4>
+<ol>
+<li>
+<p>Create or generate base files and folders for each model:</p>
+<ul>
+<li><code>nest g module &lt;schema&gt;</code> – This is the confluence file where the pieces are combined and consumed. Need to pass <code>imports: [DatabaseModule]</code> to <code>@Module({})</code> decorator but other args will vary from one model to next.</li>
+<li><code>nest g controller &lt;schema&gt;</code> – This is where we define our HTTP methods and handle params/subroutes.</li>
+<li><code>nest g service &lt;schema&gt;</code> – This is where we define methods that actually result in database queries using Drizzle methods.</li>
+</ul>
+</li>
+<li>
+<p>Create and configure <code>schema.ts</code> - This is where we define the Drizzle schema and any relations within the table.</p>
+<ul>
+<li>
+<p>Define table columns in pgTable()</p>
+</li>
+<li>
+<p>Define relations with relations like so (one or many)(example has users and menu tables):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">menuRelations</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">relations</span>(<span style="color:#a6e22e">menus</span>, ({ <span style="color:#a6e22e">one</span> }) <span style="color:#f92672">=&gt;</span> ({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">user</span>: <span style="color:#66d9ef">one</span>(<span style="color:#a6e22e">users</span>, {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">fields</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">menus</span>.<span style="color:#a6e22e">userId</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">references</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">id</span>],
+</span></span><span style="display:flex;"><span>  }),
+</span></span><span style="display:flex;"><span>}));
+</span></span></code></pre></div></li>
+</ul>
+</li>
+<li>
+<p>Generate and apply migrations:</p>
+<ul>
+<li><code>npx drizzle-kit generate</code></li>
+<li><code>npx drizzle-kit migrate</code></li>
+</ul>
+</li>
+<li>
+<p>Add the schema object to the database.module.ts drizzle schema.</p>
+</li>
+<li>
+<p>Create dto folder and define types for each request body. Naming convention: <code>&lt;crud-action&gt;-&lt;entity&gt;.request.ts</code> (eg: **create-user.**request.ts)</p>
+</li>
+<li>
+<p>Inside <code>&lt;model&gt;.service.ts</code>: Inject Database connection as an argument of the constructor as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">constructor</span>(
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">DATABASE_CONNECTION</span>)
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">database</span>: <span style="color:#66d9ef">NodePgDatabase</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">schema</span>&gt;,
+</span></span><span style="display:flex;"><span>) {}
+</span></span></code></pre></div></li>
+<li>
+<p>Implement supporting services first, then add endpoints for HTTP methods</p>
+</li>
+<li>
+<p>Look at official documentation for the following:</p>
+<ul>
+<li>Many-to-many relationships (you need to explicitly define a join table) (already noted)</li>
+<li>Implementing filters</li>
+<li>Transactions</li>
+</ul>
+</li>
+</ol>
+<h2 id="up-next">Up Next</h2>
+<p>Next I&rsquo;ll dive into my auth solution which is currently looking like it will be Passport.js.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li><strong><a href="https://wozniak.ca/blog/2014/08/03/1/index.html?utm_source=tuicool&amp;amp%3Butm_medium=referral" target="_blank">What ORMs have taught me: just learn SQL</a></strong></li>
+<li><strong><a href="https://refine.dev/blog/drizzle-react/#setting-up-drizzle-orm-in-a-nextjs-app" target="_blank">Setting Up Drizzle ORM in a Nextjs App</a></strong></li>
+<li><strong><a href="https://youtu.be/4xMDAqcwzp8?si=-hKcezzouR091DOH" target="_blank">NestJS + Drizzle Deep Dive | Schemas, Relations, Migrations &amp; More</a></strong></li>
+<li><strong><a href="https://orm.drizzle.team/docs/get-started-postgresql" target="_blank">Drizzle Docs - PostgreSQL</a></strong></li>
+<li><strong><a href="https://docs.nestjs.com/" target="_blank">NestJS Docs</a></strong></li>
+</ul>
+
+  
+  <hr>
+<div class="footer">
+    
+    
+    
+    <p>
+    This is a post in the <b><a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                March 6, 2025 -
+                
+                    New Project: Picking my Backend
+                
+            </li>
+            
+        </ul>
+    </p>
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#roadmap">Roadmap</a>
+      <ul>
+        <li><a href="#wheres-django">Where’s Django?</a></li>
+        <li><a href="#why-i-chose-drizzle">Why I chose Drizzle?</a></li>
+      </ul>
+    </li>
+    <li><a href="#setup">Setup</a>
+      <ul>
+        <li><a href="#before-you-start">Before you start</a></li>
+        <li><a href="#development-loop">Development Loop</a></li>
+      </ul>
+    </li>
+    <li><a href="#up-next">Up Next</a></li>
+    <li><a href="#sources">Sources</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>
