@@ -6,8 +6,15 @@
     <description>Recent content in Posts on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Mar 2025 14:09:56 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 10 Mar 2025 13:23:37 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auth with Drizzle, NestJS, and Passport</title>
+      <link>http://localhost:1313/posts/mar_10_2025/</link>
+      <pubDate>Mon, 10 Mar 2025 13:23:37 -0400</pubDate>
+      <guid>http://localhost:1313/posts/mar_10_2025/</guid>
+      <description>&lt;p&gt;Here I&amp;rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.&lt;/p&gt;&#xA;&lt;h3 id=&#34;installation&#34;&gt;Installation&lt;/h3&gt;&#xA;&lt;p&gt;&lt;strong&gt;Before you start&lt;/strong&gt;: Need an existing NestJS project with Drizzle set up with database module.&lt;/p&gt;&#xA;&lt;p&gt;Validation Dependencies:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i class-validator class-transformer&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Passport Dependencies:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i @nestjs/passport passport passport-local passport-jwt&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i @nestjs/jwt&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i @types/passport-jwt @types/passport-local&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;users-module&#34;&gt;Users Module&lt;/h3&gt;&#xA;&lt;p&gt;We first need to set up a table in the database where the user information will be persisted.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New Project: Picking my Backend</title>
       <link>http://localhost:1313/posts/pickingbackend/</link>

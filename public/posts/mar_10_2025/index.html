@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/img/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Ben&#39;s Blog - Auth with Drizzle, NestJS, and Passport</title>
+<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Auth&#32;with&#32;Drizzle,&#32;NestJS,&#32;and&#32;Passport />
+<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Auth&#32;with&#32;Drizzle,&#32;NestJS,&#32;and&#32;Passport />
+<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;Auth&#32;with&#32;Drizzle,&#32;NestJS,&#32;and&#32;Passport />
+<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;Auth&#32;with&#32;Drizzle,&#32;NestJS,&#32;and&#32;Passport />
+<meta property="og:site_name" content="A Blog for Ben" />
+
+
+<meta name="description" content="" />
+<meta itemprop="description" content="" />
+<meta property="og:description" content="" />
+<meta name="twitter:description" content="" />
+
+
+<base href="http://localhost:1313/posts/mar_10_2025/" />
+<link rel="canonical" href="http://localhost:1313/posts/mar_10_2025/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/mar_10_2025/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/mar_10_2025/" />
+<meta property="og:url" content="http://localhost:1313/posts/mar_10_2025/" />
+
+
+<meta property="og:updated_time" content="2025-03-10T13:23:37-04:00" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="A Blog for Ben" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.143.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.10eaee0ef825c386ce83a75a73404ada7f9875d493f1db7bb1f50b187ca94805.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #14ae92;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #362B2B;
+        --post-title-color: #DBE2E9;
+        --list-color: #EEE;
+        --link-color: #14ae92;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #202020;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="http://localhost:1313/">
+                <img src="/img/headshot.png" alt="brand image">
+            </a>
+        
+        
+            <a href="http://localhost:1313/">
+                <h1>Ben&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/posts/">Posts</a>
+                    </li>
+                    
+                        <li class="sub-heading">
+                            
+                        </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/pickingbackend/">New Project: Picking my Backend</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/useimperativehandle/">Ref Shenanigans Kicked my Butt</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/25feb23/">Shower Thought</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/myfirstpost/">Why I Made a Blog, Not a Portfolio</a>
+                            </li>
+                        
+                    
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/xxblincolnxx">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/benprothe">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="RSS Feed" href="/posts/index.xml">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 1280.000000 1280.000000">
+            <g transform="translate(0.000000,1280.000000) scale(0.100000,-0.100000)" fill="currentColor">
+                <path d="M2295 11929 c-284 -12 -642 -45 -707 -65 -17 -5 -18 -63 -18 -1039 0 -569 4 -1036 8 -1039 5 -3 74 6 153 19 510 86 1168 95 1789 25 1348 -153 2602 -677 3670 -1531 385 -308 820 -744 1126 -1129 842 -1060 1362 -2313 1514 -3650 70 -621 61 -1279 -25 -1789 -13 -79 -22 -148 -19 -153 3 -4 471 -8 1039 -8 l1035 0 5 23 c51 225 85 942 67 1419 -23 605 -77 1044 -198 1617 -294 1400 -927 2734 -1823 3846 -1043 1295 -2364 2259 -3909 2854 -1158 447 -2451 656 -3707 600z"/>
+                <path d="M2255 7845 c-269 -25 -620 -81 -667 -106 -17 -9 -18 -55 -18 -899 0 -706 3 -890 13 -890 6 0 66 18 132 41 130 44 288 79 467 105 154 21 577 30 749 15 1207 -107 2267 -823 2814 -1902 166 -327 268 -637 330 -1001 38 -227 48 -384 42 -662 -8 -348 -44 -590 -126 -831 -23 -66 -41 -126 -41 -132 0 -10 184 -13 890 -13 844 0 890 1 899 18 27 50 88 452 110 725 14 162 14 624 1 782 -59 703 -233 1323 -545 1945 -481 956 -1313 1788 -2270 2268 -620 310 -1239 483 -1940 542 -165 14 -669 10 -840 -5z"/>
+                <path d="M2519 3815 c-391 -66 -725 -336 -868 -703 -79 -201 -96 -462 -45 -677 83 -344 338 -641 666 -774 116 -47 205 -69 330 -80 412 -39 811 153 1040 500 193 292 240 648 128 981 -135 403 -492 699 -914 757 -100 14 -241 12 -337 -4z"/>
+            </g>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Email" href="mailto://beprothe@gmail">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2025 A Blog for Ben. All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+        
+          <span>Ben Prothe - </span>
+        
+      
+      
+      <time datetime=" 2025-03-10T13:23:37-0400" class="post-date">
+        March 10, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-NestJS">
+        <a href="http://localhost:1313/tags/nestjs">NestJS</a>
+      </li>
+      
+      <li class="tag-Auth">
+        <a href="http://localhost:1313/tags/auth">Auth</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
+
+  
+</div>
+
+  <p>Here I&rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.</p>
+<h3 id="installation">Installation</h3>
+<p><strong>Before you start</strong>: Need an existing NestJS project with Drizzle set up with database module.</p>
+<p>Validation Dependencies:</p>
+<ul>
+<li><code>npm i class-validator class-transformer</code></li>
+</ul>
+<p>Passport Dependencies:</p>
+<ul>
+<li><code>npm i @nestjs/passport passport passport-local passport-jwt</code></li>
+<li><code>npm i @nestjs/jwt</code></li>
+<li><code>npm i @types/passport-jwt @types/passport-local</code></li>
+</ul>
+<h3 id="users-module">Users Module</h3>
+<p>We first need to set up a table in the database where the user information will be persisted.</p>
+<ol>
+<li>Run the following to generate required files for User model:
+<ul>
+<li><code>nest g module users</code></li>
+<li><code>nest g controller users</code></li>
+<li><code>nest g service users</code></li>
+</ul>
+</li>
+<li>Create schema file and configure columns:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pgTable</span>(<span style="color:#e6db74">&#39;users&#39;</span>, {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">serial</span>(<span style="color:#e6db74">&#39;id&#39;</span>).<span style="color:#a6e22e">primaryKey</span>(),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;email&#39;</span>).<span style="color:#66d9ef">unique</span>().<span style="color:#a6e22e">notNull</span>(),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;password&#39;</span>),
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><ol start="3">
+<li>Configure <code>users.module.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Module</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">DatabaseModule</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">controllers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">UsersController</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">UsersService</span>],
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsersModule</span> {}
+</span></span></code></pre></div><ol start="4">
+<li>Configure <code>users.service.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">schema</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./schema&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsersService</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">DATABASE_CONNECTION</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">database</span>: <span style="color:#66d9ef">NodePgDatabase</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">schema</span>&gt;
+</span></span><span style="display:flex;"><span>  ) {}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="5">
+<li>Add the following line to <code>main.ts</code> to enable validators in the DTO:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bootstrap() {</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">NestFactory</span>.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">AppModule</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">useGlobalPipes</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ValidationPipe</span>()); <span style="color:#75715e">// THIS IS NEW
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">??</span> <span style="color:#ae81ff">3000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="6">
+<li>Create request DTO for <code>create-user.request.ts</code> with validators :</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">IsEmail</span>, <span style="color:#a6e22e">IsStrongPassword</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;class-validator&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateUserRequest</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@IsEmail</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@IsStrongPassword</span>()
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="7">
+<li>Add &ldquo;Post&rdquo; method to <code>users.controller.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Post</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">createUser</span>(<span style="color:#66d9ef">@Body</span>() <span style="color:#a6e22e">request</span>:  <span style="color:#66d9ef">CreateUserRequest</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">request</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="8">
+<li>Add &ldquo;createUser()&rdquo; method to <code>users.service.ts</code> and hash the password (don&rsquo;t store as plain text):
+<ul>
+<li>Install bcrypt: <code>npm i bcryptjs @types/bcryptjs</code></li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">$inferInsert</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">hashedPassword</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#a6e22e">hash</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">||</span>  <span style="color:#e6db74">&#39;&#39;</span>,  <span style="color:#ae81ff">10</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>).<span style="color:#a6e22e">values</span>({ ...<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">password</span>:  <span style="color:#66d9ef">hashedPassword</span> });
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h3 id="setting-up-passportjs">Setting up Passport.js</h3>
+<ol>
+<li>Create Auth Module:</li>
+</ol>
+<ul>
+<li><code>nest g module auth</code></li>
+<li><code>nest g controller auth</code></li>
+<li><code>nest g service auth</code></li>
+</ul>
+<ol start="2">
+<li>Configure <code>auth.module.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Module</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthController</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./auth.controller&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./auth.service&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">UsersModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../users/users.module&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PassportModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">JwtModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/jwt&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Module</span>({
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">UsersModule</span>, <span style="color:#a6e22e">PassportModule</span>, <span style="color:#a6e22e">JwtModule</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">controllers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">AuthController</span>],
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">AuthService</span>],
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthModule</span> {}
+</span></span></code></pre></div><ol start="3">
+<li>Add &ldquo;UsersService&rdquo; to exports of the <code>users.module.ts</code></li>
+<li>Create <code>auth/strategies</code> directory</li>
+<li>Create a new file <code>local.strategy.ts</code> and export an injectable class as follows:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PassportStrategy</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Strategy</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;passport-local&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalStrategy</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PassportStrategy</span>(<span style="color:#a6e22e">Strategy</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">usernameField</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;email&#39;</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// WE&#39;LL ABSTRACT THIS INTO auth.service.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="6">
+<li>Create <code>getUser()</code> method for <code>users.service.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUser</span>(<span style="color:#a6e22e">email</span>:  <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">user</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">findMany</span>({
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">where</span>:  <span style="color:#66d9ef">eq</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">email</span>,  <span style="color:#a6e22e">email</span>),
+</span></span><span style="display:flex;"><span>}); <span style="color:#75715e">// Returns an array of matches
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">throw</span>  <span style="color:#66d9ef">new</span>  <span style="color:#a6e22e">NotFoundException</span>(<span style="color:#e6db74">&#39;User not found&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>  <span style="color:#a6e22e">user</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="7">
+<li>Inject UsersService and add logic to verify user in <code>auth.service.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthService</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">usersService</span>: <span style="color:#66d9ef">UsersService</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">verifyUser</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUser</span>(<span style="color:#a6e22e">email</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authenticated</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">compare</span>(<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">authenticated</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UnauthorizedException</span>();
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UnauthorizedException</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="8">
+<li>Go back to <code>local.strategy.ts</code> and add call to verifyUser(). Note: Everything we return here will be added to the request object under the user property allowing us to access the user from the request object in any service layer.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">email</span>:  <span style="color:#66d9ef">string</span>,  <span style="color:#a6e22e">password</span>:  <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">verifyUser</span>(<span style="color:#a6e22e">email</span>,  <span style="color:#a6e22e">password</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="9">
+<li>Add <code>LocalStrategy</code> to providers array inside <code>auth.module.ts</code></li>
+<li>Create <code>auth/guards</code> directory and create <code>local-auth.guard.ts</code>. Each strategy will get a guard file.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthGuard</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalAuthGuard</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthGuard</span>(<span style="color:#e6db74">&#39;local&#39;</span>) {}
+</span></span></code></pre></div><ol start="11">
+<li>Add <code>@Post</code> route to <code>auth.controller.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Controller</span>, <span style="color:#a6e22e">Post</span>, <span style="color:#a6e22e">UseGuards</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">LocalAuthGuard</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./guards/local-auth.guard&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Controller</span>(<span style="color:#e6db74">&#39;auth&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthController</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@Post</span>(<span style="color:#e6db74">&#39;login&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@UseGuards</span>(<span style="color:#a6e22e">LocalAuthGuard</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">login() {</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This is where we&#39;ll create a JWT token and return it to the client. It will then use JWT to authenticate itself in future requests.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>NOTE: Its important that the JWT is not accessible via client-side JS so we&rsquo;re going to have it saved onto a HTTP only cookie that accompanies every request.</p>
+<h3 id="creating-the-login-route-and-jwt">Creating the login route and JWT</h3>
+<ol>
+<li>First we&rsquo;ll abstract the ability to extract the &ldquo;user&rdquo; information from the the request object. Create <code>auth/current-user.decorator.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createParamDecorator</span>, <span style="color:#a6e22e">ExecutionContext</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">User</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../users/dto/create-user.request&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getCurrentUserByContext</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">context</span>: <span style="color:#66d9ef">ExecutionContext</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span> <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">switchToHttp</span>().<span style="color:#a6e22e">getRequest</span>().<span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">CurrentUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createParamDecorator</span>&lt;<span style="color:#f92672">User</span>&gt;(
+</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">_data</span>: <span style="color:#66d9ef">unknown</span>, <span style="color:#a6e22e">context</span>: <span style="color:#66d9ef">ExecutionContext</span>) <span style="color:#f92672">=&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getCurrentUserByContext</span>(<span style="color:#a6e22e">context</span>)
+</span></span><span style="display:flex;"><span>);
+</span></span></code></pre></div><ol start="3">
+<li>Add new env variable for <code>JWT_ACCESS_TOKEN_SECRET</code>. Create a secure value <a href="https://randomkeygen.com/" target="_blank">here</a>. Use the &ldquo;CodeIgniter Encryption Keys&rdquo; option.</li>
+<li>Create env variable for <code>JWT_ACCESS_TOKEN_EXPIRATION_MS</code> and set to 3600000</li>
+<li>Inject <code>ConfigService</code> and <code>JwtService</code> into AuthService class.</li>
+<li>Create interface for TokenPayload:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">TokenPayload</span> {
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userId</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="8">
+<li>Add login() method to AuthService:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,  <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">expiresTime</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">new</span>  Date();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">setMilliseconds</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>			parseInt(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>),
+</span></span><span style="display:flex;"><span>		),
+</span></span><span style="display:flex;"><span>	);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">tokenPayload</span>:  <span style="color:#66d9ef">TokenPayload</span>  <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">userId</span>:  <span style="color:#66d9ef">user.id.toString</span>(),
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">accessToken</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jwtService</span>.<span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">tokenPayload</span>, {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secret</span>:  <span style="color:#66d9ef">this.configService.getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>),
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresIn</span><span style="color:#f92672">:</span>  <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">ms`</span>,
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">cookie</span>(<span style="color:#e6db74">&#39;Authentication&#39;</span>,  <span style="color:#a6e22e">accessToken</span>, {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpOnly</span>:  <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secure</span>:  <span style="color:#66d9ef">this.configService.get</span>(<span style="color:#e6db74">&#39;NODE_ENV&#39;</span>) <span style="color:#f92672">===</span>  <span style="color:#e6db74">&#39;production&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expires</span>:  <span style="color:#66d9ef">expiresTime</span>,
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="8">
+<li>Add <code>UsersService</code> to exports array for <code>users.module.ts</code> and providers array for <code>app.module.ts</code></li>
+</ol>
+
+  
+  <hr>
+<div class="footer">
+    
+    
+    
+    <p>
+    This is a post in the <b><a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                March 10, 2025 -
+                
+                    Auth with Drizzle, NestJS, and Passport
+                
+            </li>
+            
+            <li>
+                March 6, 2025 -
+                
+                    <a href="/posts/pickingbackend/">New Project: Picking my Backend</a>
+                
+            </li>
+            
+        </ul>
+    </p>
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#users-module">Users Module</a></li>
+        <li><a href="#setting-up-passportjs">Setting up Passport.js</a></li>
+        <li><a href="#creating-the-login-route-and-jwt">Creating the login route and JWT</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>
