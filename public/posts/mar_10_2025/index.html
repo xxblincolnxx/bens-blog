@@ -235,6 +235,10 @@
                 
                         
                 
+                        
+                
+                        
+                
             
         
         
@@ -305,6 +309,10 @@
                 
                         
                 
+                        
+                
+                        
+                
             
         
         
@@ -324,6 +332,10 @@
                 
             
                 
+                
+                        
+                
+                        
                 
                         
                 
@@ -434,7 +446,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>4 mins read</span>
+        <span>6 mins read</span>
       </span>
     </div>
 
@@ -443,6 +455,14 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
       
       <li class="tag-NestJS">
         <a href="http://localhost:1313/tags/nestjs">NestJS</a>
+      </li>
+      
+      <li class="tag-Drizzle">
+        <a href="http://localhost:1313/tags/drizzle">Drizzle</a>
+      </li>
+      
+      <li class="tag-Passport.js">
+        <a href="http://localhost:1313/tags/passport.js">Passport.js</a>
       </li>
       
       <li class="tag-Auth">
@@ -491,7 +511,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pgTable</span>(<span style="color:#e6db74">&#39;users&#39;</span>, {
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">serial</span>(<span style="color:#e6db74">&#39;id&#39;</span>).<span style="color:#a6e22e">primaryKey</span>(),
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;email&#39;</span>).<span style="color:#66d9ef">unique</span>().<span style="color:#a6e22e">notNull</span>(),
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;password&#39;</span>),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;password&#39;</span>).<span style="color:#a6e22e">notNull</span>(),
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><ol start="3">
 <li>Configure <code>users.module.ts</code>:</li>
@@ -709,7 +729,70 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span></code></pre></div><ol start="8">
 <li>Add <code>UsersService</code> to exports array for <code>users.module.ts</code> and providers array for <code>app.module.ts</code></li>
 </ol>
-
+<h3 id="using-jwt-to-guard-endpoints">Using JWT to guard endpoints</h3>
+<ol>
+<li>Add &ldquo;cookie-parser&rdquo; as middleware in <code>main.ts</code>. This will parse the cookie for every request and append it to the &ldquo;request&rdquo; object:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">cookieParser</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;cookie-parser&#39;</span>; <span style="color:#75715e">// The &#34;* as&#34; is important
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bootstrap() {</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">NestFactory</span>.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">AppModule</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">useGlobalPipes</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ValidationPipe</span>());
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cookieParser</span>()); <span style="color:#75715e">// Here&#39;s the new line
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">??</span> <span style="color:#ae81ff">3000</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>Create <code>auth/strategies/jwt.strategy.ts</code></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtStrategy</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PassportStrategy</span>(<span style="color:#a6e22e">Strategy</span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">configService</span>: <span style="color:#66d9ef">ConfigService</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">usersService</span>: <span style="color:#66d9ef">UsersService</span>
+</span></span><span style="display:flex;"><span>  ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">jwtFromRequest</span>: <span style="color:#66d9ef">ExtractJwt.fromExtractors</span>([
+</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">request</span>: <span style="color:#66d9ef">Request</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">cookies</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">Authentication</span>,
+</span></span><span style="display:flex;"><span>      ]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">secretOrKey</span>: <span style="color:#66d9ef">configService.getOrThrow</span>(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>),
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">TokenPayload</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUser</span>({ <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">payload.userId</span> });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="3">
+<li>I had to reconfigure <code>usersService.getUser()</code> to be able to query a user with either an email or an id.</li>
+<li>Add <code>JwtStrategy</code> to &ldquo;providers&rdquo; array in side of <code>auth.module.ts</code></li>
+<li>Create <code>auth/guards/jwt-auth.guard.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthGuard</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtAuthGuard</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthGuard</span>(<span style="color:#e6db74">&#39;jwt&#39;</span>) {}
+</span></span></code></pre></div><ol start="6">
+<li>The following is an example of an end point that utilizes the guard we just created as well as the <code>@CurrentUser()</code> decorator.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// users.service.ts - This method retrieves the menus associated with the currently logged in user:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUserMenus</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">findFirst</span>({
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">where</span>:  <span style="color:#66d9ef">eq</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">email</span>,  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>),
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">with</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">menus</span>:  <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>		},
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// users.controller.ts - @CurrentUser() extracts the user object from the request object
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// the JwtAuthGuard validates the JWT attached to the request and either throws an error or allows the request to proceed.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Get</span>(<span style="color:#e6db74">&#39;menus&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@UseGuards</span>(<span style="color:#a6e22e">JwtAuthGuard</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUserMenus</span>(<span style="color:#66d9ef">@CurrentUser</span>() <span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUserMenus</span>(<span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
   
   <hr>
 <div class="footer">
@@ -758,6 +841,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         <li><a href="#users-module">Users Module</a></li>
         <li><a href="#setting-up-passportjs">Setting up Passport.js</a></li>
         <li><a href="#creating-the-login-route-and-jwt">Creating the login route and JWT</a></li>
+        <li><a href="#using-jwt-to-guard-endpoints">Using JWT to guard endpoints</a></li>
       </ul>
     </li>
   </ul>
