@@ -75,3 +75,7 @@ front_page_content = ["posts"]
 
 [security]
   enableInlineShortcodes = true
+
+[markup]
+  [markup.highlight]
+    style = 'dracula'

@@ -6,14 +6,21 @@
     <description>Recent content in Final Project Rebuild on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 06 Mar 2025 14:09:56 -0500</lastBuildDate>
+    <lastBuildDate>Mon, 10 Mar 2025 13:23:37 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/series/final-project-rebuild/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Auth with Drizzle, NestJS, and Passport</title>
+      <link>http://localhost:1313/posts/mar_10_2025/</link>
+      <pubDate>Mon, 10 Mar 2025 13:23:37 -0400</pubDate>
+      <guid>http://localhost:1313/posts/mar_10_2025/</guid>
+      <description>&lt;p&gt;Here I&amp;rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.&lt;/p&gt;&#xA;&lt;h2 id=&#34;dependencies&#34;&gt;Dependencies&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Before you start&lt;/strong&gt;: Need an existing NestJS project with Drizzle set up with database module.&lt;/p&gt;&#xA;&lt;p&gt;Install these dependencies:&lt;/p&gt;&#xA;&lt;p&gt;Validation:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i class-validator class-transformer&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Passport.js:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i @nestjs/passport passport passport-local passport-jwt&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i @nestjs/jwt&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i @types/passport-jwt @types/passport-local&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Cookie Parsing:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i cookie-parser&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;code&gt;npm i -D @types/cookie-parser&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;users-module&#34;&gt;Users Module&lt;/h2&gt;&#xA;&lt;p&gt;We first need to set up a table in the database where the user information will be persisted.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>New Project: Picking my Backend</title>
       <link>http://localhost:1313/posts/pickingbackend/</link>
       <pubDate>Thu, 06 Mar 2025 14:09:56 -0500</pubDate>
       <guid>http://localhost:1313/posts/pickingbackend/</guid>
-      <description>&lt;p&gt;Today I’ll talk about the first step I’ve taken towards my new pet project: a total rebuild of my bootcamp final project. My team of 3 completed this project in the span of 2 weeks at the very beginning of the 2020 pandemic… as in, we had been going to classes in person, then we entered quarantine just as we got our team assignments and completed everything remotely.&lt;/p&gt;&#xA;&lt;p&gt;At the time we had only been writing code for 10 months. In our toolkit we had only vanilla JS + HTML + CSS for frontend, and Django and Python (notably no SQL) for backend. Our team bravely took on learning parts of Vue.js to help us build our UI. The backend was also a departure from what we knew. We used the Django REST framework so we could fetch our data instead of using the out of box Model-View-Template structure to pass data to our views.&lt;/p&gt;</description>
+      <description>&lt;p&gt;Today I’ll talk about the first step I’ve taken towards my new pet project: a total rebuild of my bootcamp final project. My team of 3 completed this project in the span of 2 weeks at the very beginning of the 2020 pandemic… as in, we had been going to classes in person, then we entered quarantine just as we got our team assignments and completed everything remotely.&lt;/p&gt;&#xA;&lt;p&gt;At the time we had only been writing code for 10 weeks. In our toolkit we had only vanilla JS + HTML + CSS for frontend, and Django and Python (notably no SQL) for backend. Our team bravely took on learning parts of Vue.js to help us build our UI. The backend was also a departure from what we knew. We used the Django REST framework so we could fetch our data instead of using the out of box Model-View-Template structure to pass data to our views.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

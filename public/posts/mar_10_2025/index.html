@@ -514,57 +514,57 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </li>
 <li>Create schema file and configure columns:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">users</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pgTable</span>(<span style="color:#e6db74">&#39;users&#39;</span>, {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">serial</span>(<span style="color:#e6db74">&#39;id&#39;</span>).<span style="color:#a6e22e">primaryKey</span>(),
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;email&#39;</span>).<span style="color:#66d9ef">unique</span>().<span style="color:#a6e22e">notNull</span>(),
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;password&#39;</span>).<span style="color:#a6e22e">notNull</span>(),
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">refreshToken</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;refresh-token&#39;</span>),
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">const</span> users <span style="color:#ff79c6">=</span> pgTable(<span style="color:#f1fa8c">&#39;users&#39;</span>, {
+</span></span><span style="display:flex;"><span>  id: <span style="color:#8be9fd">serial</span>(<span style="color:#f1fa8c">&#39;id&#39;</span>).primaryKey(),
+</span></span><span style="display:flex;"><span>  email: <span style="color:#8be9fd">text</span>(<span style="color:#f1fa8c">&#39;email&#39;</span>).<span style="color:#8be9fd">unique</span>().notNull(),
+</span></span><span style="display:flex;"><span>  password: <span style="color:#8be9fd">text</span>(<span style="color:#f1fa8c">&#39;password&#39;</span>).notNull(),
+</span></span><span style="display:flex;"><span>  refreshToken: <span style="color:#8be9fd">text</span>(<span style="color:#f1fa8c">&#39;refresh-token&#39;</span>),
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><ol start="3">
 <li>Configure <code>users.module.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Module</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">DatabaseModule</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">controllers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">UsersController</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">UsersService</span>],
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Module</span>({
+</span></span><span style="display:flex;"><span>  imports<span style="color:#ff79c6">:</span> [DatabaseModule],
+</span></span><span style="display:flex;"><span>  controllers<span style="color:#ff79c6">:</span> [UsersController],
+</span></span><span style="display:flex;"><span>  providers<span style="color:#ff79c6">:</span> [UsersService],
 </span></span><span style="display:flex;"><span>})
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsersModule</span> {}
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> UsersModule {}
 </span></span></code></pre></div><ol start="4">
 <li>Configure <code>users.service.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">schema</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./schema&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">UsersService</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">@Inject</span>(<span style="color:#a6e22e">DATABASE_CONNECTION</span>)
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">database</span>: <span style="color:#66d9ef">NodePgDatabase</span>&lt;<span style="color:#f92672">typeof</span> <span style="color:#a6e22e">schema</span>&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">as</span> schema <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;./schema&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> UsersService {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">constructor</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">@Inject</span>(DATABASE_CONNECTION)
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> database: <span style="color:#8be9fd">NodePgDatabase</span>&lt;<span style="color:#ff79c6">typeof</span> <span style="color:#50fa7b">schema</span>&gt;
 </span></span><span style="display:flex;"><span>  ) {}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="5">
 <li>Add the following line to <code>main.ts</code> to enable validators in the DTO:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bootstrap() {</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">NestFactory</span>.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">AppModule</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">useGlobalPipes</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ValidationPipe</span>()); <span style="color:#75715e">// THIS IS NEW
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">??</span> <span style="color:#ae81ff">3000</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#8be9fd;font-style:italic">function</span> bootstrap() {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> app <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> NestFactory.create(AppModule);
+</span></span><span style="display:flex;"><span>  app.useGlobalPipes(<span style="color:#ff79c6">new</span> ValidationPipe()); <span style="color:#6272a4">// THIS IS NEW
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">await</span> app.listen(process.env.PORT <span style="color:#ff79c6">??</span> <span style="color:#bd93f9">3000</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="6">
 <li>Create request DTO for <code>create-user.request.ts</code> with validators :</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">IsEmail</span>, <span style="color:#a6e22e">IsStrongPassword</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;class-validator&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">CreateUserRequest</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@IsEmail</span>()
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { IsEmail, IsStrongPassword } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;class-validator&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> CreateUserRequest {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">@IsEmail</span>()
+</span></span><span style="display:flex;"><span>  email: <span style="color:#8be9fd">string</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@IsStrongPassword</span>()
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">@IsStrongPassword</span>()
+</span></span><span style="display:flex;"><span>  password: <span style="color:#8be9fd">string</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="7">
 <li>Add &ldquo;Post&rdquo; method to <code>users.controller.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Post</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">createUser</span>(<span style="color:#66d9ef">@Body</span>() <span style="color:#a6e22e">request</span>:  <span style="color:#66d9ef">CreateUserRequest</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">request</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Post</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  createUser(<span style="color:#8be9fd;font-style:italic">@Body</span>() request:  <span style="color:#8be9fd">CreateUserRequest</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span>  <span style="color:#ff79c6">this</span>.usersService.createUser(request);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="8">
 <li>Add &ldquo;createUser()&rdquo; method to <code>users.service.ts</code> and hash the password (don&rsquo;t store as plain text):
@@ -573,9 +573,9 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </ul>
 </li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">createUser</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">typeof</span> <span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">$inferInsert</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">hashedPassword</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#a6e22e">hash</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">||</span>  <span style="color:#e6db74">&#39;&#39;</span>,  <span style="color:#ae81ff">10</span>);
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>).<span style="color:#a6e22e">values</span>({ ...<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">password</span>:  <span style="color:#66d9ef">hashedPassword</span> });
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  createUser(user:  <span style="color:#8be9fd">typeof</span> schema.users.$inferInsert) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  hashedPassword  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">await</span>  hash(user.password <span style="color:#ff79c6">||</span>  <span style="color:#f1fa8c">&#39;&#39;</span>,  <span style="color:#bd93f9">10</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.database.insert(schema.users).values({ ...user,  password:  <span style="color:#8be9fd">hashedPassword</span> });
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="setting-up-passportjs">Setting up Passport.js</h2>
 <ol>
@@ -589,114 +589,114 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <ol start="2">
 <li>Configure <code>auth.module.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Module</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthController</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./auth.controller&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthService</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./auth.service&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">UsersModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../users/users.module&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PassportModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">JwtModule</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/jwt&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { Module } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { AuthController } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;./auth.controller&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { AuthService } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;./auth.service&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { UsersModule } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;../users/users.module&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { PassportModule } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/passport&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { JwtModule } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/jwt&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Module</span>({
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">imports</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">UsersModule</span>, <span style="color:#a6e22e">PassportModule</span>, <span style="color:#a6e22e">JwtModule</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">controllers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">AuthController</span>],
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">providers</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">AuthService</span>],
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Module</span>({
+</span></span><span style="display:flex;"><span>  imports<span style="color:#ff79c6">:</span> [UsersModule, PassportModule, JwtModule],
+</span></span><span style="display:flex;"><span>  controllers<span style="color:#ff79c6">:</span> [AuthController],
+</span></span><span style="display:flex;"><span>  providers<span style="color:#ff79c6">:</span> [AuthService],
 </span></span><span style="display:flex;"><span>})
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthModule</span> {}
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> AuthModule {}
 </span></span></code></pre></div><ol start="3">
 <li>Add &ldquo;UsersService&rdquo; to exports of the <code>users.module.ts</code></li>
 <li>Create <code>auth/strategies</code> directory</li>
 <li>Create a new file <code>local.strategy.ts</code> and export an injectable class as follows:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">PassportStrategy</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Strategy</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;passport-local&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { Injectable } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { PassportStrategy } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/passport&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { Strategy } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;passport-local&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalStrategy</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PassportStrategy</span>(<span style="color:#a6e22e">Strategy</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>() {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>({
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">usernameField</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;email&#39;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> LocalStrategy <span style="color:#ff79c6">extends</span> PassportStrategy(Strategy) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">constructor</span>() {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">super</span>({
+</span></span><span style="display:flex;"><span>      usernameField<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#39;email&#39;</span>,
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>  }
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// WE&#39;LL ABSTRACT THIS INTO auth.service.ts
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">async</span> validate(email: <span style="color:#8be9fd">string</span>, password: <span style="color:#8be9fd">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// WE&#39;LL ABSTRACT THIS INTO auth.service.ts
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="6">
 <li>Create <code>getUser()</code> method for <code>users.service.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUser</span>(<span style="color:#a6e22e">email</span>:  <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">user</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">findMany</span>({
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">where</span>:  <span style="color:#66d9ef">eq</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">email</span>,  <span style="color:#a6e22e">email</span>),
-</span></span><span style="display:flex;"><span>}); <span style="color:#75715e">// Returns an array of matches
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">1</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">throw</span>  <span style="color:#66d9ef">new</span>  <span style="color:#a6e22e">NotFoundException</span>(<span style="color:#e6db74">&#39;User not found&#39;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  getUser(email:  <span style="color:#8be9fd">string</span>) {
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">const</span>  user  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.database.query.users.findMany({
+</span></span><span style="display:flex;"><span>	where:  <span style="color:#8be9fd">eq</span>(schema.users.email,  email),
+</span></span><span style="display:flex;"><span>}); <span style="color:#6272a4">// Returns an array of matches
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">if</span> (user.length <span style="color:#ff79c6">&lt;</span> <span style="color:#bd93f9">1</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">throw</span>  <span style="color:#ff79c6">new</span>  NotFoundException(<span style="color:#f1fa8c">&#39;User not found&#39;</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span>  <span style="color:#a6e22e">user</span>[<span style="color:#ae81ff">0</span>];
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">return</span>  user[<span style="color:#bd93f9">0</span>];
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="7">
 <li>Inject UsersService and add logic to verify user in <code>auth.service.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthService</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">usersService</span>: <span style="color:#66d9ef">UsersService</span>) {}
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">verifyUser</span>(<span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">string</span>, <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">user</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUser</span>(<span style="color:#a6e22e">email</span>);
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">authenticated</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">compare</span>(<span style="color:#a6e22e">password</span>, <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span>);
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">authenticated</span>) {
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UnauthorizedException</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> AuthService {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">constructor</span>(<span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> usersService: <span style="color:#8be9fd">UsersService</span>) {}
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">async</span> verifyUser(email: <span style="color:#8be9fd">string</span>, password: <span style="color:#8be9fd">string</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">try</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">const</span> user <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> <span style="color:#ff79c6">this</span>.usersService.getUser(email);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">const</span> authenticated <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> compare(password, user.password);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>authenticated) {
+</span></span><span style="display:flex;"><span>        <span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> UnauthorizedException();
 </span></span><span style="display:flex;"><span>      }
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">user</span>;
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">UnauthorizedException</span>(<span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">return</span> user;
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">catch</span> (error) {
+</span></span><span style="display:flex;"><span>      <span style="color:#ff79c6">throw</span> <span style="color:#ff79c6">new</span> UnauthorizedException(error);
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="8">
 <li>Go back to <code>local.strategy.ts</code> and add call to verifyUser(). Note: Everything we return here will be added to the request object under the user property allowing us to access the user from the request object in any service layer.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">email</span>:  <span style="color:#66d9ef">string</span>,  <span style="color:#a6e22e">password</span>:  <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">verifyUser</span>(<span style="color:#a6e22e">email</span>,  <span style="color:#a6e22e">password</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  validate(email:  <span style="color:#8be9fd">string</span>,  password:  <span style="color:#8be9fd">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span>  <span style="color:#ff79c6">this</span>.authService.verifyUser(email,  password);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="9">
 <li>Add <code>LocalStrategy</code> to providers array inside <code>auth.module.ts</code></li>
 <li>Create <code>auth/guards</code> directory and create <code>local-auth.guard.ts</code>. Each strategy will get a guard file.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthGuard</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { Injectable } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { AuthGuard } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/passport&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalAuthGuard</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthGuard</span>(<span style="color:#e6db74">&#39;local&#39;</span>) {}
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> LocalAuthGuard <span style="color:#ff79c6">extends</span> AuthGuard(<span style="color:#f1fa8c">&#39;local&#39;</span>) {}
 </span></span></code></pre></div><ol start="11">
 <li>Add <code>@Post</code> route to <code>auth.controller.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Controller</span>, <span style="color:#a6e22e">Post</span>, <span style="color:#a6e22e">UseGuards</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">LocalAuthGuard</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;./guards/local-auth.guard&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { Controller, Post, UseGuards } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { LocalAuthGuard } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;./guards/local-auth.guard&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Controller</span>(<span style="color:#e6db74">&#39;auth&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">AuthController</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@Post</span>(<span style="color:#e6db74">&#39;login&#39;</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">@UseGuards</span>(<span style="color:#a6e22e">LocalAuthGuard</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">login() {</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// This is where we&#39;ll create a JWT token and return it to the client. It will then use JWT to authenticate itself in future requests.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Controller</span>(<span style="color:#f1fa8c">&#39;auth&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> AuthController {
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">@Post</span>(<span style="color:#f1fa8c">&#39;login&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">@UseGuards</span>(LocalAuthGuard)
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">async</span> login() {
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// This is where we&#39;ll create a JWT token and return it to the client. It will then use JWT to authenticate itself in future requests.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>NOTE: Its important that the JWT is not accessible via client-side JS so we&rsquo;re going to have it saved onto a HTTP only cookie that accompanies every request.</p>
 <h2 id="creating-the-login-route-and-jwt">Creating the login route and JWT</h2>
 <ol>
 <li>First we&rsquo;ll abstract the ability to extract the &ldquo;user&rdquo; information from the the request object. Create <code>auth/current-user.decorator.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">createParamDecorator</span>, <span style="color:#a6e22e">ExecutionContext</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">User</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;../users/dto/create-user.request&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { createParamDecorator, ExecutionContext } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { User } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;../users/dto/create-user.request&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">getCurrentUserByContext</span> <span style="color:#f92672">=</span> (<span style="color:#a6e22e">context</span>: <span style="color:#66d9ef">ExecutionContext</span>)<span style="color:#f92672">:</span> <span style="color:#a6e22e">User</span> <span style="color:#f92672">=&gt;</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">switchToHttp</span>().<span style="color:#a6e22e">getRequest</span>().<span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">const</span> getCurrentUserByContext <span style="color:#ff79c6">=</span> (context: <span style="color:#8be9fd">ExecutionContext</span>)<span style="color:#ff79c6">:</span> User <span style="color:#ff79c6">=&gt;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">// eslint-disable-next-line @typescript-eslint/no-unsafe-return, @typescript-eslint/no-unsafe-member-access
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  context.switchToHttp().getRequest().user;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">CurrentUser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">createParamDecorator</span>&lt;<span style="color:#f92672">User</span>&gt;(
-</span></span><span style="display:flex;"><span>  (<span style="color:#a6e22e">_data</span>: <span style="color:#66d9ef">unknown</span>, <span style="color:#a6e22e">context</span>: <span style="color:#66d9ef">ExecutionContext</span>) <span style="color:#f92672">=&gt;</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">getCurrentUserByContext</span>(<span style="color:#a6e22e">context</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">const</span> CurrentUser <span style="color:#ff79c6">=</span> createParamDecorator&lt;<span style="color:#ff79c6">User</span>&gt;(
+</span></span><span style="display:flex;"><span>  (_data: <span style="color:#8be9fd">unknown</span>, context: <span style="color:#8be9fd">ExecutionContext</span>) <span style="color:#ff79c6">=&gt;</span>
+</span></span><span style="display:flex;"><span>    getCurrentUserByContext(context)
 </span></span><span style="display:flex;"><span>);
 </span></span></code></pre></div><ol start="3">
 <li>Add new env variable for <code>JWT_ACCESS_TOKEN_SECRET</code>. Create a secure value <a href="https://randomkeygen.com/" target="_blank">here</a>. Use the &ldquo;CodeIgniter Encryption Keys&rdquo; option.</li>
@@ -704,33 +704,33 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <li>Inject <code>ConfigService</code> and <code>JwtService</code> into AuthService class.</li>
 <li>Create interface for TokenPayload:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">interface</span> <span style="color:#a6e22e">TokenPayload</span> {
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">userId</span>: <span style="color:#66d9ef">string</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">interface</span> TokenPayload {
+</span></span><span style="display:flex;"><span>  userId: <span style="color:#8be9fd">string</span>;
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="8">
 <li>Add login() method to AuthService:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,  <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">expiresTime</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">new</span>  Date();
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">setMilliseconds</span>(
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">+</span>
-</span></span><span style="display:flex;"><span>			parseInt(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>),
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  login(user:  <span style="color:#8be9fd">User</span>,  response:  <span style="color:#8be9fd">Response</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  expiresTime  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">new</span>  <span style="color:#8be9fd;font-style:italic">Date</span>();
+</span></span><span style="display:flex;"><span>	expiresTime.setMilliseconds(
+</span></span><span style="display:flex;"><span>		expiresTime.getTime() <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#ff79c6">this</span>.configService.getOrThrow&lt;<span style="color:#ff79c6">string</span>&gt;(<span style="color:#f1fa8c">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>),
 </span></span><span style="display:flex;"><span>		),
 </span></span><span style="display:flex;"><span>	);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">tokenPayload</span>:  <span style="color:#66d9ef">TokenPayload</span>  <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">userId</span>:  <span style="color:#66d9ef">user.id.toString</span>(),
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  tokenPayload:  <span style="color:#8be9fd">TokenPayload</span>  <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>		userId:  <span style="color:#8be9fd">user.id.toString</span>(),
 </span></span><span style="display:flex;"><span>	};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">accessToken</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jwtService</span>.<span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">tokenPayload</span>, {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secret</span>:  <span style="color:#66d9ef">this.configService.getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>),
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresIn</span><span style="color:#f92672">:</span>  <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">ms`</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  accessToken  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">this</span>.jwtService.sign(tokenPayload, {
+</span></span><span style="display:flex;"><span>		secret:  <span style="color:#8be9fd">this.configService.getOrThrow</span>&lt;<span style="color:#ff79c6">string</span>&gt;(<span style="color:#f1fa8c">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>),
+</span></span><span style="display:flex;"><span>		expiresIn<span style="color:#ff79c6">:</span>  <span style="color:#f1fa8c">`</span><span style="color:#f1fa8c">${</span><span style="color:#ff79c6">this</span>.configService.getOrThrow(<span style="color:#f1fa8c">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">ms`</span>,
 </span></span><span style="display:flex;"><span>	});
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">cookie</span>(<span style="color:#e6db74">&#39;Authentication&#39;</span>,  <span style="color:#a6e22e">accessToken</span>, {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpOnly</span>:  <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secure</span>:  <span style="color:#66d9ef">this.configService.get</span>(<span style="color:#e6db74">&#39;NODE_ENV&#39;</span>) <span style="color:#f92672">===</span>  <span style="color:#e6db74">&#39;production&#39;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expires</span>:  <span style="color:#66d9ef">expiresTime</span>,
+</span></span><span style="display:flex;"><span>	response.cookie(<span style="color:#f1fa8c">&#39;Authentication&#39;</span>,  accessToken, {
+</span></span><span style="display:flex;"><span>		httpOnly:  <span style="color:#8be9fd">true</span>,
+</span></span><span style="display:flex;"><span>		secure:  <span style="color:#8be9fd">this.configService.get</span>(<span style="color:#f1fa8c">&#39;NODE_ENV&#39;</span>) <span style="color:#ff79c6">===</span>  <span style="color:#f1fa8c">&#39;production&#39;</span>,
+</span></span><span style="display:flex;"><span>		expires:  <span style="color:#8be9fd">expiresTime</span>,
 </span></span><span style="display:flex;"><span>	});
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="8">
@@ -740,33 +740,33 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <ol>
 <li>Add &ldquo;cookie-parser&rdquo; as middleware in <code>main.ts</code>. This will parse the cookie for every request and append it to the &ldquo;request&rdquo; object:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> <span style="color:#f92672">*</span> <span style="color:#66d9ef">as</span> <span style="color:#a6e22e">cookieParser</span> <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;cookie-parser&#39;</span>; <span style="color:#75715e">// The &#34;* as&#34; is important
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">bootstrap() {</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">NestFactory</span>.<span style="color:#a6e22e">create</span>(<span style="color:#a6e22e">AppModule</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">useGlobalPipes</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">ValidationPipe</span>());
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>(<span style="color:#a6e22e">cookieParser</span>()); <span style="color:#75715e">// Here&#39;s the new line
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">PORT</span> <span style="color:#f92672">??</span> <span style="color:#ae81ff">3000</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> <span style="color:#ff79c6">*</span> <span style="color:#ff79c6">as</span> cookieParser <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;cookie-parser&#39;</span>; <span style="color:#6272a4">// The &#34;* as&#34; is important
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span> <span style="color:#8be9fd;font-style:italic">function</span> bootstrap() {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> app <span style="color:#ff79c6">=</span> <span style="color:#ff79c6">await</span> NestFactory.create(AppModule);
+</span></span><span style="display:flex;"><span>  app.useGlobalPipes(<span style="color:#ff79c6">new</span> ValidationPipe());
+</span></span><span style="display:flex;"><span>  app.use(cookieParser()); <span style="color:#6272a4">// Here&#39;s the new line
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">await</span> app.listen(process.env.PORT <span style="color:#ff79c6">??</span> <span style="color:#bd93f9">3000</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="2">
 <li>Create <code>auth/strategies/jwt.strategy.ts</code></li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtStrategy</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PassportStrategy</span>(<span style="color:#a6e22e">Strategy</span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">configService</span>: <span style="color:#66d9ef">ConfigService</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">usersService</span>: <span style="color:#66d9ef">UsersService</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> JwtStrategy <span style="color:#ff79c6">extends</span> PassportStrategy(Strategy) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">constructor</span>(
+</span></span><span style="display:flex;"><span>    configService: <span style="color:#8be9fd">ConfigService</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> usersService: <span style="color:#8be9fd">UsersService</span>
 </span></span><span style="display:flex;"><span>  ) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>({
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">jwtFromRequest</span>: <span style="color:#66d9ef">ExtractJwt.fromExtractors</span>([
-</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">request</span>: <span style="color:#66d9ef">Request</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">cookies</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">Authentication</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">super</span>({
+</span></span><span style="display:flex;"><span>      jwtFromRequest: <span style="color:#8be9fd">ExtractJwt.fromExtractors</span>([
+</span></span><span style="display:flex;"><span>        (request: <span style="color:#8be9fd">Request</span>) <span style="color:#ff79c6">=&gt;</span> request.cookies<span style="color:#ff79c6">?</span>.Authentication,
 </span></span><span style="display:flex;"><span>      ]),
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">secretOrKey</span>: <span style="color:#66d9ef">configService.getOrThrow</span>(<span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>),
+</span></span><span style="display:flex;"><span>      secretOrKey: <span style="color:#8be9fd">configService.getOrThrow</span>(<span style="color:#f1fa8c">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>),
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">TokenPayload</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUser</span>({ <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">null</span>, <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">payload.userId</span> });
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">async</span> validate(payload: <span style="color:#8be9fd">TokenPayload</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.usersService.getUser({ email: <span style="color:#8be9fd">null</span>, id: <span style="color:#8be9fd">payload.userId</span> });
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="3">
@@ -774,161 +774,161 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <li>Add <code>JwtStrategy</code> to &ldquo;providers&rdquo; array in side of <code>auth.module.ts</code></li>
 <li>Create <code>auth/guards/jwt-auth.guard.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">Injectable</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/common&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">import</span> { <span style="color:#a6e22e">AuthGuard</span> } <span style="color:#66d9ef">from</span> <span style="color:#e6db74">&#39;@nestjs/passport&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { Injectable } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/common&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">import</span> { AuthGuard } <span style="color:#ff79c6">from</span> <span style="color:#f1fa8c">&#39;@nestjs/passport&#39;</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtAuthGuard</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthGuard</span>(<span style="color:#e6db74">&#39;jwt&#39;</span>) {}
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> JwtAuthGuard <span style="color:#ff79c6">extends</span> AuthGuard(<span style="color:#f1fa8c">&#39;jwt&#39;</span>) {}
 </span></span></code></pre></div><ol start="6">
 <li>The following is an example of an end point that utilizes the guard we just created as well as the <code>@CurrentUser()</code> decorator.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// users.service.ts - This method retrieves the menus associated with the currently logged in user:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUserMenus</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">query</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">findFirst</span>({
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">where</span>:  <span style="color:#66d9ef">eq</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>.<span style="color:#a6e22e">email</span>,  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">email</span>),
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">with</span><span style="color:#f92672">:</span> {
-</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">menus</span>:  <span style="color:#66d9ef">true</span>,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#6272a4">// users.service.ts - This method retrieves the menus associated with the currently logged in user:
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">async</span>  getUserMenus(user:  <span style="color:#8be9fd">User</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span>  <span style="color:#ff79c6">this</span>.database.query.users.findFirst({
+</span></span><span style="display:flex;"><span>		where:  <span style="color:#8be9fd">eq</span>(schema.users.email,  user.email),
+</span></span><span style="display:flex;"><span>		<span style="color:#8be9fd;font-style:italic">with</span><span style="color:#ff79c6">:</span> {
+</span></span><span style="display:flex;"><span>			menus:  <span style="color:#8be9fd">true</span>,
 </span></span><span style="display:flex;"><span>		},
 </span></span><span style="display:flex;"><span>	});
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// users.controller.ts - @CurrentUser() extracts the user object from the request object
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">// the JwtAuthGuard validates the JWT attached to the request and either throws an error or allows the request to proceed.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Get</span>(<span style="color:#e6db74">&#39;menus&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@UseGuards</span>(<span style="color:#a6e22e">JwtAuthGuard</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUserMenus</span>(<span style="color:#66d9ef">@CurrentUser</span>() <span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUserMenus</span>(<span style="color:#a6e22e">user</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// users.controller.ts - @CurrentUser() extracts the user object from the request object
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">// the JwtAuthGuard validates the JWT attached to the request and either throws an error or allows the request to proceed.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">@Get</span>(<span style="color:#f1fa8c">&#39;menus&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@UseGuards</span>(JwtAuthGuard)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  getUserMenus(<span style="color:#8be9fd;font-style:italic">@CurrentUser</span>() user:  <span style="color:#8be9fd">User</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span>  <span style="color:#ff79c6">this</span>.usersService.getUserMenus(user);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="refresh-token-implementation">Refresh Token Implementation:</h2>
 <ol>
 <li>We need to return a refresh token from our <code>auth/login</code> route. Since the process is the same for both the access token and refresh token, I elected to abstract the token creation into a private function inside of <code>auth.service.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">private</span>  <span style="color:#a6e22e">createToken</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,  <span style="color:#a6e22e">secretKey</span>:  <span style="color:#66d9ef">string</span>,  <span style="color:#a6e22e">expKey</span>:  <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">expiresTime</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">new</span>  Date();
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">setMilliseconds</span>(
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">+</span>
-</span></span><span style="display:flex;"><span>		parseInt(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#a6e22e">expKey</span>)),
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">private</span>  createToken(user:  <span style="color:#8be9fd">User</span>,  secretKey:  <span style="color:#8be9fd">string</span>,  expKey:  <span style="color:#8be9fd">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  expiresTime  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">new</span>  <span style="color:#8be9fd;font-style:italic">Date</span>();
+</span></span><span style="display:flex;"><span>	expiresTime.setMilliseconds(
+</span></span><span style="display:flex;"><span>		expiresTime.getTime() <span style="color:#ff79c6">+</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#ff79c6">this</span>.configService.getOrThrow&lt;<span style="color:#ff79c6">string</span>&gt;(expKey)),
 </span></span><span style="display:flex;"><span>	);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">tokenPayload</span>:  <span style="color:#66d9ef">TokenPayload</span>  <span style="color:#f92672">=</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">userId</span>:  <span style="color:#66d9ef">user.id.toString</span>(),
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  tokenPayload:  <span style="color:#8be9fd">TokenPayload</span>  <span style="color:#ff79c6">=</span> {
+</span></span><span style="display:flex;"><span>		userId:  <span style="color:#8be9fd">user.id.toString</span>(),
 </span></span><span style="display:flex;"><span>	};
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">token</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jwtService</span>.<span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">tokenPayload</span>, {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secret</span>:  <span style="color:#66d9ef">this.configService.getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#a6e22e">secretKey</span>),
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresIn</span><span style="color:#f92672">:</span>  <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>(<span style="color:#a6e22e">expKey</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">ms`</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  token  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">this</span>.jwtService.sign(tokenPayload, {
+</span></span><span style="display:flex;"><span>		secret:  <span style="color:#8be9fd">this.configService.getOrThrow</span>&lt;<span style="color:#ff79c6">string</span>&gt;(secretKey),
+</span></span><span style="display:flex;"><span>		expiresIn<span style="color:#ff79c6">:</span>  <span style="color:#f1fa8c">`</span><span style="color:#f1fa8c">${</span><span style="color:#ff79c6">this</span>.configService.getOrThrow(expKey)<span style="color:#f1fa8c">}</span><span style="color:#f1fa8c">ms`</span>,
 </span></span><span style="display:flex;"><span>	});
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">expiresTime</span>,  <span style="color:#a6e22e">token</span> };
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">return</span> { expiresTime,  token };
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="2">
 <li>I also extracted some of the constants into a new <code>constants.ts</code> file:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">accessTokenSecret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">accessTokenExpiration</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refreshTokenSecret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_REFRESH_TOKEN_SECRET&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refreshTokenExpiration</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_REFRESH_TOKEN_EXPIRATION_MS&#39;</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">const</span> accessTokenSecret <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">const</span> accessTokenExpiration <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">const</span> refreshTokenSecret <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;JWT_REFRESH_TOKEN_SECRET&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">const</span> refreshTokenExpiration <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;JWT_REFRESH_TOKEN_EXPIRATION_MS&#39;</span>;
 </span></span></code></pre></div><ol start="3">
 <li>Now we refactor the access token creation and also create a refresh token. We&rsquo;re not done yet with the login route because we need to put some constraints on the refresh token.</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,  <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  login(user:  <span style="color:#8be9fd">User</span>,  response:  <span style="color:#8be9fd">Response</span>) {
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">expiresTime</span>: <span style="color:#66d9ef">expiresTimeAccess</span>,  <span style="color:#a6e22e">token</span>: <span style="color:#66d9ef">accessToken</span> } <span style="color:#f92672">=</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createToken</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">accessTokenSecret</span>,  <span style="color:#a6e22e">accessTokenExpiration</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span> { expiresTime: <span style="color:#8be9fd">expiresTimeAccess</span>,  token: <span style="color:#8be9fd">accessToken</span> } <span style="color:#ff79c6">=</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">this</span>.createToken(user,  accessTokenSecret,  accessTokenExpiration);
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">expiresTime</span>: <span style="color:#66d9ef">expiresTimeRefresh</span>,  <span style="color:#a6e22e">token</span>: <span style="color:#66d9ef">refreshToken</span> } <span style="color:#f92672">=</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createToken</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">refreshTokenSecret</span>,  <span style="color:#a6e22e">refreshTokenExpiration</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span> { expiresTime: <span style="color:#8be9fd">expiresTimeRefresh</span>,  token: <span style="color:#8be9fd">refreshToken</span> } <span style="color:#ff79c6">=</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">this</span>.createToken(user,  refreshTokenSecret,  refreshTokenExpiration);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// now update the user&#39;s refresh token. You&#39;ll need a method in users service to do this.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">updateUserRefreshToken</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">refreshToken</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// now update the user&#39;s refresh token. You&#39;ll need a method in users service to do this.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>	<span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.usersService.updateUserRefreshToken(user,  refreshToken);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">cookie</span>(<span style="color:#e6db74">&#39;Authentication&#39;</span>,  <span style="color:#a6e22e">accessToken</span>, {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpOnly</span>:  <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secure</span>:  <span style="color:#66d9ef">this.configService.get</span>(<span style="color:#e6db74">&#39;NODE_ENV&#39;</span>) <span style="color:#f92672">===</span>  <span style="color:#e6db74">&#39;production&#39;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expires</span>:  <span style="color:#66d9ef">expiresTimeAccess</span>,
+</span></span><span style="display:flex;"><span>	response.cookie(<span style="color:#f1fa8c">&#39;Authentication&#39;</span>,  accessToken, {
+</span></span><span style="display:flex;"><span>		httpOnly:  <span style="color:#8be9fd">true</span>,
+</span></span><span style="display:flex;"><span>		secure:  <span style="color:#8be9fd">this.configService.get</span>(<span style="color:#f1fa8c">&#39;NODE_ENV&#39;</span>) <span style="color:#ff79c6">===</span>  <span style="color:#f1fa8c">&#39;production&#39;</span>,
+</span></span><span style="display:flex;"><span>		expires:  <span style="color:#8be9fd">expiresTimeAccess</span>,
 </span></span><span style="display:flex;"><span>	});
-</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add refresh token as cookie:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">cookie</span>(<span style="color:#e6db74">&#39;Refresh&#39;</span>,  <span style="color:#a6e22e">refreshToken</span>, {
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpOnly</span>:  <span style="color:#66d9ef">true</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secure</span>:  <span style="color:#66d9ef">this.configService.get</span>(<span style="color:#e6db74">&#39;NODE_ENV&#39;</span>) <span style="color:#f92672">===</span>  <span style="color:#e6db74">&#39;production&#39;</span>,
-</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expires</span>:  <span style="color:#66d9ef">expiresTimeRefresh</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#6272a4">// add refresh token as cookie:
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>	response.cookie(<span style="color:#f1fa8c">&#39;Refresh&#39;</span>,  refreshToken, {
+</span></span><span style="display:flex;"><span>		httpOnly:  <span style="color:#8be9fd">true</span>,
+</span></span><span style="display:flex;"><span>		secure:  <span style="color:#8be9fd">this.configService.get</span>(<span style="color:#f1fa8c">&#39;NODE_ENV&#39;</span>) <span style="color:#ff79c6">===</span>  <span style="color:#f1fa8c">&#39;production&#39;</span>,
+</span></span><span style="display:flex;"><span>		expires:  <span style="color:#8be9fd">expiresTimeRefresh</span>,
 </span></span><span style="display:flex;"><span>	});
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="4">
 <li>Create new method in <code>auth.service.ts</code> that verifies refresh token:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">verifyUserRefreshToken</span>(<span style="color:#a6e22e">refreshToken</span>:  <span style="color:#66d9ef">string</span>,  <span style="color:#a6e22e">userId</span>:  <span style="color:#66d9ef">string</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">user</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUser</span>({ <span style="color:#a6e22e">email</span>:  <span style="color:#66d9ef">null</span>,  <span style="color:#a6e22e">id</span>:  <span style="color:#66d9ef">userId</span> });
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">authenticated</span>  <span style="color:#f92672">=</span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">refreshToken</span> <span style="color:#f92672">?</span>
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">await</span>  <span style="color:#a6e22e">compare</span>(<span style="color:#a6e22e">refreshToken</span>,  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">refreshToken</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  verifyUserRefreshToken(refreshToken:  <span style="color:#8be9fd">string</span>,  userId:  <span style="color:#8be9fd">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">try</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">const</span>  user  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.usersService.getUser({ email:  <span style="color:#8be9fd">null</span>,  id:  <span style="color:#8be9fd">userId</span> });
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">const</span>  authenticated  <span style="color:#ff79c6">=</span>  user.refreshToken <span style="color:#ff79c6">?</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#ff79c6">await</span>  compare(refreshToken,  user.refreshToken)<span style="color:#ff79c6">:</span> <span style="color:#ff79c6">false</span>;
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">authenticated</span>) {
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span>  <span style="color:#66d9ef">new</span>  <span style="color:#a6e22e">UnauthorizedException</span>();
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">if</span> (<span style="color:#ff79c6">!</span>authenticated) {
+</span></span><span style="display:flex;"><span>			<span style="color:#ff79c6">throw</span>  <span style="color:#ff79c6">new</span>  UnauthorizedException();
 </span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>  <span style="color:#a6e22e">user</span>;
-</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">catch</span> {
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">throw</span>  <span style="color:#66d9ef">new</span>  <span style="color:#a6e22e">UnauthorizedException</span>(<span style="color:#e6db74">&#39;Refresh token is not valid&#39;</span>);
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">return</span>  user;
+</span></span><span style="display:flex;"><span>	} <span style="color:#ff79c6">catch</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#ff79c6">throw</span>  <span style="color:#ff79c6">new</span>  UnauthorizedException(<span style="color:#f1fa8c">&#39;Refresh token is not valid&#39;</span>);
 </span></span><span style="display:flex;"><span>	}
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="5">
 <li>Create a new strategy that accepts a refresh token and delivers a new access token. Create file <code>auth/strategies/jwt-refresh.strategy.ts</code>:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtRefreshStrategy</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PassportStrategy</span>(
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Strategy</span>,
-</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;jwt-refresh&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> JwtRefreshStrategy <span style="color:#ff79c6">extends</span> PassportStrategy(
+</span></span><span style="display:flex;"><span>  Strategy,
+</span></span><span style="display:flex;"><span>  <span style="color:#f1fa8c">&#39;jwt-refresh&#39;</span>
 </span></span><span style="display:flex;"><span>) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">configService</span>: <span style="color:#66d9ef">ConfigService</span>,
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">authService</span>: <span style="color:#66d9ef">AuthService</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">constructor</span>(
+</span></span><span style="display:flex;"><span>    configService: <span style="color:#8be9fd">ConfigService</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">private</span> <span style="color:#ff79c6">readonly</span> authService: <span style="color:#8be9fd">AuthService</span>
 </span></span><span style="display:flex;"><span>  ) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>({
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">jwtFromRequest</span>: <span style="color:#66d9ef">ExtractJwt.fromExtractors</span>([
-</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">request</span>: <span style="color:#66d9ef">Request</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">cookies</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">Refresh</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">super</span>({
+</span></span><span style="display:flex;"><span>      jwtFromRequest: <span style="color:#8be9fd">ExtractJwt.fromExtractors</span>([
+</span></span><span style="display:flex;"><span>        (request: <span style="color:#8be9fd">Request</span>) <span style="color:#ff79c6">=&gt;</span> request.cookies<span style="color:#ff79c6">?</span>.Refresh,
 </span></span><span style="display:flex;"><span>      ]),
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">secretOrKey</span>: <span style="color:#66d9ef">configService.getOrThrow</span>(<span style="color:#a6e22e">refreshTokenSecret</span>),
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">passReqToCallback</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      secretOrKey: <span style="color:#8be9fd">configService.getOrThrow</span>(refreshTokenSecret),
+</span></span><span style="display:flex;"><span>      passReqToCallback: <span style="color:#8be9fd">true</span>,
 </span></span><span style="display:flex;"><span>    });
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">request</span>: <span style="color:#66d9ef">Request</span>, <span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">TokenPayload</span>) {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">verifyUserRefreshToken</span>(
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">cookies</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">Refresh</span>,
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">userId</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">async</span> validate(request: <span style="color:#8be9fd">Request</span>, payload: <span style="color:#8be9fd">TokenPayload</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> <span style="color:#ff79c6">this</span>.authService.verifyUserRefreshToken(
+</span></span><span style="display:flex;"><span>      request.cookies<span style="color:#ff79c6">?</span>.Refresh,
+</span></span><span style="display:flex;"><span>      payload.userId
 </span></span><span style="display:flex;"><span>    );
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="6">
 <li>Create corresponding auth guard:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtRefreshAuthGuard</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthGuard</span>(<span style="color:#e6db74">&#39;jwt-refresh&#39;</span>) {}
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">export</span> <span style="color:#ff79c6">class</span> JwtRefreshAuthGuard <span style="color:#ff79c6">extends</span> AuthGuard(<span style="color:#f1fa8c">&#39;jwt-refresh&#39;</span>) {}
 </span></span></code></pre></div><ol start="7">
 <li>Add <code>JwtRefreshStrategy</code> to providers array in <code>auth.module.ts</code></li>
 <li>Add a refresh route to <code>auth.controller.ts</code> that&rsquo;s guarded by our new Refresh strategy:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Post</span>(<span style="color:#e6db74">&#39;refresh&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@UseGuards</span>(<span style="color:#a6e22e">JwtRefreshAuthGuard</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">refresh</span>(
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">@CurrentUser</span>() <span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">@Res</span>({ <span style="color:#a6e22e">passthrough</span>:  <span style="color:#66d9ef">true</span> }) <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>,
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@Post</span>(<span style="color:#f1fa8c">&#39;refresh&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">@UseGuards</span>(JwtRefreshAuthGuard)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  refresh(
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">@CurrentUser</span>() user:  <span style="color:#8be9fd">User</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#8be9fd;font-style:italic">@Res</span>({ passthrough:  <span style="color:#8be9fd">true</span> }) response:  <span style="color:#8be9fd">Response</span>,
 </span></span><span style="display:flex;"><span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.authService.login(user,  response);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="9">
 <li>Finally we just need a logout route and service:</li>
 </ol>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// auth.service.ts:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">logout</span>(<span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">clearCookie</span>(<span style="color:#e6db74">&#39;Authentication&#39;</span>);
-</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">clearCookie</span>(<span style="color:#e6db74">&#39;Refresh&#39;</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#6272a4">// auth.service.ts:
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">async</span>  logout(response:  <span style="color:#8be9fd">Response</span>) {
+</span></span><span style="display:flex;"><span>	response.clearCookie(<span style="color:#f1fa8c">&#39;Authentication&#39;</span>);
+</span></span><span style="display:flex;"><span>	response.clearCookie(<span style="color:#f1fa8c">&#39;Refresh&#39;</span>);
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">// auth.controller.ts:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Post</span>(<span style="color:#e6db74">&#39;logout&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">logout</span>(<span style="color:#66d9ef">@Res</span>({ <span style="color:#a6e22e">passthrough</span>:  <span style="color:#66d9ef">true</span> }) <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">logout</span>(<span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span><span style="color:#6272a4">// auth.controller.ts:
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">@Post</span>(<span style="color:#f1fa8c">&#39;logout&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  logout(<span style="color:#8be9fd;font-style:italic">@Res</span>({ passthrough:  <span style="color:#8be9fd">true</span> }) response:  <span style="color:#8be9fd">Response</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.authService.logout(response);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><h2 id="sources">Sources</h2>
 <ul>
