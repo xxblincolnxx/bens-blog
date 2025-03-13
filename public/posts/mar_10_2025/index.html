@@ -446,7 +446,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>6 mins read</span>
+        <span>8 mins read</span>
       </span>
     </div>
 
@@ -484,19 +484,25 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </div>
 
   <p>Here I&rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.</p>
-<h3 id="installation">Installation</h3>
+<h2 id="dependencies">Dependencies</h2>
 <p><strong>Before you start</strong>: Need an existing NestJS project with Drizzle set up with database module.</p>
-<p>Validation Dependencies:</p>
+<p>Install these dependencies:</p>
+<p>Validation:</p>
 <ul>
 <li><code>npm i class-validator class-transformer</code></li>
 </ul>
-<p>Passport Dependencies:</p>
+<p>Passport.js:</p>
 <ul>
 <li><code>npm i @nestjs/passport passport passport-local passport-jwt</code></li>
 <li><code>npm i @nestjs/jwt</code></li>
 <li><code>npm i @types/passport-jwt @types/passport-local</code></li>
 </ul>
-<h3 id="users-module">Users Module</h3>
+<p>Cookie Parsing:</p>
+<ul>
+<li><code>npm i cookie-parser</code></li>
+<li><code>npm i -D @types/cookie-parser</code></li>
+</ul>
+<h2 id="users-module">Users Module</h2>
 <p>We first need to set up a table in the database where the user information will be persisted.</p>
 <ol>
 <li>Run the following to generate required files for User model:
@@ -512,6 +518,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">id</span>: <span style="color:#66d9ef">serial</span>(<span style="color:#e6db74">&#39;id&#39;</span>).<span style="color:#a6e22e">primaryKey</span>(),
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">email</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;email&#39;</span>).<span style="color:#66d9ef">unique</span>().<span style="color:#a6e22e">notNull</span>(),
 </span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">password</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;password&#39;</span>).<span style="color:#a6e22e">notNull</span>(),
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">refreshToken</span>: <span style="color:#66d9ef">text</span>(<span style="color:#e6db74">&#39;refresh-token&#39;</span>),
 </span></span><span style="display:flex;"><span>});
 </span></span></code></pre></div><ol start="3">
 <li>Configure <code>users.module.ts</code>:</li>
@@ -570,7 +577,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">hashedPassword</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#a6e22e">hash</span>(<span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">password</span> <span style="color:#f92672">||</span>  <span style="color:#e6db74">&#39;&#39;</span>,  <span style="color:#ae81ff">10</span>);
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">database</span>.<span style="color:#a6e22e">insert</span>(<span style="color:#a6e22e">schema</span>.<span style="color:#a6e22e">users</span>).<span style="color:#a6e22e">values</span>({ ...<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">password</span>:  <span style="color:#66d9ef">hashedPassword</span> });
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div><h3 id="setting-up-passportjs">Setting up Passport.js</h3>
+</span></span></code></pre></div><h2 id="setting-up-passportjs">Setting up Passport.js</h2>
 <ol>
 <li>Create Auth Module:</li>
 </ol>
@@ -676,7 +683,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  }
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>NOTE: Its important that the JWT is not accessible via client-side JS so we&rsquo;re going to have it saved onto a HTTP only cookie that accompanies every request.</p>
-<h3 id="creating-the-login-route-and-jwt">Creating the login route and JWT</h3>
+<h2 id="creating-the-login-route-and-jwt">Creating the login route and JWT</h2>
 <ol>
 <li>First we&rsquo;ll abstract the ability to extract the &ldquo;user&rdquo; information from the the request object. Create <code>auth/current-user.decorator.ts</code>:</li>
 </ol>
@@ -729,7 +736,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span></code></pre></div><ol start="8">
 <li>Add <code>UsersService</code> to exports array for <code>users.module.ts</code> and providers array for <code>app.module.ts</code></li>
 </ol>
-<h3 id="using-jwt-to-guard-endpoints">Using JWT to guard endpoints</h3>
+<h2 id="using-jwt-to-guard-endpoints">Using JWT to guard endpoints</h2>
 <ol>
 <li>Add &ldquo;cookie-parser&rdquo; as middleware in <code>main.ts</code>. This will parse the cookie for every request and append it to the &ldquo;request&rdquo; object:</li>
 </ol>
@@ -792,7 +799,144 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">getUserMenus</span>(<span style="color:#66d9ef">@CurrentUser</span>() <span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>) {
 </span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUserMenus</span>(<span style="color:#a6e22e">user</span>);
 </span></span><span style="display:flex;"><span>}
-</span></span></code></pre></div>
+</span></span></code></pre></div><h2 id="refresh-token-implementation">Refresh Token Implementation:</h2>
+<ol>
+<li>We need to return a refresh token from our <code>auth/login</code> route. Since the process is the same for both the access token and refresh token, I elected to abstract the token creation into a private function inside of <code>auth.service.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">private</span>  <span style="color:#a6e22e">createToken</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,  <span style="color:#a6e22e">secretKey</span>:  <span style="color:#66d9ef">string</span>,  <span style="color:#a6e22e">expKey</span>:  <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">expiresTime</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">new</span>  Date();
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">setMilliseconds</span>(
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresTime</span>.<span style="color:#a6e22e">getTime</span>() <span style="color:#f92672">+</span>
+</span></span><span style="display:flex;"><span>		parseInt(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#a6e22e">expKey</span>)),
+</span></span><span style="display:flex;"><span>	);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">tokenPayload</span>:  <span style="color:#66d9ef">TokenPayload</span>  <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">userId</span>:  <span style="color:#66d9ef">user.id.toString</span>(),
+</span></span><span style="display:flex;"><span>	};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">token</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jwtService</span>.<span style="color:#a6e22e">sign</span>(<span style="color:#a6e22e">tokenPayload</span>, {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secret</span>:  <span style="color:#66d9ef">this.configService.getOrThrow</span>&lt;<span style="color:#f92672">string</span>&gt;(<span style="color:#a6e22e">secretKey</span>),
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expiresIn</span><span style="color:#f92672">:</span>  <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">configService</span>.<span style="color:#a6e22e">getOrThrow</span>(<span style="color:#a6e22e">expKey</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">ms`</span>,
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> { <span style="color:#a6e22e">expiresTime</span>,  <span style="color:#a6e22e">token</span> };
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="2">
+<li>I also extracted some of the constants into a new <code>constants.ts</code> file:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">accessTokenSecret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_SECRET&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">accessTokenExpiration</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_ACCESS_TOKEN_EXPIRATION_MS&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refreshTokenSecret</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_REFRESH_TOKEN_SECRET&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refreshTokenExpiration</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;JWT_REFRESH_TOKEN_EXPIRATION_MS&#39;</span>;
+</span></span></code></pre></div><ol start="3">
+<li>Now we refactor the access token creation and also create a refresh token. We&rsquo;re not done yet with the login route because we need to put some constraints on the refresh token.</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,  <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">expiresTime</span>: <span style="color:#66d9ef">expiresTimeAccess</span>,  <span style="color:#a6e22e">token</span>: <span style="color:#66d9ef">accessToken</span> } <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createToken</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">accessTokenSecret</span>,  <span style="color:#a6e22e">accessTokenExpiration</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> { <span style="color:#a6e22e">expiresTime</span>: <span style="color:#66d9ef">expiresTimeRefresh</span>,  <span style="color:#a6e22e">token</span>: <span style="color:#66d9ef">refreshToken</span> } <span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">createToken</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">refreshTokenSecret</span>,  <span style="color:#a6e22e">refreshTokenExpiration</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// now update the user&#39;s refresh token. You&#39;ll need a method in users service to do this.
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">updateUserRefreshToken</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">refreshToken</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">cookie</span>(<span style="color:#e6db74">&#39;Authentication&#39;</span>,  <span style="color:#a6e22e">accessToken</span>, {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpOnly</span>:  <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secure</span>:  <span style="color:#66d9ef">this.configService.get</span>(<span style="color:#e6db74">&#39;NODE_ENV&#39;</span>) <span style="color:#f92672">===</span>  <span style="color:#e6db74">&#39;production&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expires</span>:  <span style="color:#66d9ef">expiresTimeAccess</span>,
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e">// add refresh token as cookie:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">cookie</span>(<span style="color:#e6db74">&#39;Refresh&#39;</span>,  <span style="color:#a6e22e">refreshToken</span>, {
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">httpOnly</span>:  <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">secure</span>:  <span style="color:#66d9ef">this.configService.get</span>(<span style="color:#e6db74">&#39;NODE_ENV&#39;</span>) <span style="color:#f92672">===</span>  <span style="color:#e6db74">&#39;production&#39;</span>,
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">expires</span>:  <span style="color:#66d9ef">expiresTimeRefresh</span>,
+</span></span><span style="display:flex;"><span>	});
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="4">
+<li>Create new method in <code>auth.service.ts</code> that verifies refresh token:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">verifyUserRefreshToken</span>(<span style="color:#a6e22e">refreshToken</span>:  <span style="color:#66d9ef">string</span>,  <span style="color:#a6e22e">userId</span>:  <span style="color:#66d9ef">string</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">user</span>  <span style="color:#f92672">=</span>  <span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">usersService</span>.<span style="color:#a6e22e">getUser</span>({ <span style="color:#a6e22e">email</span>:  <span style="color:#66d9ef">null</span>,  <span style="color:#a6e22e">id</span>:  <span style="color:#66d9ef">userId</span> });
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">const</span>  <span style="color:#a6e22e">authenticated</span>  <span style="color:#f92672">=</span>  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">refreshToken</span> <span style="color:#f92672">?</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">await</span>  <span style="color:#a6e22e">compare</span>(<span style="color:#a6e22e">refreshToken</span>,  <span style="color:#a6e22e">user</span>.<span style="color:#a6e22e">refreshToken</span>)<span style="color:#f92672">:</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">authenticated</span>) {
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">throw</span>  <span style="color:#66d9ef">new</span>  <span style="color:#a6e22e">UnauthorizedException</span>();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span>  <span style="color:#a6e22e">user</span>;
+</span></span><span style="display:flex;"><span>	} <span style="color:#66d9ef">catch</span> {
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">throw</span>  <span style="color:#66d9ef">new</span>  <span style="color:#a6e22e">UnauthorizedException</span>(<span style="color:#e6db74">&#39;Refresh token is not valid&#39;</span>);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="5">
+<li>Create a new strategy that accepts a refresh token and delivers a new access token. Create file <code>auth/strategies/jwt-refresh.strategy.ts</code>:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtRefreshStrategy</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">PassportStrategy</span>(
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">Strategy</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#e6db74">&#39;jwt-refresh&#39;</span>
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">constructor</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">configService</span>: <span style="color:#66d9ef">ConfigService</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">readonly</span> <span style="color:#a6e22e">authService</span>: <span style="color:#66d9ef">AuthService</span>
+</span></span><span style="display:flex;"><span>  ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">super</span>({
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">jwtFromRequest</span>: <span style="color:#66d9ef">ExtractJwt.fromExtractors</span>([
+</span></span><span style="display:flex;"><span>        (<span style="color:#a6e22e">request</span>: <span style="color:#66d9ef">Request</span>) <span style="color:#f92672">=&gt;</span> <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">cookies</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">Refresh</span>,
+</span></span><span style="display:flex;"><span>      ]),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">secretOrKey</span>: <span style="color:#66d9ef">configService.getOrThrow</span>(<span style="color:#a6e22e">refreshTokenSecret</span>),
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">passReqToCallback</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">async</span> <span style="color:#a6e22e">validate</span>(<span style="color:#a6e22e">request</span>: <span style="color:#66d9ef">Request</span>, <span style="color:#a6e22e">payload</span>: <span style="color:#66d9ef">TokenPayload</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">verifyUserRefreshToken</span>(
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">request</span>.<span style="color:#a6e22e">cookies</span><span style="color:#f92672">?</span>.<span style="color:#a6e22e">refresh</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">payload</span>.<span style="color:#a6e22e">userId</span>
+</span></span><span style="display:flex;"><span>    );
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="6">
+<li>Create corresponding auth guard:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Injectable</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">export</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">JwtRefreshAuthGuard</span> <span style="color:#66d9ef">extends</span> <span style="color:#a6e22e">AuthGuard</span>(<span style="color:#e6db74">&#39;jwt-refresh&#39;</span>) {}
+</span></span></code></pre></div><ol start="7">
+<li>Add <code>JwtRefreshStrategy</code> to providers array in <code>auth.module.ts</code></li>
+<li>Add a refresh route to <code>auth.controller.ts</code> that&rsquo;s guarded by our new Refresh strategy:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#66d9ef">@Post</span>(<span style="color:#e6db74">&#39;refresh&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">@UseGuards</span>(<span style="color:#a6e22e">JwtRefreshAuthGuard</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">refresh</span>(
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">@CurrentUser</span>() <span style="color:#a6e22e">user</span>:  <span style="color:#66d9ef">User</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">@Res</span>({ <span style="color:#a6e22e">passthrough</span>:  <span style="color:#66d9ef">true</span> }) <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>,
+</span></span><span style="display:flex;"><span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">login</span>(<span style="color:#a6e22e">user</span>,  <span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ol start="9">
+<li>Finally we just need a logout route and service:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#75715e">// auth.service.ts:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">logout</span>(<span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">clearCookie</span>(<span style="color:#e6db74">&#39;Authentication&#39;</span>);
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">clearCookie</span>(<span style="color:#e6db74">&#39;Refresh&#39;</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">// auth.controller.ts:
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">@Post</span>(<span style="color:#e6db74">&#39;logout&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span>  <span style="color:#a6e22e">logout</span>(<span style="color:#66d9ef">@Res</span>({ <span style="color:#a6e22e">passthrough</span>:  <span style="color:#66d9ef">true</span> }) <span style="color:#a6e22e">response</span>:  <span style="color:#66d9ef">Response</span>) {
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">await</span>  <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">authService</span>.<span style="color:#a6e22e">logout</span>(<span style="color:#a6e22e">response</span>);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="sources">Sources</h2>
+<ul>
+<li><a href="https://docs.nestjs.com/recipes/passport" target="_blank">NestJS - Passport Recipe</a></li>
+<li><a href="https://youtu.be/S8Cjx5ua2JU?si=YAPZ5HOr6JTBTEMB" target="_blank">NestJS Authentication + Refresh Token With Passport.js</a></li>
+<li><a href="https://orm.drizzle.team/docs/overview" target="_blank">Drizzle Docs</a></li>
+</ul>
+
   
   <hr>
 <div class="footer">
@@ -835,15 +979,13 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
       <h4 id="contents"></h4>
       <nav id="TableOfContents">
   <ul>
-    <li>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-        <li><a href="#users-module">Users Module</a></li>
-        <li><a href="#setting-up-passportjs">Setting up Passport.js</a></li>
-        <li><a href="#creating-the-login-route-and-jwt">Creating the login route and JWT</a></li>
-        <li><a href="#using-jwt-to-guard-endpoints">Using JWT to guard endpoints</a></li>
-      </ul>
-    </li>
+    <li><a href="#dependencies">Dependencies</a></li>
+    <li><a href="#users-module">Users Module</a></li>
+    <li><a href="#setting-up-passportjs">Setting up Passport.js</a></li>
+    <li><a href="#creating-the-login-route-and-jwt">Creating the login route and JWT</a></li>
+    <li><a href="#using-jwt-to-guard-endpoints">Using JWT to guard endpoints</a></li>
+    <li><a href="#refresh-token-implementation">Refresh Token Implementation:</a></li>
+    <li><a href="#sources">Sources</a></li>
   </ul>
 </nav>
     </div>

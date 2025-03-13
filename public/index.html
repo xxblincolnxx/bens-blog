@@ -447,7 +447,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>6 mins read</span>
+        <span>8 mins read</span>
       </span>
     </div>
 
@@ -486,19 +486,25 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 
         
         <p>Here I&rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.</p>
-<h3 id="installation">Installation</h3>
+<h2 id="dependencies">Dependencies</h2>
 <p><strong>Before you start</strong>: Need an existing NestJS project with Drizzle set up with database module.</p>
-<p>Validation Dependencies:</p>
+<p>Install these dependencies:</p>
+<p>Validation:</p>
 <ul>
 <li><code>npm i class-validator class-transformer</code></li>
 </ul>
-<p>Passport Dependencies:</p>
+<p>Passport.js:</p>
 <ul>
 <li><code>npm i @nestjs/passport passport passport-local passport-jwt</code></li>
 <li><code>npm i @nestjs/jwt</code></li>
 <li><code>npm i @types/passport-jwt @types/passport-local</code></li>
 </ul>
-<h3 id="users-module">Users Module</h3>
+<p>Cookie Parsing:</p>
+<ul>
+<li><code>npm i cookie-parser</code></li>
+<li><code>npm i -D @types/cookie-parser</code></li>
+</ul>
+<h2 id="users-module">Users Module</h2>
 <p>We first need to set up a table in the database where the user information will be persisted.</p>
         
         <div class="read-more-link">
