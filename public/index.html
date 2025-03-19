@@ -447,7 +447,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>8 mins read</span>
+        <span>10 mins read</span>
       </span>
     </div>
 
@@ -485,27 +485,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </div>
 
         
-        <p>Here I&rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.</p>
-<h2 id="dependencies">Dependencies</h2>
-<p><strong>Before you start</strong>: Need an existing NestJS project with Drizzle set up with database module.</p>
-<p>Install these dependencies:</p>
-<p>Validation:</p>
-<ul>
-<li><code>npm i class-validator class-transformer</code></li>
-</ul>
-<p>Passport.js:</p>
-<ul>
-<li><code>npm i @nestjs/passport passport passport-local passport-jwt</code></li>
-<li><code>npm i @nestjs/jwt</code></li>
-<li><code>npm i @types/passport-jwt @types/passport-local</code></li>
-</ul>
-<p>Cookie Parsing:</p>
-<ul>
-<li><code>npm i cookie-parser</code></li>
-<li><code>npm i -D @types/cookie-parser</code></li>
-</ul>
-<h2 id="users-module">Users Module</h2>
-<p>We first need to set up a table in the database where the user information will be persisted.</p>
+        <h2 id="overview">Overview</h2>
+<p>This is a fairly large section, highlighting the process by which I&rsquo;ve created the starting point for the auth and user registration for the new iteration of my bootcamp final project. I wanted to do my best to follow current best practices and build out a solid starting point for user registration and authentication. A primary reference for this work was this excellent <a href="https://youtu.be/S8Cjx5ua2JU?si=YAPZ5HOr6JTBTEMB" target="_blank">video</a> by <a href="https://www.youtube.com/@mguay" target="_blank">Michael Guay</a>. I like how he organizes the NestJS project and his approach seems to follow pretty solid, modern best practices, though these things seem to change all the time. He utilizes MongoDB/mongoose and not Postgres/Drizzle so for my app I had to do a fair bit of customization; couldn&rsquo;t just use his code line by line. I&rsquo;ll outline what I did in this article.</p>
         
         <div class="read-more-link">
             <a href="/posts/mar_10_2025/">Read More…</a>

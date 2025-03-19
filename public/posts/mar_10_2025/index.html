@@ -446,7 +446,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
           
         
 
-        <span>8 mins read</span>
+        <span>10 mins read</span>
       </span>
     </div>
 
@@ -483,7 +483,19 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
   
 </div>
 
-  <p>Here I&rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.</p>
+  <h2 id="overview">Overview</h2>
+<p>This is a fairly large section, highlighting the process by which I&rsquo;ve created the starting point for the auth and user registration for the new iteration of my bootcamp final project. I wanted to do my best to follow current best practices and build out a solid starting point for user registration and authentication. A primary reference for this work was this excellent <a href="https://youtu.be/S8Cjx5ua2JU?si=YAPZ5HOr6JTBTEMB" target="_blank">video</a> by <a href="https://www.youtube.com/@mguay" target="_blank">Michael Guay</a>. I like how he organizes the NestJS project and his approach seems to follow pretty solid, modern best practices, though these things seem to change all the time. He utilizes MongoDB/mongoose and not Postgres/Drizzle so for my app I had to do a fair bit of customization; couldn&rsquo;t just use his code line by line. I&rsquo;ll outline what I did in this article.</p>
+<p>Here are some of the key concepts:</p>
+<ul>
+<li>Initially the user will login with email + password and be granted a short lived Access Token JWT</li>
+<li>At the same time as initial auth, the user will be granted a longer-lived Refresh Token JWT. This will make it so that people can stay logged in for a while until they log out or the RT expires. We can also invalidate the RT if we need to terminate a user&rsquo;s access.</li>
+<li>Both JWTs will be programmatically inaccessible on the client because they are sent as http-only cookies.</li>
+<li>The user table will live on our database and store hashed versions of both the password and refresh token.</li>
+<li>Logout clears Access Token and Refresh Token cookies, then clears the Refresh Token from the User table.</li>
+<li>The refresh token is only sent with requests to the <code>/auth/refresh</code> endpoint.</li>
+</ul>
+<p>This is by no means the end of the work on this topic. As I&rsquo;ve already alluded to, I&rsquo;m not 100% confident I&rsquo;ve got my bases covered, security wise. I will need to keep doing research to protect against attackks. That said, security will not be as important for this application as it would be for say, an online banking app. There will be limited information about the users that could be exposed aside from an email and password. Things could change in the future but for now I think this works.</p>
+<p>As for things missing from this approach&hellip; I&rsquo;d also eventually like to enable social auth, aka &ldquo;Login through Google&rdquo; etc. Then there also needs to be some kind of Role Based Access Control (RBAC) to guard certain endpoints. Those will be part of future iterations. This is about an MVP.</p>
 <h2 id="dependencies">Dependencies</h2>
 <p><strong>Before you start</strong>: Need an existing NestJS project with Drizzle set up with database module.</p>
 <p>Install these dependencies:</p>
@@ -804,11 +816,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <li>We need to return a refresh token from our <code>auth/login</code> route. Since the process is the same for both the access token and refresh token, I elected to abstract the token creation into a private function inside of <code>auth.service.ts</code>:</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#ff79c6">private</span>  createToken(user:  <span style="color:#8be9fd">User</span>,  secretKey:  <span style="color:#8be9fd">string</span>,  expKey:  <span style="color:#8be9fd">string</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  expiresTime  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">new</span>  <span style="color:#8be9fd;font-style:italic">Date</span>();
-</span></span><span style="display:flex;"><span>	expiresTime.setMilliseconds(
-</span></span><span style="display:flex;"><span>		expiresTime.getTime() <span style="color:#ff79c6">+</span>
-</span></span><span style="display:flex;"><span>		<span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#ff79c6">this</span>.configService.getOrThrow&lt;<span style="color:#ff79c6">string</span>&gt;(expKey)),
-</span></span><span style="display:flex;"><span>	);
+</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  expiresTime  <span style="color:#ff79c6">=</span>  <span style="color:#ff79c6">new</span> <span style="color:#8be9fd;font-style:italic">Date</span>(<span style="color:#8be9fd;font-style:italic">Date</span>.now() <span style="color:#ff79c6">+</span> <span style="color:#8be9fd;font-style:italic">parseInt</span>(<span style="color:#ff79c6">this</span>.configService.getOrThrow&lt;<span style="color:#ff79c6">string</span>&gt;(expiresKey))),;
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">const</span>  tokenPayload:  <span style="color:#8be9fd">TokenPayload</span>  <span style="color:#ff79c6">=</span> {
 </span></span><span style="display:flex;"><span>		userId:  <span style="color:#8be9fd">user.id.toString</span>(),
@@ -852,6 +860,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>		httpOnly:  <span style="color:#8be9fd">true</span>,
 </span></span><span style="display:flex;"><span>		secure:  <span style="color:#8be9fd">this.configService.get</span>(<span style="color:#f1fa8c">&#39;NODE_ENV&#39;</span>) <span style="color:#ff79c6">===</span>  <span style="color:#f1fa8c">&#39;production&#39;</span>,
 </span></span><span style="display:flex;"><span>		expires:  <span style="color:#8be9fd">expiresTimeRefresh</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// Need to specify path so that refresh token is only attached to calls to the refresh endpoint
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>    path<span style="color:#ff79c6">:</span> <span style="color:#f1fa8c">&#34;/auth/refresh&#34;</span>
 </span></span><span style="display:flex;"><span>	});
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="4">
@@ -985,6 +995,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
       <h4 id="contents"></h4>
       <nav id="TableOfContents">
   <ul>
+    <li><a href="#overview">Overview</a></li>
     <li><a href="#dependencies">Dependencies</a></li>
     <li><a href="#users-module">Users Module</a></li>
     <li><a href="#setting-up-passportjs">Setting up Passport.js</a></li>
