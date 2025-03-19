@@ -917,19 +917,24 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.authService.login(user,  response);
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><ol start="9">
-<li>Finally we just need a logout route and service:</li>
+<li>Finally we just need a logout route and corresponding service:</li>
 </ol>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ts" data-lang="ts"><span style="display:flex;"><span><span style="color:#6272a4">// auth.service.ts:
-</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">async</span>  logout(response:  <span style="color:#8be9fd">Response</span>) {
-</span></span><span style="display:flex;"><span>	response.clearCookie(<span style="color:#f1fa8c">&#39;Authentication&#39;</span>);
-</span></span><span style="display:flex;"><span>	response.clearCookie(<span style="color:#f1fa8c">&#39;Refresh&#39;</span>);
-</span></span><span style="display:flex;"><span>}
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#ff79c6">async</span> logout(user: <span style="color:#8be9fd">User</span>, response: <span style="color:#8be9fd">Response</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> <span style="color:#ff79c6">this</span>.usersService.updateUserRefreshToken(user, <span style="color:#ff79c6">null</span>);
+</span></span><span style="display:flex;"><span>    response.clearCookie(<span style="color:#f1fa8c">&#39;Authentication&#39;</span>);
+</span></span><span style="display:flex;"><span>    response.clearCookie(<span style="color:#f1fa8c">&#39;Refresh&#39;</span>);
+</span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#6272a4">// auth.controller.ts:
 </span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span><span style="color:#8be9fd;font-style:italic">@Post</span>(<span style="color:#f1fa8c">&#39;logout&#39;</span>)
-</span></span><span style="display:flex;"><span><span style="color:#ff79c6">async</span>  logout(<span style="color:#8be9fd;font-style:italic">@Res</span>({ passthrough:  <span style="color:#8be9fd">true</span> }) response:  <span style="color:#8be9fd">Response</span>) {
-</span></span><span style="display:flex;"><span>	<span style="color:#ff79c6">await</span>  <span style="color:#ff79c6">this</span>.authService.logout(response);
-</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>  <span style="color:#8be9fd;font-style:italic">@UseGuards</span>(JwtRefreshAuthGuard)
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">async</span> logout(
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">@CurrentUser</span>() user: <span style="color:#8be9fd">User</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#8be9fd;font-style:italic">@Res</span>({ passthrough: <span style="color:#8be9fd">true</span> }) response: <span style="color:#8be9fd">Response</span>,
+</span></span><span style="display:flex;"><span>  ) {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">await</span> <span style="color:#ff79c6">this</span>.authService.logout(user, response);
+</span></span><span style="display:flex;"><span>  }
 </span></span></code></pre></div><h2 id="sources">Sources</h2>
 <ul>
 <li><a href="https://docs.nestjs.com/recipes/passport" target="_blank">NestJS - Passport Recipe</a></li>
