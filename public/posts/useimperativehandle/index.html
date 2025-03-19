@@ -210,8 +210,20 @@
             
                 
                 
+                        
+                
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -247,7 +259,11 @@
                         </li>
                         
                             <li class="bullet">
-                                <a href="http://localhost:1313/posts/pickingbackend/">PickingBackEnd</a>
+                                <a href="http://localhost:1313/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+                            </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/pickingbackend/">New Project: Picking my Backend</a>
                             </li>
                         
                             <li class="bullet">
@@ -268,8 +284,20 @@
             
                 
                 
+                        
+                
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -300,8 +328,20 @@
             
                 
                 
+                        
+                
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -442,48 +482,48 @@ We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number o
 <p>Here&rsquo;s what happens when I click &ldquo;toggle&rdquo;:
 <img src="/img/useImperativeHandleDemo/app-selections-toggled.png" alt="Selections Toggled"></p>
 <p>Pretty simple behavior, right? You can get the job done with a couple of state variables, props, and handlers. It might look something like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">Parent</span>() {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">toggled</span>, <span style="color:#a6e22e">setToggled</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">thingsToRender</span>, <span style="color:#a6e22e">setThingsToRender</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([])
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> Parent() {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [toggled, setToggled] <span style="color:#ff79c6">=</span> useState(<span style="color:#ff79c6">false</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [thingsToRender, setThingsToRender] <span style="color:#ff79c6">=</span> useState([])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// pretend I filled in the rest...
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">// pretend I filled in the rest...
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> (
 </span></span><span style="display:flex;"><span>    &lt;&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">handleAddThing</span>}&gt;<span style="color:#a6e22e">Add</span> <span style="color:#a6e22e">Thing</span>&lt;/<span style="color:#f92672">button</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">button</span> <span style="color:#a6e22e">onClick</span><span style="color:#f92672">=</span>{() =&gt; <span style="color:#a6e22e">setToggled</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">toggled</span>)}&gt;<span style="color:#a6e22e">Toggle</span>&lt;/<span style="color:#f92672">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">button</span> <span style="color:#50fa7b">onClick</span><span style="color:#ff79c6">=</span>{handleAddThing}&gt;Add Thing&lt;/<span style="color:#ff79c6">button</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">button</span> <span style="color:#50fa7b">onClick</span><span style="color:#ff79c6">=</span>{() =&gt; setToggled(<span style="color:#ff79c6">!</span>toggled)}&gt;Toggle&lt;/<span style="color:#ff79c6">button</span>&gt;
 </span></span><span style="display:flex;"><span>      {
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">thingsToRender</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">thing</span>) =&gt; {
-</span></span><span style="display:flex;"><span>          &lt;<span style="color:#f92672">ColorChangingComponent</span> <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">thing</span>.<span style="color:#a6e22e">id</span>} <span style="color:#a6e22e">toggled</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">toggled</span>}/&gt;
+</span></span><span style="display:flex;"><span>        thingsToRender.map((thing) =&gt; {
+</span></span><span style="display:flex;"><span>          &lt;<span style="color:#ff79c6">ColorChangingComponent</span> <span style="color:#50fa7b">key</span><span style="color:#ff79c6">=</span>{thing.id} <span style="color:#50fa7b">toggled</span><span style="color:#ff79c6">=</span>{toggled}/&gt;
 </span></span><span style="display:flex;"><span>        })
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    &lt;/&gt;
 </span></span><span style="display:flex;"><span>  )
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ff79c6">const</span> defaultColor <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;gray&#39;</span>
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ColorChangingComponent</span>({<span style="color:#a6e22e">toggled</span>}) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">color</span>, <span style="color:#a6e22e">setColor</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>)
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">selection</span>, <span style="color:#a6e22e">setSelection</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>)
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> ColorChangingComponent({toggled}) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [color, setColor] <span style="color:#ff79c6">=</span> useState(defaultColor)
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [selection, setSelection] <span style="color:#ff79c6">=</span> useState(defaultColor)
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">toggled</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">selection</span>)
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColor</span>(<span style="color:#a6e22e">defaultColor</span>)
+</span></span><span style="display:flex;"><span>  useEffect(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span>(toggled) {
+</span></span><span style="display:flex;"><span>      setColor(selection)
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      setColor(defaultColor)
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">toggled</span>])
+</span></span><span style="display:flex;"><span>  }, [toggled])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
-</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">className</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">$</span>{<span style="color:#a6e22e">color</span>}}&gt;
-</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">select</span> <span style="color:#a6e22e">onChange</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">e</span>) =&gt; <span style="color:#a6e22e">setSelection</span>(<span style="color:#a6e22e">e</span>.<span style="color:#a6e22e">target</span>.<span style="color:#a6e22e">value</span>)}&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">defaultColor</span>}&gt;<span style="color:#a6e22e">None</span>&lt;/<span style="color:#f92672">option</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;green&#39;</span>&gt;<span style="color:#a6e22e">Green</span>&lt;/<span style="color:#f92672">option</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;red&#39;</span>&gt;<span style="color:#a6e22e">Red</span>&lt;/<span style="color:#f92672">option</span>&gt;
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">option</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;blue&#39;</span>&gt;<span style="color:#a6e22e">Blue</span>&lt;/<span style="color:#f92672">option</span>&gt;
-</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#f92672">select</span>&gt;
-</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> (
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#ff79c6">div</span> <span style="color:#50fa7b">className</span><span style="color:#ff79c6">=</span>{${color}}&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#ff79c6">select</span> <span style="color:#50fa7b">onChange</span><span style="color:#ff79c6">=</span>{(e) =&gt; setSelection(e.target.value)}&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">option</span> <span style="color:#50fa7b">value</span><span style="color:#ff79c6">=</span>{defaultColor}&gt;None&lt;/<span style="color:#ff79c6">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">option</span> <span style="color:#50fa7b">value</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;green&#39;</span>&gt;Green&lt;/<span style="color:#ff79c6">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">option</span> <span style="color:#50fa7b">value</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;red&#39;</span>&gt;Red&lt;/<span style="color:#ff79c6">option</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">option</span> <span style="color:#50fa7b">value</span><span style="color:#ff79c6">=</span><span style="color:#f1fa8c">&#39;blue&#39;</span>&gt;Blue&lt;/<span style="color:#ff79c6">option</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;/<span style="color:#ff79c6">select</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#ff79c6">div</span>&gt;
 </span></span><span style="display:flex;"><span>  )
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>There&rsquo;s just one limitation&hellip; the toggled states will always be in sync with the parent. There&rsquo;s no way for us to have isolated &ldquo;toggled&rdquo; lifecycles for the children. The parent owns the &ldquo;toggle&rdquo; state and distributes it downstream to the children. You can imagine this problem ramping up in complexity pretty quickly. Let&rsquo;s say you needed dynamically-created components with the ability to maintain their own lifecycles. It&rsquo;s almost a video-game type of problem.</p>
@@ -505,110 +545,110 @@ We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number o
 <p>I added the &ldquo;red&rdquo; component and configured it while the &ldquo;green&rdquo; component was toggled on. The &ldquo;red&rdquo; component&rsquo;s initial state is toggled off. Next time I click &ldquo;toggle&rdquo; it turned off &ldquo;green&rdquo; and turned on &ldquo;red&rdquo;. So the benefit here is that you get encapsulation of behaviors.</p>
 <h3 id="become-one-with-the-shenanigans">Become one with the shenanigans</h3>
 <p>I hope now that the benefits gained by the <code>useImperativeHandle</code> approach are clear. It&rsquo;s not an approach you reach for every day. Only when you need the this level of encapsulation. Here&rsquo;s how we&rsquo;ll handle this in pseudo-code:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">We&#39;ll start with the child first this time,
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">which will recieve a ref from the parent.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">*/</span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ChildComponent</span>({<span style="color:#a6e22e">ref</span>}) {
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Toggle will now be an internal state variable but
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  now we&#39;ll recieve a ref from the parent as a prop.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  With useImperativeHandle() we&#39;ll expose a &#34;toggle&#34;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  function that will manipulate the states.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Compose the UI as we did last time.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">We&#39;ll start with the child first this time,
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">which will recieve a ref from the parent.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">*/</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> ChildComponent({ref}) {
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  Toggle will now be an internal state variable but
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  now we&#39;ll recieve a ref from the parent as a prop.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  With useImperativeHandle() we&#39;ll expose a &#34;toggle&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  function that will manipulate the states.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  Compose the UI as we did last time.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  */</span>
 </span></span><span style="display:flex;"><span>}
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ParentComponent</span>(){
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Store the refs of all the children components in a
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  state variable as they&#39;re being added.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Create a toggle handler that will loop over the
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  refs and call the exposed &#34;toggle&#34; API of each component
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  Map over the data as usual and render the children components
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  while simultaneously affixing the appropriate refs.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  (this will be the trickiest part)
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">  */</span>
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> ParentComponent(){
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  Store the refs of all the children components in a
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  state variable as they&#39;re being added.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  Create a toggle handler that will loop over the
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  refs and call the exposed &#34;toggle&#34; API of each component
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  Map over the data as usual and render the children components
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  while simultaneously affixing the appropriate refs.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  (this will be the trickiest part)
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">  */</span>
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Let&rsquo;s start to look at the implementation with the child. The old way of receiving a ref as a prop required the use of <code>forwardRef</code>. So you might still see that in the wild. It&rsquo;s what I was familiar with before doing research for this. It turns out, now you can now pass a ref as a prop without bothering with <code>forwardRef</code>.</p>
 <p>Here&rsquo;s how that looks, starting with the child this time:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">defaultColor</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;gray&#39;</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ChildComponent</span>({<span style="color:#a6e22e">ref</span>}) {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">toggled</span>, <span style="color:#a6e22e">setToggled</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#66d9ef">false</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">selection</span>, <span style="color:#a6e22e">setSelection</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>);
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">colorClass</span>, <span style="color:#a6e22e">setColorClass</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>(<span style="color:#a6e22e">defaultColor</span>);
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#ff79c6">const</span> defaultColor <span style="color:#ff79c6">=</span> <span style="color:#f1fa8c">&#39;gray&#39;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> ChildComponent({ref}) {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [toggled, setToggled] <span style="color:#ff79c6">=</span> useState(<span style="color:#ff79c6">false</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [selection, setSelection] <span style="color:#ff79c6">=</span> useState(defaultColor);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [colorClass, setColorClass] <span style="color:#ff79c6">=</span> useState(defaultColor);
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useEffect</span>(() =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">toggled</span>) {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColorClass</span>(<span style="color:#a6e22e">selection</span>);
-</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">else</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">setColorClass</span>(<span style="color:#a6e22e">defaultColor</span>);
+</span></span><span style="display:flex;"><span>  useEffect(() =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">if</span>(toggled) {
+</span></span><span style="display:flex;"><span>      setColorClass(selection);
+</span></span><span style="display:flex;"><span>    } <span style="color:#ff79c6">else</span> {
+</span></span><span style="display:flex;"><span>      setColorClass(defaultColor);
 </span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>  }, [<span style="color:#a6e22e">toggled</span>])
+</span></span><span style="display:flex;"><span>  }, [toggled])
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">useImperativeHandle</span>(<span style="color:#a6e22e">ref</span>, () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      this object will contain any method or
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      property you want to make public
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">      */</span>
-</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">toggle</span>() {
-</span></span><span style="display:flex;"><span>        <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        You could actually do a lot
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        more to create interesting toggle behavior here
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        but we&#39;re keeping this simple.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">        */</span>
-</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">setToggled</span>(<span style="color:#f92672">!</span><span style="color:#a6e22e">toggled</span>);
+</span></span><span style="display:flex;"><span>  useImperativeHandle(ref, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">return</span> {
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">      this object will contain any method or
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">      property you want to make public
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">      */</span>
+</span></span><span style="display:flex;"><span>      toggle() {
+</span></span><span style="display:flex;"><span>        <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">        You could actually do a lot
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">        more to create interesting toggle behavior here
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">        but we&#39;re keeping this simple.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">        */</span>
+</span></span><span style="display:flex;"><span>        setToggled(<span style="color:#ff79c6">!</span>toggled);
 </span></span><span style="display:flex;"><span>      }
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  })
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// the markup isn&#39;t important for this demo
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  )
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> (
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">// the markup isn&#39;t important for this demo
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  )
 </span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div><p>Note: In the codesandbox , I pulled out the state variables and effects related to toggling and moved them to a custom hook. That&rsquo;s a good way to keep your code readable and reusable.</p>
 <p>Here&rsquo;s the parent:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#66d9ef">function</span> <span style="color:#a6e22e">ParentComponent</span>() =&gt; {
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> [<span style="color:#a6e22e">thingsToRender</span>, <span style="color:#a6e22e">setThingsToRender</span>] <span style="color:#f92672">=</span> <span style="color:#a6e22e">useState</span>([]);
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Storing refs in a map for efficient lookups
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">refs</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">useRef</span>(<span style="color:#66d9ef">new</span> <span style="color:#a6e22e">Map</span>());
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-react" data-lang="react"><span style="display:flex;"><span><span style="color:#8be9fd;font-style:italic">function</span> ParentComponent() =&gt; {
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> [thingsToRender, setThingsToRender] <span style="color:#ff79c6">=</span> useState([]);
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">// Storing refs in a map for efficient lookups
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">const</span> refs <span style="color:#ff79c6">=</span> useRef(<span style="color:#ff79c6">new</span> Map());
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleAddElement</span> <span style="color:#f92672">=</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#75715e">/*
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    I used a uuid library to generate a string ID
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    for every new component to add to the UI. These
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    will also serve as key for the refs map.
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">    */</span>
-</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">setThingsToRender</span>((<span style="color:#a6e22e">prev</span>) =&gt; [<span style="color:#a6e22e">uuid</span>(), ...<span style="color:#a6e22e">prev</span>]);
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">const</span> handleAddElement <span style="color:#ff79c6">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#6272a4">/*
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">    I used a uuid library to generate a string ID
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">    for every new component to add to the UI. These
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">    will also serve as key for the refs map.
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4">    */</span>
+</span></span><span style="display:flex;"><span>    setThingsToRender((prev) =&gt; [uuid(), ...prev]);
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#75715e">// Here&#39;s where we loop over our refs:
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handleToggle</span> <span style="color:#f92672">=</span> () =&gt; {
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span>(<span style="color:#66d9ef">let</span> <span style="color:#a6e22e">child</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">refs</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">values</span>()) {
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Call the exposed &#34;toggle&#34; method of each child
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>      <span style="color:#a6e22e">child</span>.<span style="color:#a6e22e">toggle</span>();
+</span></span><span style="display:flex;"><span>  <span style="color:#6272a4">// Here&#39;s where we loop over our refs:
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>  <span style="color:#ff79c6">const</span> handleToggle <span style="color:#ff79c6">=</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#ff79c6">for</span>(<span style="color:#8be9fd;font-style:italic">let</span> child <span style="color:#ff79c6">of</span> refs.current.values()) {
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">// Call the exposed &#34;toggle&#34; method of each child
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>      child.toggle();
 </span></span><span style="display:flex;"><span>    }
 </span></span><span style="display:flex;"><span>  }
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> (
+</span></span><span style="display:flex;"><span>  <span style="color:#ff79c6">return</span> (
 </span></span><span style="display:flex;"><span>    &lt;&gt;
-</span></span><span style="display:flex;"><span>      <span style="color:#75715e">// Markup for toggle and add buttons
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
-</span></span><span style="display:flex;"><span>      {<span style="color:#a6e22e">thingsToRender</span>.<span style="color:#a6e22e">map</span>((<span style="color:#a6e22e">key</span>) =&gt; {
-</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">ChildComponent</span>
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">key</span><span style="color:#f92672">=</span>{<span style="color:#a6e22e">key</span>}
-</span></span><span style="display:flex;"><span>          <span style="color:#a6e22e">ref</span><span style="color:#f92672">=</span>{(<span style="color:#a6e22e">node</span>) =&gt; {
-</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">refs</span>.<span style="color:#a6e22e">current</span>.<span style="color:#a6e22e">set</span>(<span style="color:#a6e22e">key</span>, <span style="color:#a6e22e">node</span>)
-</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> () =&gt; <span style="color:#a6e22e">refs</span>.<span style="color:#a6e22e">current</span>.<span style="color:#66d9ef">delete</span>(<span style="color:#a6e22e">key</span>)
+</span></span><span style="display:flex;"><span>      <span style="color:#6272a4">// Markup for toggle and add buttons
+</span></span></span><span style="display:flex;"><span><span style="color:#6272a4"></span>
+</span></span><span style="display:flex;"><span>      {thingsToRender.map((key) =&gt; {
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#ff79c6">ChildComponent</span>
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">key</span><span style="color:#ff79c6">=</span>{key}
+</span></span><span style="display:flex;"><span>          <span style="color:#50fa7b">ref</span><span style="color:#ff79c6">=</span>{(node) =&gt; {
+</span></span><span style="display:flex;"><span>            refs.current.set(key, node)
+</span></span><span style="display:flex;"><span>            <span style="color:#ff79c6">return</span> () =&gt; refs.current.<span style="color:#ff79c6">delete</span>(key)
 </span></span><span style="display:flex;"><span>            }
 </span></span><span style="display:flex;"><span>          }
 </span></span><span style="display:flex;"><span>        /&gt;
@@ -632,7 +672,7 @@ We have two buttons, &ldquo;add&rdquo; and &ldquo;toggle&rdquo; and any number o
         
 	    
             <div class="next-post">
-                <a href="http://localhost:1313/posts/pickingbackend/?ref=footer"><span style="font-weight:bold;">Next »</span><br>PickingBackEnd</a>
+                <a href="http://localhost:1313/posts/pickingbackend/?ref=footer"><span style="font-weight:bold;">Next »</span><br>New Project: Picking my Backend</a>
             </div>
         
     

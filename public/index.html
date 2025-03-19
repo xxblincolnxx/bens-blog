@@ -74,7 +74,7 @@
 <meta property="og:url" content="http://localhost:1313/" />
 
 
-<meta property="og:updated_time" content="2025-03-06T14:09:56-05:00" />
+<meta property="og:updated_time" content="2025-03-10T13:23:37-04:00" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
@@ -229,6 +229,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -247,6 +255,10 @@
                         <li class="sub-heading">
                             
                         </li>
+                        
+                            <li class="bullet">
+                                <a href="http://localhost:1313/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+                            </li>
                         
                             <li class="bullet">
                                 <a href="http://localhost:1313/posts/pickingbackend/">New Project: Picking my Backend</a>
@@ -291,6 +303,14 @@
                 
                         
                 
+                        
+                
+                        
+                
+                        
+                
+                        
+                
             
         
         
@@ -310,6 +330,14 @@
                 
             
                 
+                
+                        
+                
+                        
+                
+                        
+                
+                        
                 
                         
                 
@@ -395,6 +423,96 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
                 <div class="posts">
     
     
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+        
+          <span>Ben Prothe - </span>
+        
+      
+      
+      <time datetime=" 2025-03-10T13:23:37-0400" class="post-date">
+        March 10, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>8 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-NestJS">
+        <a href="http://localhost:1313/tags/nestjs">NestJS</a>
+      </li>
+      
+      <li class="tag-Drizzle">
+        <a href="http://localhost:1313/tags/drizzle">Drizzle</a>
+      </li>
+      
+      <li class="tag-Passport.js">
+        <a href="http://localhost:1313/tags/passport.js">Passport.js</a>
+      </li>
+      
+      <li class="tag-Auth">
+        <a href="http://localhost:1313/tags/auth">Auth</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
+
+  
+</div>
+
+        
+        <p>Here I&rsquo;ll record the steps involved in setting up Passport with Drizzle and NestJS using Local and JWT strategies.</p>
+<h2 id="dependencies">Dependencies</h2>
+<p><strong>Before you start</strong>: Need an existing NestJS project with Drizzle set up with database module.</p>
+<p>Install these dependencies:</p>
+<p>Validation:</p>
+<ul>
+<li><code>npm i class-validator class-transformer</code></li>
+</ul>
+<p>Passport.js:</p>
+<ul>
+<li><code>npm i @nestjs/passport passport passport-local passport-jwt</code></li>
+<li><code>npm i @nestjs/jwt</code></li>
+<li><code>npm i @types/passport-jwt @types/passport-local</code></li>
+</ul>
+<p>Cookie Parsing:</p>
+<ul>
+<li><code>npm i cookie-parser</code></li>
+<li><code>npm i -D @types/cookie-parser</code></li>
+</ul>
+<h2 id="users-module">Users Module</h2>
+<p>We first need to set up a table in the database where the user information will be persisted.</p>
+        
+        <div class="read-more-link">
+            <a href="/posts/mar_10_2025/">Read More…</a>
+        </div>
+        
+        
+    </article>
     <article class="post">
         <div class="info">
   <h1 class="post-title">

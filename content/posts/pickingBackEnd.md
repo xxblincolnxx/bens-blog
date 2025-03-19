@@ -52,7 +52,18 @@ So, I picked Drizzle. This is partially going to be a bit of an experiment to se
 
    - `nest new <app-name>`
 
-2. Get Postgres container running w/docker-compose.yaml (see example in code)
+2. Get Postgres container running w/docker-compose.yaml:
+
+   ```yaml
+   services:
+     postgres:
+       image: postgres
+       ports:
+         - 5432:5432
+       environment:
+         POSTGRES_PASSWORD: <your-password>
+         POSTGRES_DB: <db-name>
+   ```
 
    - Run with: `docker-compose up`
    - PRO TIP: If you have any typos in the database url or compose file, you’ll have to delete the container and run the compose command again to get a new db with the proper creds configured.
