@@ -74,7 +74,7 @@
 <meta property="og:url" content="http://localhost:1313/" />
 
 
-<meta property="og:updated_time" content="2025-03-10T13:23:37-04:00" />
+<meta property="og:updated_time" content="2025-03-24T14:42:21-04:00" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
@@ -257,6 +257,10 @@
                         </li>
                         
                             <li class="bullet">
+                                <a href="http://localhost:1313/posts/2025-03-24/">Relational Data Design and Drizzle</a>
+                            </li>
+                        
+                            <li class="bullet">
                                 <a href="http://localhost:1313/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
                             </li>
                         
@@ -270,10 +274,6 @@
                         
                             <li class="bullet">
                                 <a href="http://localhost:1313/posts/25feb23/">Shower Thought</a>
-                            </li>
-                        
-                            <li class="bullet">
-                                <a href="http://localhost:1313/posts/myfirstpost/">Why I Made a Blog, Not a Portfolio</a>
                             </li>
                         
                     
@@ -423,6 +423,74 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
                 <div class="posts">
     
     
+    <article class="post">
+        <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/2025-03-24/">Relational Data Design and Drizzle</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+        
+          <span>Ben Prothe - </span>
+        
+      
+      
+      <time datetime=" 2025-03-24T14:42:21-0400" class="post-date">
+        March 24, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>1 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Drizzle">
+        <a href="http://localhost:1313/tags/drizzle">Drizzle</a>
+      </li>
+      
+      <li class="tag-Short">
+        <a href="http://localhost:1313/tags/short">Short</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
+
+  
+</div>
+
+        
+        <p>So, remember <a href="http://localhost:1313/posts/pickingbackend/">this</a> where I talk picking a robust ORM solution? Well, I&rsquo;ve begun to draw out my entity relationship diagram (shoutout to <a href="https://www.lucidchart.com/" target="_blank">Lucidchart</a>) and I am working on the problem of keeping my tables from getting &ldquo;too wide&rdquo;&ndash; one of the fundamental weaknesses of typical ORMs. Here are a few of the features of Drizzle that are going to save me:</p>
+<ol>
+<li>To create many-to-many relationships you actually create a proper join table where things can live. This is important because I will need the join table to contain information unique to each junction. I wouldn&rsquo;t have that kind of granular control over the join table in a regular ORM. The table would be abstracted.</li>
+<li>I can use Drizzle&rsquo;s query and join methods to create an efficient SQL query, without worrying about over fetching data. <a href="https://orm.drizzle.team/docs/joins" target="_blank">Here&rsquo;s</a> more about that.</li>
+<li>If the function calls get out of hand, Drizzle has a &ldquo;<a href="https://orm.drizzle.team/docs/sql" target="_blank">magic SQL</a>&rdquo; operator that will allow me to write a regular ol&rsquo; SQL queries.</li>
+</ol>
+<p>So far this has been a good design choice.</p>
+        
+        <div class="read-more-link">
+            <a href="/posts/2025-03-24/">Read More…</a>
+        </div>
+        
+        
+    </article>
     <article class="post">
         <div class="info">
   <h1 class="post-title">

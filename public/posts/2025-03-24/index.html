@@ -49,14 +49,18 @@
 
 
 
+  
+  
+  
+
 
 <!-- Open Graph image and Twitter Card metadata -->
 
-<title itemprop="name">A Blog for Ben</title>
-<meta property="og:title" content=A&#32;Blog&#32;for&#32;Ben />
-<meta name="twitter:title" content=A&#32;Blog&#32;for&#32;Ben />
-<meta itemprop="name" content=A&#32;Blog&#32;for&#32;Ben />
-<meta name="application-name" content=A&#32;Blog&#32;for&#32;Ben />
+<title itemprop="name">Ben&#39;s Blog - Relational Data Design and Drizzle</title>
+<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Relational&#32;Data&#32;Design&#32;and&#32;Drizzle />
+<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Relational&#32;Data&#32;Design&#32;and&#32;Drizzle />
+<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;Relational&#32;Data&#32;Design&#32;and&#32;Drizzle />
+<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;Relational&#32;Data&#32;Design&#32;and&#32;Drizzle />
 <meta property="og:site_name" content="A Blog for Ben" />
 
 
@@ -66,18 +70,17 @@
 <meta name="twitter:description" content="" />
 
 
-<base href="http://localhost:1313/tags/short/" />
-<link rel="canonical" href="http://localhost:1313/tags/short/" itemprop="url" />
-<meta name="url" content="http://localhost:1313/tags/short/" />
-<meta name="twitter:url" content="http://localhost:1313/tags/short/" />
-<meta property="og:url" content="http://localhost:1313/tags/short/" />
+<base href="http://localhost:1313/posts/2025-03-24/" />
+<link rel="canonical" href="http://localhost:1313/posts/2025-03-24/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/2025-03-24/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/2025-03-24/" />
+<meta property="og:url" content="http://localhost:1313/posts/2025-03-24/" />
 
 
 <meta property="og:updated_time" content="2025-03-24T14:42:21-04:00" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
-<link href="http://localhost:1313/tags/short/index.xml" rel="alternate" type="application/rss+xml" title="A Blog for Ben" />
 
 <meta name="robots" content="index,follow" />
 <meta name="googlebot" content="index,follow" />
@@ -256,7 +259,7 @@
                         </li>
                         
                             <li class="bullet">
-                                <a href="http://localhost:1313/posts/2025-03-24/">Relational Data and Drizzle</a>
+                                <a href="http://localhost:1313/posts/2025-03-24/">Relational Data Design and Drizzle</a>
                             </li>
                         
                             <li class="bullet">
@@ -419,34 +422,120 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </aside>
 
             <main class="content container">
-                <h1 class="title">Short</h1>
-<ul class="entries">
-    
-        <h3 style="text-align: center;">2025</h3>
-        
-            <li>
-                <span class="title">
-                    <a href="/posts/2025-03-24/">Relational Data and Drizzle</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">March 24, 2025</time>
-                </span>
-            </li>
-        
-            <li>
-                <span class="title">
-                    <a href="/posts/25feb23/">Shower Thought</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">February 24, 2025</time>
-                </span>
-            </li>
-        
-    
-</ul>
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/2025-03-24/">Relational Data Design and Drizzle</a>
+  </h1>
 
+  <div class="headline">
+    <div>
+      
+        
+          <span>Ben Prothe - </span>
+        
+      
+      
+      <time datetime=" 2025-03-24T14:42:21-0400" class="post-date">
+        March 24, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>1 min read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Drizzle">
+        <a href="http://localhost:1313/tags/drizzle">Drizzle</a>
+      </li>
+      
+      <li class="tag-Short">
+        <a href="http://localhost:1313/tags/short">Short</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
+
+  
+</div>
+
+  <p>So, remember <a href="http://localhost:1313/posts/pickingbackend/">this</a> where I talk picking a robust ORM solution? Well, I&rsquo;ve begun to draw out my entity relationship diagram (shoutout to <a href="https://www.lucidchart.com/" target="_blank">Lucidchart</a>) and I am working on the problem of keeping my tables from getting &ldquo;too wide&rdquo;&ndash; one of the fundamental weaknesses of typical ORMs. Here are a few of the features of Drizzle that are going to save me:</p>
+<ol>
+<li>To create many-to-many relationships you actually create a proper join table where things can live. This is important because I will need the join table to contain information unique to each junction. I wouldn&rsquo;t have that kind of granular control over the join table in a regular ORM. The table would be abstracted.</li>
+<li>I can use Drizzle&rsquo;s query and join methods to create an efficient SQL query, without worrying about over fetching data. <a href="https://orm.drizzle.team/docs/joins" target="_blank">Here&rsquo;s</a> more about that.</li>
+<li>If the function calls get out of hand, Drizzle has a &ldquo;<a href="https://orm.drizzle.team/docs/sql" target="_blank">magic SQL</a>&rdquo; operator that will allow me to write a regular ol&rsquo; SQL queries.</li>
+</ol>
+<p>So far this has been a good design choice.</p>
+
+  
+  <hr>
+<div class="footer">
+    
+    
+    
+    <p>
+    This is a post in the <b><a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                March 24, 2025 -
+                
+                    Relational Data Design and Drizzle
+                
+            </li>
+            
+            <li>
+                March 10, 2025 -
+                
+                    <a href="/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+                
+            </li>
+            
+            <li>
+                March 6, 2025 -
+                
+                    <a href="/posts/pickingbackend/">New Project: Picking my Backend</a>
+                
+            </li>
+            
+        </ul>
+    </p>
+    
+</div>
+
+  
+</div>
             </main>
             
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+  
+
         </div>
     </body>
 </html>
