@@ -479,7 +479,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
         
         <p>So, remember <a href="http://localhost:1313/posts/pickingbackend/">this</a> where I talk picking a robust ORM solution? Well, I&rsquo;ve begun to draw out my entity relationship diagram (shoutout to <a href="https://www.lucidchart.com/" target="_blank">Lucidchart</a>) and I am working on the problem of keeping my tables from getting &ldquo;too wide&rdquo;&ndash; one of the fundamental weaknesses of typical ORMs. Here are a few of the features of Drizzle that are going to save me:</p>
 <ol>
-<li>To create many-to-many relationships you actually create a proper join table where things can live. This is important because I will need the join table to contain information unique to each junction. I wouldn&rsquo;t have that kind of granular control over the join table in a regular ORM. The table would be abstracted.</li>
+<li>To create many-to-many relationships you actually create a proper join table where values other than foreign keys can live. I will need some of the join tables to contain information unique to each junction. I wouldn&rsquo;t have that kind of granular control over the join table in a regular ORM. The table would be abstracted.</li>
 <li>I can use Drizzle&rsquo;s query and join methods to create an efficient SQL query, without worrying about over fetching data. <a href="https://orm.drizzle.team/docs/joins" target="_blank">Here&rsquo;s</a> more about that.</li>
 <li>If the function calls get out of hand, Drizzle has a &ldquo;<a href="https://orm.drizzle.team/docs/sql" target="_blank">magic SQL</a>&rdquo; operator that will allow me to write a regular ol&rsquo; SQL queries.</li>
 </ol>
