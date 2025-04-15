@@ -489,7 +489,7 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 
   <p>One of my new goals for using AI as a development tool is to start trying to use it for more than just enhanced autocomplete, with some important limitations. First, I want to make sure I actually continue to learn as I code. So I don&rsquo;t want to use Copilot as a starting point. Second, I don&rsquo;t want to enter a &ldquo;vibe coding&rdquo; loop, blindly accepting changes.</p>
 <p>I had a good experience with Copilot recently with a self assigned challenge. The goal was to build an <a href="https://github.com/xxblincolnxx/infinite-scroll" target="_blank">implementation of a generic Infinite Scrolling component</a> or set of hooks/utilities using React and Typescript. Eventually I plan on creating my own components library that I can inject into any of my React projects. This work will probably be a part of that package.</p>
-<p>Here&rsquo;s what I did, big picture:</p>
+<h2 id="what-i-did">What I Did</h2>
 <p><strong>1. I Started with Brute Force and Inelegant Solutions</strong></p>
 <p>I really wanted to make sure that I started organically so that I had control of naming, techniques used around fetching and detection, file structure, etc. Importantly, I felt like it was important to make sure to have intimate knowledge of how the code worked. I researched this part quite a bit before I put digital pen to paper. I still reflexively separated components and did some simple abstractions, but this wasn&rsquo;t the focus at this stage.</p>
 <p>As for AI use, I probably used the Copilot chat a few times in this process to help find my simple errors. Those were things I would have found eventually but I could use Copilot to speed up the process and reduce frustrations. Otherwise, this was an organic implementation.</p>
@@ -519,6 +519,8 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 <p>Catching boilerplate that I&rsquo;ve missed. If my project didn&rsquo;t load properly I could describe to the chat what I was seeing and it could pick out what I missed; things like infinite useEffect procs&hellip; I might know its a useEffect that&rsquo;s the issue, but Copilot was really quick at identifying which one was the offender.</p>
 </li>
 </ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>I am pretty happy with this outcome. I saved lots of time refactoring but I still felt pretty involved with the coding process. I think it&rsquo;s pretty important to maintain that grounding connection to what the code is doing. I can still see a world where skills in syntax atrophy if the gen-AI user is not aware of that. For that reason,it&rsquo;s pretty important to me that I continue to write my first drafts manually. I can use AI to help me remember the syntax, but I want to physically type out my code, test it manually, and use my debugging kit as always.</p>
 
   
   <hr>
@@ -539,7 +541,12 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     <div class="article-toc ">
     <div class="toc-wrapper">
       <h4 id="contents"></h4>
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-i-did">What I Did</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
     </div>
 </div>
 
