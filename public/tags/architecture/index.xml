@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Architecture on A Blog for Ben</title>
+    <link>http://localhost:1313/tags/architecture/</link>
+    <description>Recent content in Architecture on A Blog for Ben</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 28 Apr 2025 12:44:42 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/architecture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Not this time, Next.js</title>
+      <link>http://localhost:1313/posts/2025-04-28/</link>
+      <pubDate>Mon, 28 Apr 2025 12:44:42 -0400</pubDate>
+      <guid>http://localhost:1313/posts/2025-04-28/</guid>
+      <description>&lt;p&gt;It&amp;rsquo;s been a minute since I&amp;rsquo;ve logged activity. I&amp;rsquo;ve been focusing on research and prepping for some technical interviews. It&amp;rsquo;s the kind of activity that doesn&amp;rsquo;t lend itself to those nice green squares on GitHub. But I&amp;rsquo;ve made some architectural breakthroughs during that process.&lt;/p&gt;&#xA;&lt;p&gt;I’ll start by saying, I fully intended to use Next.js for my project rebuild. The more I&amp;rsquo;ve researched it, the better it seems for building performant, SEO-optimized web apps. You gain so many UX and DX benefits: smaller bundles, intuitive routing, server-side data fetching, and improved security, to name a few.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

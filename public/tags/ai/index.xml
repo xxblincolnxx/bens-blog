@@ -9,11 +9,11 @@
     <lastBuildDate>Thu, 10 Apr 2025 13:32:50 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/ai/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Infinite scroll in React with a side of Copilot</title>
+      <title>Infinite scroll with a side of Copilot</title>
       <link>http://localhost:1313/posts/2025-04-10/</link>
       <pubDate>Thu, 10 Apr 2025 13:32:50 -0400</pubDate>
       <guid>http://localhost:1313/posts/2025-04-10/</guid>
-      <description>&lt;p&gt;I recently gave myself a little challenge to build an &lt;a href=&#34;https://github.com/xxblincolnxx/infinite-scroll&#34; target=&#34;_blank&#34;&gt;implementation of a generic Infinite Scrolling component&lt;/a&gt; or set of hooks with React and Typescript. Eventually I plan on creating my own components library that I can inject into any of my React projects. This component and some of the utilities would be part of that package. That project is for another day as this was more of an exercise to keep my React muscle-memory fresh while I continue to work on backend problems for my main project.&lt;/p&gt;</description>
+      <description>&lt;p&gt;One of my new goals for using AI as a development tool is to start trying to use it for more than just enhanced autocomplete, with some important limitations. First, I want to make sure I actually continue to learn as I code. So I don&amp;rsquo;t want to use Copilot as a starting point. Second, I don&amp;rsquo;t want to enter a &amp;ldquo;vibe coding&amp;rdquo; loop, blindly accepting changes.&lt;/p&gt;&#xA;&lt;p&gt;I had a good experience with Copilot recently with a self assigned challenge. The goal was to build an &lt;a href=&#34;https://github.com/xxblincolnxx/infinite-scroll&#34; target=&#34;_blank&#34;&gt;implementation of a generic Infinite Scrolling component&lt;/a&gt; or set of hooks/utilities using React and Typescript. Eventually I plan on creating my own components library that I can inject into any of my React projects. This work will probably be a part of that package.&lt;/p&gt;</description>
     </item>
     <item>
       <title>My Dad, CAD, and the Bad</title>

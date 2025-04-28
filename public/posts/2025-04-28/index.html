@@ -49,14 +49,18 @@
 
 
 
+  
+  
+  
+
 
 <!-- Open Graph image and Twitter Card metadata -->
 
-<title itemprop="name">A Blog for Ben</title>
-<meta property="og:title" content=A&#32;Blog&#32;for&#32;Ben />
-<meta name="twitter:title" content=A&#32;Blog&#32;for&#32;Ben />
-<meta itemprop="name" content=A&#32;Blog&#32;for&#32;Ben />
-<meta name="application-name" content=A&#32;Blog&#32;for&#32;Ben />
+<title itemprop="name">Ben&#39;s Blog - Not this time, Next.js</title>
+<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Not&#32;this&#32;time,&#32;Next.js />
+<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;Not&#32;this&#32;time,&#32;Next.js />
+<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;Not&#32;this&#32;time,&#32;Next.js />
+<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;Not&#32;this&#32;time,&#32;Next.js />
 <meta property="og:site_name" content="A Blog for Ben" />
 
 
@@ -66,18 +70,17 @@
 <meta name="twitter:description" content="" />
 
 
-<base href="http://localhost:1313/tags/ai/" />
-<link rel="canonical" href="http://localhost:1313/tags/ai/" itemprop="url" />
-<meta name="url" content="http://localhost:1313/tags/ai/" />
-<meta name="twitter:url" content="http://localhost:1313/tags/ai/" />
-<meta property="og:url" content="http://localhost:1313/tags/ai/" />
+<base href="http://localhost:1313/posts/2025-04-28/" />
+<link rel="canonical" href="http://localhost:1313/posts/2025-04-28/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/2025-04-28/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/2025-04-28/" />
+<meta property="og:url" content="http://localhost:1313/posts/2025-04-28/" />
 
 
-<meta property="og:updated_time" content="2025-04-10T13:32:50-04:00" />
+<meta property="og:updated_time" content="2025-04-28T12:44:42-04:00" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
-<link href="http://localhost:1313/tags/ai/index.xml" rel="alternate" type="application/rss+xml" title="A Blog for Ben" />
 
 <meta name="robots" content="index,follow" />
 <meta name="googlebot" content="index,follow" />
@@ -437,34 +440,138 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
 </aside>
 
             <main class="content container">
-                <h1 class="title">AI</h1>
-<ul class="entries">
-    
-        <h3 style="text-align: center;">2025</h3>
-        
-            <li>
-                <span class="title">
-                    <a href="/posts/2025-04-10/">Infinite scroll with a side of Copilot</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">April 10, 2025</time>
-                </span>
-            </li>
-        
-            <li>
-                <span class="title">
-                    <a href="/posts/2025-04-04/">My Dad, CAD, and the Bad</a>
-                </span>
-                <span class="published">
-                    <time class="pull-right post-list">April 4, 2025</time>
-                </span>
-            </li>
-        
-    
-</ul>
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="http://localhost:1313/posts/2025-04-28/">Not this time, Next.js</a>
+  </h1>
 
+  <div class="headline">
+    <div>
+      
+        
+          <span>Ben Prothe - </span>
+        
+      
+      
+      <time datetime=" 2025-04-28T12:44:42-0400" class="post-date">
+        April 28, 2025
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>2 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-Short">
+        <a href="http://localhost:1313/tags/short">Short</a>
+      </li>
+      
+      <li class="tag-Architecture">
+        <a href="http://localhost:1313/tags/architecture">Architecture</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
+
+  
+</div>
+
+  <p>It&rsquo;s been a minute since I&rsquo;ve shared an update. Lately, I&rsquo;ve been deep in research and technical interview prep — the kind of work that doesn’t fill up your GitHub contributions graph, but is critical behind the scenes.</p>
+<p>One major breakthrough: I&rsquo;m rethinking the architecture for my project rebuild.</p>
+<p>Initially, I fully intended to build with Next.js. It’s an outstanding framework for performant, SEO-optimized web applications, offering major UX and DX wins like smaller bundles, intuitive routing, server-side data fetching, and built-in security benefits.</p>
+<p>However, as I clarified the core goals for this app, I realized something important:
+The best experience for my users will be delivered through a Progressive Web App (PWA).</p>
+<p>For those unfamiliar, PWAs are web applications designed to feel like native mobile apps. They can even be listed in app stores and are expected to meet high standards for privacy, security, and offline usability. A key requirement is strong offline support — users shouldn&rsquo;t be blocked from using the app when they lose connection.</p>
+<p>Here&rsquo;s the challenge: Next.js&rsquo;s core strength is server-side rendering (SSR) — which naturally depends on a live connection to work best. You can adapt Next for static generation and offline support, but it felt like forcing a square peg into a round hole.</p>
+<p>Instead, it made sense to reach for tools designed from the ground up for lean, performant, client-side apps.</p>
+<p>From a user&rsquo;s perspective, SEO isn&rsquo;t critical for my app. It&rsquo;s a tool meant to be discovered via app stores, not search engines. What&rsquo;s absolutely critical is that it works across devices, installs easily, and remains fully functional even with a weak or absent connection.</p>
+<p>So moving forward, I&rsquo;m planning a stack based on:</p>
+<ul>
+<li>Vite (for rapid, lightweight builds)</li>
+<li>TanStack (for query/mutation management)</li>
+<li>Zustand (for local state)</li>
+<li>(some) IndexedDB solution (for offline persistence)</li>
+</ul>
+<p>I’m mindful not to chase new tech for its own sake — but to pick tools that align directly with user needs.</p>
+<p>Next.js would be an incredible choice for many projects. Just not this one — and I’m excited to build the right foundation from the start.</p>
+
+  
+  <hr>
+<div class="footer">
+    
+    
+    
+    <p>
+    This is a post in the <b><a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                April 28, 2025 -
+                
+                    Not this time, Next.js
+                
+            </li>
+            
+            <li>
+                March 24, 2025 -
+                
+                    <a href="/posts/2025-03-24/">Relational Data Design and Drizzle</a>
+                
+            </li>
+            
+            <li>
+                March 10, 2025 -
+                
+                    <a href="/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+                
+            </li>
+            
+            <li>
+                March 6, 2025 -
+                
+                    <a href="/posts/pickingbackend/">New Project: Picking my Backend</a>
+                
+            </li>
+            
+        </ul>
+    </p>
+    
+</div>
+
+  
+</div>
             </main>
             
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+  
+
         </div>
     </body>
 </html>
