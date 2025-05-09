@@ -6,14 +6,21 @@
     <description>Recent content in Posts on A Blog for Ben</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 28 Apr 2025 12:44:42 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 09 May 2025 11:14:38 -0400</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Paradigms, New Challenges</title>
+      <link>http://localhost:1313/posts/2025-05-09/</link>
+      <pubDate>Fri, 09 May 2025 11:14:38 -0400</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-09/</guid>
+      <description>&lt;p&gt;I want to take some time in this post to talk about some of the new challenges with my project rebuild, particular to building a Progressive Web App (PWA). As I said in my last post, the PWA paradigm is the reason I&amp;rsquo;m not using Next.js. But there are other challenges around the &amp;ldquo;offline first&amp;rdquo; mentality that I hadn&amp;rsquo;t considered until diving into things.&lt;/p&gt;&#xA;&lt;p&gt;Here are the problems I&amp;rsquo;ve been wrestling with over the past few weeks:&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Not this time, Next.js</title>
       <link>http://localhost:1313/posts/2025-04-28/</link>
       <pubDate>Mon, 28 Apr 2025 12:44:42 -0400</pubDate>
       <guid>http://localhost:1313/posts/2025-04-28/</guid>
-      <description>&lt;p&gt;It&amp;rsquo;s been a minute since I&amp;rsquo;ve logged activity. I&amp;rsquo;ve been focusing on research and prepping for some technical interviews. It&amp;rsquo;s the kind of activity that doesn&amp;rsquo;t lend itself to those nice green squares on GitHub. But I&amp;rsquo;ve made some architectural breakthroughs during that process.&lt;/p&gt;&#xA;&lt;p&gt;I’ll start by saying, I fully intended to use Next.js for my project rebuild. The more I&amp;rsquo;ve researched it, the better it seems for building performant, SEO-optimized web apps. You gain so many UX and DX benefits: smaller bundles, intuitive routing, server-side data fetching, and improved security, to name a few.&lt;/p&gt;</description>
+      <description>&lt;p&gt;It&amp;rsquo;s been a minute since I&amp;rsquo;ve shared an update. Lately, I&amp;rsquo;ve been deep in research and technical interview prep — the kind of work that doesn’t fill up your GitHub contributions graph, but is critical behind the scenes.&lt;/p&gt;&#xA;&lt;p&gt;One major breakthrough: I&amp;rsquo;m rethinking the architecture for my project rebuild.&lt;/p&gt;&#xA;&lt;p&gt;Initially, I fully intended to build with Next.js. It’s an outstanding framework for performant, SEO-optimized web applications, offering major UX and DX wins like smaller bundles, intuitive routing, server-side data fetching, and built-in security benefits.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Infinite scroll with a side of Copilot</title>

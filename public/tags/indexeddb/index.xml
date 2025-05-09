@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IndexedDB on A Blog for Ben</title>
+    <link>http://localhost:1313/tags/indexeddb/</link>
+    <description>Recent content in IndexedDB on A Blog for Ben</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 09 May 2025 11:14:38 -0400</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/indexeddb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>New Paradigms, New Challenges</title>
+      <link>http://localhost:1313/posts/2025-05-09/</link>
+      <pubDate>Fri, 09 May 2025 11:14:38 -0400</pubDate>
+      <guid>http://localhost:1313/posts/2025-05-09/</guid>
+      <description>&lt;p&gt;I want to take some time in this post to talk about some of the new challenges with my project rebuild, particular to building a Progressive Web App (PWA). As I said in my last post, the PWA paradigm is the reason I&amp;rsquo;m not using Next.js. But there are other challenges around the &amp;ldquo;offline first&amp;rdquo; mentality that I hadn&amp;rsquo;t considered until diving into things.&lt;/p&gt;&#xA;&lt;p&gt;Here are the problems I&amp;rsquo;ve been wrestling with over the past few weeks:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

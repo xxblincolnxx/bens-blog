@@ -56,11 +56,11 @@
 
 <!-- Open Graph image and Twitter Card metadata -->
 
-<title itemprop="name">Ben&#39;s Blog - About</title>
-<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;About />
-<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;About />
-<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;About />
-<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;About />
+<title itemprop="name">Ben&#39;s Blog - New paradigms and new challenges</title>
+<meta property="og:title" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;paradigms&#32;and&#32;new&#32;challenges />
+<meta name="twitter:title" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;paradigms&#32;and&#32;new&#32;challenges />
+<meta itemprop="name" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;paradigms&#32;and&#32;new&#32;challenges />
+<meta name="application-name" content=Ben&#39;s&#32;Blog&#32;-&#32;New&#32;paradigms&#32;and&#32;new&#32;challenges />
 <meta property="og:site_name" content="A Blog for Ben" />
 
 
@@ -70,14 +70,14 @@
 <meta name="twitter:description" content="" />
 
 
-<base href="http://localhost:1313/about/about/" />
-<link rel="canonical" href="http://localhost:1313/about/about/" itemprop="url" />
-<meta name="url" content="http://localhost:1313/about/about/" />
-<meta name="twitter:url" content="http://localhost:1313/about/about/" />
-<meta property="og:url" content="http://localhost:1313/about/about/" />
+<base href="http://localhost:1313/posts/2025-05-09/" />
+<link rel="canonical" href="http://localhost:1313/posts/2025-05-09/" itemprop="url" />
+<meta name="url" content="http://localhost:1313/posts/2025-05-09/" />
+<meta name="twitter:url" content="http://localhost:1313/posts/2025-05-09/" />
+<meta property="og:url" content="http://localhost:1313/posts/2025-05-09/" />
 
 
-<meta property="og:updated_time" content="2025-02-15T21:34:57-05:00" />
+<meta property="og:updated_time" content="2025-05-09T11:14:38-04:00" />
 
 
 <link rel="sitemap" type="application/xml" title="Sitemap" href='http://localhost:1313/sitemap.xml' />
@@ -269,7 +269,7 @@
                         </li>
                         
                             <li class="bullet">
-                                <a href="http://localhost:1313/posts/2025-05-09/">New Paradigms, New Challenges</a>
+                                <a href="http://localhost:1313/posts/2025-05-09/">New paradigms and new challenges</a>
                             </li>
                         
                             <li class="bullet">
@@ -455,15 +455,19 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
                 <div class="post">
   <div class="info">
   <h1 class="post-title">
-    <a href="http://localhost:1313/about/about/">About</a>
+    <a href="http://localhost:1313/posts/2025-05-09/">New paradigms and new challenges</a>
   </h1>
 
   <div class="headline">
     <div>
       
+        
+          <span>Ben Prothe - </span>
+        
       
-      <time datetime=" 2025-02-15T21:34:57-0500" class="post-date">
-        February 15, 2025
+      
+      <time datetime=" 2025-05-09T11:14:38-0400" class="post-date">
+        May 9, 2025
       </time>
       
       <span> - </span>
@@ -477,124 +481,114 @@ powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a
     </div>
 
     
+    <ul class="tags">
+      
+      <li class="tag-Short">
+        <a href="http://localhost:1313/tags/short">Short</a>
+      </li>
+      
+      <li class="tag-PWA">
+        <a href="http://localhost:1313/tags/pwa">PWA</a>
+      </li>
+      
+      <li class="tag-IndexedDB">
+        <a href="http://localhost:1313/tags/indexeddb">IndexedDB</a>
+      </li>
+      
+    </ul>
+    
   </div>
 
   
   
+  <p class="seriesname">
+    Series: <a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a>
+  </p>
+  
 
   
 </div>
 
-  
-
-
-
-
-<div class="tabs-container">
-    <div class="tabs" role="tablist">
-
-	    
-        
-            
-            <button class="tab active" id="ecdafb">
-            
-
-                Resume
-            </button>
-
-	    
-        
-            
-            <button class="tab" id="abdcef">
-            
-
-                About
-            </button>
-
-	    
-
-    </div>
-
-    
-    
-        
-            <div class="tabcontent ecdafb" style="display:block;">
-        
-
-        
-
-<h3>Skills</h3>
-
-  <p><span class="bold">CODING:</span> Javascript, Typescript, React, Redux, CSS, Python, SQL, Java, Spring, Django </p>
-  <p><span class="bold">TOOLS:</span> Github, Copilot, Jira, Confluence, Azure, Webpack, Harness CI, Postman, Excel, Visio </p>
-  <p><span class="bold">PRACTICES:</span> Scaled Agile, Automated Testing, Unit Testing, TDD, OOP, Responsive Design, REST </p>
-
-<h3>SOFTWARE ENGINEER - Xactly Corporation, Denver CO 02/2024 – 08/2024</h3>
+  <p>In this post, I want to talk about some new challenges I’ve encountered while rebuilding my project as a Progressive Web App (PWA). As I mentioned in my last post, the PWA paradigm is a big reason I chose <em>not</em> to use Next.js. But beyond framework choice, building with an &ldquo;offline-first&rdquo; mindset has introduced a number of new technical problems I hadn’t fully anticipated.</p>
+<p>Here are some of the issues I’ve been working through over the past few weeks:</p>
+<hr>
+<h3 id="how-do-you-persist-data-when-you-cant-guarantee-a-connection-to-a-server">How do you persist data when you can’t guarantee a connection to a server?</h3>
+<p>To solve this, I’m using the browser’s IndexedDB API via a wrapper library called <a href="https://dexie.org/" target="_blank">Dexie</a>. Dexie allows me to interact with the local database using a clean, promise-based API—similar to working with a backend ORM.</p>
+<p>Using IndexedDB lets me persist CRUD operations locally, which is essential for offline functionality. However, IndexedDB is a NoSQL store, while my backend is built on Drizzle with PostgreSQL—so the data models are structurally very different. That leads to the next challenge&hellip;</p>
+<hr>
+<h3 id="what-happens-when-the-client-has-updates-the-server-doesnt-what-if-those-states-conflict">What happens when the client has updates the server doesn’t? What if those states conflict?</h3>
+<p>Here’s the architecture I’ve landed on so far:</p>
 <ul>
-  <li>Worked on features for an application designed to view and build BI Dashboard and connect data sources from disparate applications. </li>
-  <li>Enhanced UI SQL code editor with “settings” section and new options enabling builders greater view customization. </li>
-  <li>Created more than 30 new query functions as Java Spring endpoints to self-enable UI functionality. </li>
-  <li>Rebuilt a legacy Xactly application using our own low-code tool - eliminating the cost of migration. </li>
+<li>IndexedDB will act as the <em>source of truth</em> for the UI and the Server will be the <em>source of truth</em> for IndexedDB. So, the UI won&rsquo;t get any of it&rsquo;s data through typical REST endpoints, at least not directly.</li>
+<li>I’m building programming interfaces on both the frontend and backend to synchronize state.</li>
+<li>When the user mutates data locally, it stages a <strong>&ldquo;mutation&rdquo;</strong>—a command object containing an action type and any necessary payload.</li>
+<li>Once online, the app will batch and push these mutations to the server.</li>
+<li>The server will process the mutation queue and return an updated payload to reconcile local state.</li>
+<li>Some mutations (e.g., by admin users) may be applied automatically. Others may require approval and remain in a <em>pending</em> state until confirmed server-side.</li>
 </ul>
-<h3>ASSOCIATE SOFTWARE ENGINEER - Xactly Corporation, Denver CO 10/2022 – 02/2024</h3>
+<hr>
+<h3 id="how-do-you-handle-auth-if-data-lives-on-the-client">How do you handle auth if data lives on the client?</h3>
+<p>This part is tricky. All server interactions will require a valid HTTP-only JWT, meaning mutations are protected at the network layer. But since IndexedDB is a local store, it’s inherently more exposed—especially in the context of XSS attacks.</p>
+<p>Here’s how I’m mitigating the risks:</p>
 <ul>
-  <li>Developed an import widget for a dashboard builder app, enabling seamless UI based bulk data insertion into business tables for clients. </li>
-  <li>Developed UI-based filtering for privileges, enhancing access control for dashboard builders. </li>
-  <li>Integrated custom internationalization enabling app builders to create apps for different languages. </li>
+<li><strong>Strict input validation and sanitization</strong> across the board, to prevent XSS.</li>
+<li><strong>No sensitive data</strong> is stored in IndexedDB—only what’s needed to render the UI.</li>
+<li><strong>All sensitive operations require a network connection and valid auth.</strong></li>
+<li><strong>Staged mutations follow a strict schema</strong>, enforced by <a href="https://zod.dev/" target="_blank">Zod</a>. Each mutation has a predefined <code>action</code> and a type-safe <code>payload</code>. The frontend has no awareness of table names or low-level DB structures. Mutations don’t allow custom operations (e.g., <code>DROP</code>, bulk inserts), and their scope is strictly defined by backend action handlers.</li>
 </ul>
-<h3>VOLUNTARY CAREER BREAK 04/2020 - 10/2022</h3>
-
-Dedicated time off attend a learn-to-code program and care for newborn during the pandemic.
-
-<h3>GC/GCMS ANALYST - Enthalpy Analytical, Durham NC 02/2017 - 04/2020 </h3>
-<ul>
-  <li>Operated and maintained a variety of analytical instruments while performing EPA method analyses of pollution source and ambient samples.</li>
-  <li>Adhered to stringent regulatory standards and quality management systems governing data handling, sample custody, and analytical methods.</li>
-</ul>
-<h3>AIR CONSULTANT (LDAR) - Montrose Environmental, Pittsburgh, PA 10/2010 - 02/2017 </h3>
-<ul>
-  <li>Promoted 5 times in 7 years. Positions include Scientist I and II, Project Scientist I and II, LDAR Team Leader, QA/QC Manager</li>
-  <li>Managed team during a period of exponential revenue and project growth.</li>
-  <li>Conducted inspections, retained and maintained large component registries, prepared inspection reports and prepared reporting data, led program and permit audits.</li>
-</ul>
-<h3>EDUCATION AND CERTIFICATIONS </h3>
-<ul>
-  <li>Geneva College, Beaver Falls, PA - BS in Biology - 2008 </li>
-  <li>Momentum Learning, Durham, NC - Full Stack Engineering - 2020 </li>
-  <li>Microsoft Learn - AZ-900 Azure Fundamentals - 2024 </li>
-</ul>
-
-        
-        
-    </div>
-    
-    
-        
-            <div class="tabcontent abdcef">
-        
-
-        
-
-  <p>I love to code! I love the options, agency, and creativity made accessible through writing code. My favorite technologies are all related to JavaScript and its diverse ecosystems but I love to learn new technologies. I've also heavily used Python + Django and Java + Spring and SQL, galore. But I don't view those technologies as constraints, by any means. I want to find the best tools to solve the problems I am working on. So, it serves to not wed one's self to what they already know.</p>
-  <p>
-   In my private life I love fishing, drawing, music, writing, reading, and playing darts. Most of all, I love my family! My wife and I have a little daughter (who shall remain unidentified) in gradeschool. The two ladies in my life are the apple of my eye!</p>
-
-  <p>I'll probably choose to expand this section a bit once I get this thing rolling.</p>
-
-
-        
-        
-    </div>
-    
-</div>
-
+<hr>
+<p>I’ll share more soon about how I&rsquo;m handling sync failures, versioning, and conflict resolution. The goal is to give users as seamless an experience as possible—even if they’re stuck in the middle of nowhere with no signal.</p>
 
   
   <hr>
 <div class="footer">
     
-	    
-	    
+    
+    
+    <p>
+    This is a post in the <b><a href="http://localhost:1313/series/final-project-rebuild">Final Project Rebuild</a></b> series.
+        <br>Other posts in this series:
+        <ul class="series">
+            
+            
+            
+            <li>
+                May 9, 2025 -
+                
+                    New paradigms and new challenges
+                
+            </li>
+            
+            <li>
+                April 28, 2025 -
+                
+                    <a href="/posts/2025-04-28/">Not this time, Next.js</a>
+                
+            </li>
+            
+            <li>
+                March 24, 2025 -
+                
+                    <a href="/posts/2025-03-24/">Relational Data Design and Drizzle</a>
+                
+            </li>
+            
+            <li>
+                March 10, 2025 -
+                
+                    <a href="/posts/mar_10_2025/">Auth with Drizzle, NestJS, and Passport</a>
+                
+            </li>
+            
+            <li>
+                March 6, 2025 -
+                
+                    <a href="/posts/pickingbackend/">New Project: Picking my Backend</a>
+                
+            </li>
+            
+        </ul>
+    </p>
     
 </div>
 
@@ -606,7 +600,17 @@ Dedicated time off attend a learn-to-code program and care for newborn during th
     <div class="article-toc ">
     <div class="toc-wrapper">
       <h4 id="contents"></h4>
-      <nav id="TableOfContents"></nav>
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#how-do-you-persist-data-when-you-cant-guarantee-a-connection-to-a-server">How do you persist data when you can’t guarantee a connection to a server?</a></li>
+        <li><a href="#what-happens-when-the-client-has-updates-the-server-doesnt-what-if-those-states-conflict">What happens when the client has updates the server doesn’t? What if those states conflict?</a></li>
+        <li><a href="#how-do-you-handle-auth-if-data-lives-on-the-client">How do you handle auth if data lives on the client?</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
     </div>
 </div>
 
